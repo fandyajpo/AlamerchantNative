@@ -23,9 +23,9 @@ const getItemCount = (data) => 50;
 
 const Item = ({ title, sheetRef }) => (
   <View
-    style={tw`bg-white border-b border-gray-300 pt-4 flex-row justify-between items-center`}
+    style={tw`bg-white border-b border-gray-300 pt-4 flex-row justify-between items-center pb-4`}
   >
-    <View style={tw`flex-row items-center pb-4`}>
+    <View style={tw`flex-row items-center `}>
       <View style={tw`bg-black w-10 h-10 rounded-full mr-2`} />
       <Text style={tw`text-gray-800 font-bold text-sm`}>{title}</Text>
     </View>
@@ -82,57 +82,39 @@ Followers.options = {
     style: "dark",
     backgroundColor: "transparent",
   },
-  // animations: {
-  //   push: {
-  //     waitForRender: true,
-  //     content: {
-  //       translationX: {
-  //         from: require('react-native').Dimensions.get('window').width,
-  //         to: 0,
-  //         duration: 200,
-  //       },
-  //     },
-  //   },
-  //   pop: {
-  //     waitForRender: true,
-  //     content: {
-  //       translationX: {
-  //         from: 0,
-  //         to: require('react-native').Dimensions.get('window').width,
-  //         duration: 200,
-  //       },
-  //     },
-  //   },
-  //   setRoot: {
-  //     enter: {
-  //       waitForRender: true,
-  //       enabled: true,
-  //       translationY: {
-  //         from: 0,
-  //         to: 1,
-  //         duration: 3,
-  //       },
-  //     },
-  //   },
-  // },
+  animations: {
+    push: {
+      waitForRender: true,
+      content: {
+        translationX: {
+          from: require("react-native").Dimensions.get("window").width,
+          to: 0,
+          duration: 200,
+        },
+      },
+    },
+    pop: {
+      waitForRender: true,
+      content: {
+        translationX: {
+          from: 0,
+          to: require("react-native").Dimensions.get("window").width,
+          duration: 200,
+        },
+      },
+    },
+    setRoot: {
+      enter: {
+        waitForRender: true,
+        enabled: true,
+        translationY: {
+          from: 0,
+          to: 1,
+          duration: 3,
+        },
+      },
+    },
+  },
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: StatusBar.currentHeight,
-  },
-  item: {
-    backgroundColor: "#f9c2ff",
-    height: 150,
-    justifyContent: "center",
-    marginVertical: 8,
-    marginHorizontal: 16,
-    padding: 20,
-  },
-  title: {
-    fontSize: 32,
-  },
-});
 
 export default Followers;

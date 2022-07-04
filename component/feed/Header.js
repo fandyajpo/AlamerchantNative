@@ -1,22 +1,23 @@
-import React, {useEffect} from 'react';
-import {View, Text, TouchableOpacity, Image} from 'react-native';
-import tw from '../../lib/tailwind';
-import {useDeviceContext} from 'twrnc';
+import React, { useEffect } from "react";
+import { View, Text, TouchableOpacity, Image } from "react-native";
+import tw from "../../lib/tailwind";
+import { useDeviceContext } from "twrnc";
 import {
   Star,
   EditProfile,
   Message,
   Activity,
   Settings,
-} from '../../lib/listSvg';
-import FeedSwitch from './FeedSwitch';
-import {PushRoute} from '../../lib/ctx';
+} from "../../lib/listSvg";
+import FeedSwitch from "./FeedSwitch";
+import { PushRoute } from "../../lib/ctx";
 
-const Header = ({feedRef, feedSwitch, setFeedSwitch, componentId}) => {
+const Header = ({ feedRef, feedSwitch, setFeedSwitch, componentId }) => {
   useDeviceContext(tw);
   return (
     <View
-      style={tw`h-[15rem] flex flex-col justify-center bg-white/90 absolute top-0 z-10 w-full px-4`}>
+      style={tw`h-[15rem] flex flex-col justify-center bg-mgray/95 absolute top-0 z-10 w-full px-4`}
+    >
       <View style={tw`flex-col justify-center items-center mb-4 w-full pt-10`}>
         <View style={tw`flex-row justify-between w-full`}>
           <View style={tw`flex-row items-center`}>
@@ -26,7 +27,7 @@ const Header = ({feedRef, feedSwitch, setFeedSwitch, componentId}) => {
                   style={tw`w-full h-full`}
                   resizeMode="cover"
                   source={{
-                    uri: 'https://cdn.discordapp.com/attachments/957998627928817684/993405757213134938/redwhite.png',
+                    uri: "https://cdn.discordapp.com/attachments/957998627928817684/993405757213134938/redwhite.png",
                   }}
                 />
               </View>
@@ -43,9 +44,7 @@ const Header = ({feedRef, feedSwitch, setFeedSwitch, componentId}) => {
               </Text>
             </View>
           </View>
-          <TouchableOpacity
-            activeOpacity={0.5}
-            onPress={() => PushRoute(componentId, 'Followers')}>
+          <TouchableOpacity activeOpacity={0.5}>
             <Message />
           </TouchableOpacity>
         </View>
@@ -57,7 +56,11 @@ const Header = ({feedRef, feedSwitch, setFeedSwitch, componentId}) => {
           <Star />
         </View>
         <View style={tw`w-[1px] h-6 bg-gray-300 mx-2`} />
-        <Text style={tw`text-myellow text-base font-bold`}>1004 Followers</Text>
+        <TouchableOpacity onPress={() => PushRoute(componentId, "Followers")}>
+          <Text style={tw`text-myellow text-base font-bold`}>
+            1004 Followers
+          </Text>
+        </TouchableOpacity>
       </View>
       {/* <View style={tw`border-b border-gray-300 my-2`} /> */}
       <View style={tw`w-full flex-row pb-12`}>

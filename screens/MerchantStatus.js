@@ -1,34 +1,30 @@
-import React from 'react';
-import {View, Text, Button, StyleSheet} from 'react-native';
-import {GlobalContext} from '../lib/ctx';
-import tw from 'twrnc';
-import Header from '../component/merchantStatus/Header';
-import BackHandlerComponent from '../component/merchantStatus/BackHandler';
-import Status from '../component/merchantStatus/StatusList';
-import {Navigation} from 'react-native-navigation';
-const MerchantStatus = ({componentId}) => {
-  const {state, fnr, setSecure, getSecure, logGer} =
+import React from "react";
+import { View, Text, Button, StyleSheet } from "react-native";
+import { GlobalContext } from "../lib/ctx";
+import tw from "twrnc";
+import Header from "../component/merchantStatus/Header";
+import BackHandlerComponent from "../component/merchantStatus/BackHandler";
+import Status from "../component/merchantStatus/StatusList";
+import { Navigation } from "react-native-navigation";
+const MerchantStatus = ({ componentId }) => {
+  const { state, fnr, setSecure, getSecure, logGer } =
     React.useContext(GlobalContext);
 
   React.useEffect(() => {
     const unsubscribe = Navigation.events().registerComponentListener(
       {
         componentDidAppear: () =>
-          Promise.all([fnr({type: 'screen', payload: 'home'})]),
+          Promise.all([fnr({ type: "screen", payload: "home" })]),
         componentDidDisappear: () =>
           console.log(`componentDidDisappear ${componentId}`),
       },
-      componentId,
+      componentId
     );
     return () => unsubscribe.remove();
   }, [componentId]);
 
-  const backPop = () => {
-    Navigation.pop();
-  };
-
   return (
-    <View style={{flex: 1, backgroundColor: 'white'}}>
+    <View style={{ flex: 1, backgroundColor: "white" }}>
       <Header />
       <View style={tw`m-2`}>
         <Status />
@@ -53,15 +49,15 @@ MerchantStatus.options = {
   statusBar: {
     drawBehind: true,
     translucent: true,
-    style: 'dark',
-    backgroundColor: 'transparent',
+    style: "dark",
+    backgroundColor: "transparent",
   },
   animations: {
     push: {
       waitForRender: true,
       content: {
         translationX: {
-          from: require('react-native').Dimensions.get('window').width,
+          from: require("react-native").Dimensions.get("window").width,
           to: 0,
           duration: 200,
         },
@@ -72,7 +68,7 @@ MerchantStatus.options = {
       content: {
         translationX: {
           from: 0,
-          to: require('react-native').Dimensions.get('window').width,
+          to: require("react-native").Dimensions.get("window").width,
           duration: 200,
         },
       },
