@@ -1,0 +1,6 @@
+module Pods_Skensa_SkensaTests {
+  umbrella header "Pods-Skensa-SkensaTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

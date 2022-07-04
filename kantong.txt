@@ -1,0 +1,24 @@
+
+  const { state, fnr, setSecure, getSecure, logGer } = React.useContext(GlobalContext);
+
+  const setProfile = useCallback(() => {
+    if (!state?.profile?.nama) {
+      const getProfile = getSecure('profile');
+      const pars = JSON.parse(getProfile);
+      fnr({
+        type: 'profile',
+        payload: pars
+      })
+    }
+  },[state.profile])
+
+ 
+
+
+  React.useEffect(()=>{
+    Promise.all([
+      fnr({type: 'screen', payload: 'home'}),
+      // setProfile()
+    ])
+    SplashScreen.hide();
+  },[]);
