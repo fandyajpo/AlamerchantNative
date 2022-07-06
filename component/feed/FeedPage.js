@@ -8,6 +8,18 @@ import Feed from "./Content/Feed";
 import Event from "./Content/Event";
 import Mention from "./Content/Mention";
 
+const MemoizeFeed = React.memo(({ componentId }) => {
+  return <Feed componentId={componentId} />;
+});
+
+const MemoizeEvent = React.memo(({ componentId }) => {
+  return <Event componentId={componentId} />;
+});
+
+const MemoizeMention = React.memo(({ componentId }) => {
+  return <Mention componentId={componentId} />;
+});
+
 const AnimatedPager = Animated.createAnimatedComponent(PagerView);
 
 export function usePagerScrollHandler(handlers, dependencies) {
@@ -61,13 +73,13 @@ const FeedPage = ({ componentId }) => {
           onPageScroll={handler}
         >
           <View style={tw`bg-mgray`}>
-            <Feed componentId={componentId} />
+            <MemoizeFeed componentId={componentId} />
           </View>
           <View style={tw`bg-mgray`}>
-            <Event />
+            <MemoizeEvent componentId={componentId} />
           </View>
           <View style={tw`bg-mgray`}>
-            <Mention />
+            <MemoizeMention componentId={componentId} />
           </View>
         </AnimatedPager>
       </View>

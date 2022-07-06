@@ -62,7 +62,6 @@ const Header = ({ feedRef, feedSwitch, setFeedSwitch, componentId }) => {
           </Text>
         </TouchableOpacity>
       </View>
-      {/* <View style={tw`border-b border-gray-300 my-2`} /> */}
       <View style={tw`w-full flex-row pb-12`}>
         <FeedSwitch
           feedRef={feedRef}

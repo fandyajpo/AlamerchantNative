@@ -1,70 +1,63 @@
-import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
-import PagerView from 'react-native-pager-view';
-import Animated, {useHandler, useEvent} from 'react-native-reanimated';
-import tw from '../../lib/tailwind';
+import React from "react";
+import { View, StyleSheet, Text } from "react-native";
+import PagerView from "react-native-pager-view";
+import Animated, { useHandler, useEvent } from "react-native-reanimated";
+import tw from "../../lib/tailwind";
 
-import NewService from './service/New';
-import ProcessService from './service/Process';
-import ReadyService from './service/Ready';
-import UnpaidService from './service/Unpaid';
-import DoneService from './service/Done';
+import NewService from "./service/New";
+import ProcessService from "./service/Process";
+import ReadyService from "./service/Ready";
+import UnpaidService from "./service/Unpaid";
+import DoneService from "./service/Done";
 
-const AnimatedPager = Animated.createAnimatedComponent(PagerView);
+const MemoizeNewService = React.memo(({ componentId }) => {
+  return <NewService componentId={componentId} />;
+});
 
-export function usePagerScrollHandler(handlers, dependencies) {
-  const {context, doDependenciesDiffer} = useHandler(handlers, dependencies);
-  const subscribeForEvents = ['onPageScroll'];
+const MemoizeProcessService = React.memo(({ componentId }) => {
+  return <ProcessService componentId={componentId} />;
+});
 
+const MemoizeReadyService = React.memo(({ componentId }) => {
+  return <ReadyService componentId={componentId} />;
+});
+
+const MemoizeUnpaidService = React.memo(({ componentId }) => {
+  return <UnpaidService componentId={componentId} />;
+});
+
+const MemoizeDoneService = React.memo(({ componentId }) => {
+  return <DoneService componentId={componentId} />;
+});
+
+const ProcessPage = ({ pageRef, setPages, componentId }) => {
   return (
-    useEvent <
-    (event => {
-      'worklet';
-      const {onPageScroll} = handlers;
-      if (onPageScroll && event.eventName.endsWith('onPageScroll')) {
-        onPageScroll(event, context);
-        console.log(event);
-      }
-    },
-    subscribeForEvents,
-    doDependenciesDiffer)
-  );
-}
-
-const ProcessPage = ({pageRef, setPages}) => {
-  const handler = usePagerScrollHandler({
-    onPageScroll: e => {
-      'worklet';
-      console.log(e.offset, e.position);
-    },
-  });
-
-  return (
-    <AnimatedPager
+    <PagerView
       ref={pageRef}
-      style={{flex: 1}}
+      style={{ flex: 1 }}
       initialPage={0}
-      onPageSelected={e => {
-        console.log('postion process : ', e.nativeEvent.position);
+      onPageSelected={(e) => {
+        console.log("postion process : ", e.nativeEvent.position);
         setPages(e.nativeEvent.position);
       }}
-      onPageScroll={handler}>
+      // onPageScroll={handler}
+    >
       <View style={tw`bg-mgray`}>
-        <NewService />
+        <MemoizeNewService componentId={componentId} />
       </View>
       <View style={tw`bg-mgray`}>
-        <ProcessService />
+        <MemoizeProcessService componentId={componentId} />
       </View>
       <View style={tw`bg-mgray`}>
-        <ReadyService />
+        <MemoizeReadyService componentId={componentId} />
       </View>
       <View style={tw`bg-mgray`}>
-        <UnpaidService />
+        <MemoizeUnpaidService componentId={componentId} />
       </View>
       <View style={tw`bg-mgray`}>
-        <DoneService />
+        <MemoizeDoneService componentId={componentId} />
       </View>
-    </AnimatedPager>
+    </PagerView>
   );
 };
 

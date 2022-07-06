@@ -1,82 +1,105 @@
 /**
  * @format
  */
-import React from 'react';
-import {View, Text, Button, StyleSheet} from 'react-native';
-import {Navigation} from 'react-native-navigation';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
+import React from "react";
+import { View, Text, Button, StyleSheet } from "react-native";
+import { Navigation } from "react-native-navigation";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 // import { MMKV } from 'react-native-mmkv'
 // const storage = new MMKV()
-import {storage} from './lib/strg';
-import {GlobalContext, GlobalProvider} from './lib/ctx';
+import { storage } from "./lib/strg";
+import { GlobalContext, GlobalProvider } from "./lib/ctx";
 
-import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
-import {GestureHandlerRootView} from 'react-native-gesture-handler';
-import {GlobalPortal} from './lib/sheet';
+import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { GlobalPortal } from "./lib/sheet";
 
-import EnterScreen from './screens/EnterApp';
-import LoginScreen from './screens/Login';
-import HomeScreen from './screens/Order';
-import HistoryScreen from './screens/History';
-import FeedScreen from './screens/Feed';
-import PromoScreen from './screens/Promo';
-import ProfileScreen from './screens/Profile';
-import MerchantStatusScreen from './screens/MerchantStatus';
-import FollowersScreen from './screens/Followers';
-import CameraScreen from './screens/Camera';
-import CommentScreen from './screens/SeeComment';
-import {SheetProvider} from 'react-native-actions-sheet';
+import EnterScreen from "./screens/EnterApp";
+import LoginScreen from "./screens/Login";
+import HomeScreen from "./screens/Order";
+import HistoryScreen from "./screens/History";
+import FeedScreen from "./screens/Feed";
+import PromoScreen from "./screens/Promo";
+import ProfileScreen from "./screens/Profile";
+import MerchantStatusScreen from "./screens/MerchantStatus";
+import FollowersScreen from "./screens/Followers";
+import CameraScreen from "./screens/Camera";
+import CommentScreen from "./screens/SeeComment";
+import OrderDetalScreen from "./screens/OrderDetail";
+import SettingScreen from "./screens/Setting";
 
 Navigation.registerComponent(
-  'Comment',
-  () => props =>
+  "Setting",
+  () => (props) =>
+    (
+      <GlobalProvider>
+        <SettingScreen {...props} />
+      </GlobalProvider>
+    ),
+  () => SettingScreen
+);
+
+Navigation.registerComponent(
+  "OrderDetail",
+  () => (props) =>
+    (
+      <GlobalProvider>
+        <OrderDetalScreen {...props} />
+      </GlobalProvider>
+    ),
+  () => OrderDetalScreen
+);
+
+Navigation.registerComponent(
+  "Comment",
+  () => (props) =>
     (
       <GlobalProvider>
         <CommentScreen {...props} />
       </GlobalProvider>
     ),
-  () => CommentScreen,
+  () => CommentScreen
 );
 
 Navigation.registerComponent(
-  'Followers',
-  () => props =>
+  "Followers",
+  () => (props) =>
     (
       <GlobalProvider>
         <FollowersScreen {...props} />
       </GlobalProvider>
     ),
-  () => FollowersScreen,
+  () => FollowersScreen
 );
 
 Navigation.registerComponent(
-  'Enter',
-  () => props =>
+  "Enter",
+  () => (props) =>
     (
       <GlobalProvider>
         <EnterScreen {...props} />
       </GlobalProvider>
     ),
-  () => EnterScreen,
+  () => EnterScreen
 );
 
 Navigation.registerComponent(
-  'Login',
-  () => props =>
+  "Login",
+  () => (props) =>
     (
       <GlobalProvider>
         <LoginScreen {...props} />
       </GlobalProvider>
     ),
-  () => LoginScreen,
+  () => LoginScreen
 );
 
 Navigation.registerComponent(
-  'Order',
-  () => props =>
+  "Order",
+  () => (props) =>
     (
       <SafeAreaProvider>
-        <GestureHandlerRootView style={{flex: 1}}>
+        <GestureHandlerRootView style={{ flex: 1 }}>
           <BottomSheetModalProvider>
             <GlobalProvider>
               <HomeScreen {...props} />
@@ -85,71 +108,71 @@ Navigation.registerComponent(
         </GestureHandlerRootView>
       </SafeAreaProvider>
     ),
-  () => HomeScreen,
+  () => HomeScreen
 );
 
 Navigation.registerComponent(
-  'History',
-  () => props =>
+  "History",
+  () => (props) =>
     (
       <GlobalProvider>
         <HistoryScreen {...props} />
       </GlobalProvider>
     ),
-  () => HistoryScreen,
+  () => HistoryScreen
 );
 
 Navigation.registerComponent(
-  'Feed',
-  () => props =>
+  "Feed",
+  () => (props) =>
     (
-      <GestureHandlerRootView style={{flex: 1}}>
-        {/* <BottomSheetModalProvider> */}
-        {/* <SheetProvider> */}
+      <GestureHandlerRootView style={{ flex: 1 }}>
         <GlobalProvider>
           <FeedScreen {...props} />
         </GlobalProvider>
-        {/* </SheetProvider> */}
-        {/* </BottomSheetModalProvider> */}
       </GestureHandlerRootView>
     ),
-  () => FeedScreen,
+  () => FeedScreen
 );
 
 Navigation.registerComponent(
-  'Promo',
-  () => props =>
+  "Promo",
+  () => (props) =>
     (
       <GlobalProvider>
         <PromoScreen {...props} />
       </GlobalProvider>
     ),
-  () => PromoScreen,
+  () => PromoScreen
 );
 
 Navigation.registerComponent(
-  'Profile',
-  () => props =>
+  "Profile",
+  () => (props) =>
     (
-      <GlobalProvider>
-        <ProfileScreen {...props} />
-      </GlobalProvider>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <GlobalProvider>
+          <ProfileScreen {...props} />
+        </GlobalProvider>
+      </GestureHandlerRootView>
     ),
-  () => ProfileScreen,
+  () => ProfileScreen
 );
 
 Navigation.registerComponent(
-  'MerchantStatus',
-  () => props =>
+  "MerchantStatus",
+  () => (props) =>
     (
-      <GlobalProvider>
-        <MerchantStatusScreen {...props} />
-      </GlobalProvider>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <GlobalProvider>
+          <MerchantStatusScreen {...props} />
+        </GlobalProvider>
+      </GestureHandlerRootView>
     ),
-  () => MerchantStatusScreen,
+  () => MerchantStatusScreen
 );
 
-Navigation.registerComponent('Camera', () => CameraScreen);
+Navigation.registerComponent("Camera", () => CameraScreen);
 
 Navigation.setDefaultOptions({
   topBar: {
@@ -162,19 +185,19 @@ Navigation.setDefaultOptions({
   },
   statusBar: {
     drawBehind: true,
-    style: 'dark',
-    backgroundColor: 'rgba(0,0,0,0)',
+    style: "dark",
+    backgroundColor: "rgba(0,0,0,0)",
     animate: true,
   },
   bottomTabs: {
-    titleDisplayMode: 'alwaysShow',
-    backgroundColor: '#F4F7FA',
+    titleDisplayMode: "alwaysShow",
+    backgroundColor: "#F4F7FA",
   },
   bottomTab: {
-    iconColor: '#8a8a8a',
-    selectedIconColor: '#F3B33D',
-    textColor: '#8a8a8a',
-    selectedTextColor: '#F3B33D',
+    iconColor: "#8a8a8a",
+    selectedIconColor: "#F3B33D",
+    textColor: "#8a8a8a",
+    selectedTextColor: "#F3B33D",
     fontSize: 10,
     selectedFontSize: 12,
   },
@@ -216,13 +239,13 @@ const mainRoot = {
           stack: {
             children: [
               {
-                component: {name: 'Order', id: 'ORDER_SCREEN'},
+                component: { name: "Order", id: "ORDER_SCREEN" },
               },
             ],
             options: {
               bottomTab: {
-                text: 'Order',
-                icon: require('./assets/icons/25/home.png'),
+                text: "Order",
+                icon: require("./assets/icons/25/home.png"),
               },
             },
           },
@@ -231,13 +254,13 @@ const mainRoot = {
           stack: {
             children: [
               {
-                component: {name: 'History', id: 'HISTORY_SCREEN'},
+                component: { name: "History", id: "HISTORY_SCREEN" },
               },
             ],
             options: {
               bottomTab: {
-                text: 'History',
-                icon: require('./assets/icons/25/mockup.png'),
+                text: "History",
+                icon: require("./assets/icons/25/mockup.png"),
               },
             },
           },
@@ -246,13 +269,13 @@ const mainRoot = {
           stack: {
             children: [
               {
-                component: {name: 'Feed', id: 'FEED_SCREEN'},
+                component: { name: "Feed", id: "FEED_SCREEN" },
               },
             ],
             options: {
               bottomTab: {
-                text: 'Feed',
-                icon: require('./assets/icons/25/stories.png'),
+                text: "Feed",
+                icon: require("./assets/icons/25/stories.png"),
               },
             },
           },
@@ -261,13 +284,13 @@ const mainRoot = {
           stack: {
             children: [
               {
-                component: {name: 'Promo', id: 'PROMO_SCREEN'},
+                component: { name: "Promo", id: "PROMO_SCREEN" },
               },
             ],
             options: {
               bottomTab: {
-                text: 'Promo',
-                icon: require('./assets/icons/25/user.png'),
+                text: "Promo",
+                icon: require("./assets/icons/25/user.png"),
               },
             },
           },
@@ -276,13 +299,13 @@ const mainRoot = {
           stack: {
             children: [
               {
-                component: {name: 'Profile', id: 'PROFILE_SCREEN'},
+                component: { name: "Profile", id: "PROFILE_SCREEN" },
               },
             ],
             options: {
               bottomTab: {
-                text: 'Profile',
-                icon: require('./assets/icons/25/user.png'),
+                text: "Profile",
+                icon: require("./assets/icons/25/user.png"),
               },
             },
           },
@@ -293,33 +316,41 @@ const mainRoot = {
       children: [
         {
           component: {
-            name: 'MerchantStatus',
+            name: "MerchantStatus",
             passProps: {
-              text: 'Merchant status screen',
+              text: "Merchant status screen",
             },
           },
         },
         {
           component: {
-            name: 'Camera',
+            name: "Camera",
             passProps: {
-              text: 'Camera screen',
+              text: "Camera screen",
             },
           },
         },
         {
           component: {
-            name: 'Followers',
+            name: "Followers",
             passProps: {
-              text: 'Followers screen',
+              text: "Followers screen",
             },
           },
         },
         {
           component: {
-            name: 'Comment',
+            name: "Comment",
             passProps: {
-              text: 'Followers screen',
+              text: "Followers screen",
+            },
+          },
+        },
+        {
+          component: {
+            name: "Setting",
+            passProps: {
+              text: "Setting screen",
             },
           },
         },
@@ -331,11 +362,11 @@ const mainRoot = {
 const loginRoot = {
   root: {
     component: {
-      name: 'Login',
+      name: "Login",
       options: {
         statusBar: {
           drawBehind: true,
-          backgroundColor: 'transparent',
+          backgroundColor: "transparent",
           animate: false,
         },
       },
@@ -346,11 +377,11 @@ const loginRoot = {
 const enterApp = {
   root: {
     component: {
-      name: 'Enter',
+      name: "Enter",
       options: {
         statusBar: {
           drawBehind: true,
-          backgroundColor: 'transparent',
+          backgroundColor: "transparent",
           animate: false,
         },
       },
@@ -358,10 +389,10 @@ const enterApp = {
   },
 };
 
-const listener = storage.addOnValueChangedListener(async changedKey => {
+const listener = storage.addOnValueChangedListener(async (changedKey) => {
   const [token, screen] = await Promise.all([
-    storage.contains('token'),
-    storage.contains('screen'),
+    storage.contains("token"),
+    storage.contains("screen"),
   ]);
   if (token && screen) {
     Navigation.setRoot(loginRoot);
@@ -369,9 +400,9 @@ const listener = storage.addOnValueChangedListener(async changedKey => {
 });
 
 function isLoggedIn(vals) {
-  storage.delete('screen');
+  storage.delete("screen");
   // storage.clearAll()
-  const tok = storage.contains('token');
+  const tok = storage.contains("token");
   return tok;
 }
 

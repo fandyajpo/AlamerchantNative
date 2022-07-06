@@ -1,35 +1,31 @@
-import React from 'react';
-import {View, Text, Button, StyleSheet, Platform} from 'react-native';
-import {Navigation} from 'react-native-navigation';
-import {navOption} from '../lib/ctx';
+import React from "react";
+import {
+  View,
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+} from "react-native";
 
-const Profile = props => {
+import tw from "../lib/tailwind";
+
+import ProfilePage from "../component/profileMerchant/ProfilePage";
+
+const Feed = ({ componentId }) => {
   return (
-    <View style={styles.root}>
-      <Text>Hello React Native Navigation 👋</Text>
-
-      <Button
-        title="Profile"
-        color="#710ce3"
-        onPress={() =>
-          Navigation.push(props.componentId, {
-            component: {
-              name: 'Camera',
-              options: Platform.OS !== 'ios' && navOption,
-            },
-          })
-        }
+    <View>
+      <View
+        style={tw`border-t-2 border-r border-l rounded-full border-gray-300 z-50 w-full absolute top-60 h-4`}
+      />
+      <View style={tw`w-full h-full`}>
+        <ProfilePage componentId={componentId} />
+      </View>
+      <View
+        style={tw`border-b-2 border-r border-l rounded-full border-gray-300 z-10 w-full absolute bottom-0 w-full h-4 pb-2`}
       />
     </View>
   );
 };
-export default Profile;
 
-const styles = StyleSheet.create({
-  root: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'whitesmoke',
-  },
-});
+export default React.memo(Feed);

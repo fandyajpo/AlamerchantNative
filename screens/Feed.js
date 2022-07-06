@@ -1,20 +1,21 @@
 import React from "react";
-import {
-  View,
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-} from "react-native";
-import { Navigation } from "react-native-navigation";
-import Header from "../component/feed/Header";
-import BottomSheet from "../component/followers/BottomSheet";
+import { View } from "react-native";
 import tw from "../lib/tailwind";
-import { Dropdown, Like, UnLike, Comment } from "../lib/listSvg";
-import { GlobalPortal } from "../lib/sheet";
 import FeedPage from "../component/feed/FeedPage";
+import { Navigation } from "react-native-navigation";
+import SplashScreen from "react-native-splash-screen";
 const Feed = ({ componentId }) => {
+  React.useEffect(() => {
+    const unsubscribe = Navigation.events().registerComponentListener(
+      {
+        componentDidAppear: () => SplashScreen.hide(),
+        componentDidDisappear: () =>
+          console.log(`componentDidDisappear ${componentId}`),
+      },
+      componentId
+    );
+    return () => unsubscribe.remove();
+  }, [componentId]);
   return (
     <View>
       <View

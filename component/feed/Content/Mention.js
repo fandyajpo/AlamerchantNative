@@ -9,8 +9,9 @@ import {
 } from "react-native";
 import tw from "../../../lib/tailwind";
 import { Dropdown, Like, UnLike, Comment } from "../../../lib/listSvg";
+import { PushRoute } from "../../../lib/ctx";
 
-const Mention = () => {
+const Mention = ({ componentId }) => {
   const feed = [
     {
       user_name: "Fandy with cheese",
@@ -130,7 +131,11 @@ const Mention = () => {
                 <Text style={tw`text-xs text-gray-400 font-bold ml-2`}>24</Text>
               </View>
               <View style={tw`flex-row items-center`}>
-                <Comment />
+                <TouchableOpacity
+                  onPress={() => PushRoute(componentId, "Comment")}
+                >
+                  <Comment />
+                </TouchableOpacity>
                 <Text style={tw`text-xs text-gray-400 font-bold ml-2`}>24</Text>
               </View>
             </View>
