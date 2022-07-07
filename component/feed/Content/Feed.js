@@ -75,7 +75,7 @@ const Feed = ({ componentId }) => {
         return (
           <View
             key={i}
-            style={tw`bg-white border rounded-xl border-gray-300 w-full h-auto p-4 my-2`}
+            style={tw`bg-white border rounded-xl border-gray-300 w-full h-auto p-4 my-2 shadow-sm`}
           >
             <View style={tw`flex-row items-center w-full justify-between`}>
               <View style={tw`flex-row items-center`}>
@@ -87,7 +87,7 @@ const Feed = ({ componentId }) => {
               <Dropdown />
             </View>
             <View
-              style={tw`w-full h-96 bg-transparent rounded-xl my-4 overflow-hidden`}
+              style={tw`w-full h-96 bg-transparent rounded-xl my-4 overflow-hidden shadow-md`}
             >
               <Image
                 style={tw`w-full h-full`}
@@ -97,7 +97,9 @@ const Feed = ({ componentId }) => {
                 }}
               />
             </View>
-            <View style={tw`border border-gray-300 p-3 rounded-xl mb-4`}>
+            <View
+              style={tw`border border-gray-300 p-3 rounded-xl mb-4 shadow-sm bg-white`}
+            >
               <View style={tw`flex-row`}>
                 <View
                   style={tw`bg-black w-16 h-16 rounded-md mr-2 overflow-hidden`}

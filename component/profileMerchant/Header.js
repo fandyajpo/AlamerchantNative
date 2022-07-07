@@ -6,7 +6,13 @@ import { Star, EditProfile, ProfileMerchant } from "../../lib/listSvg";
 import ProfileSwitch from "./ProfileSwitch";
 import { PushRoute } from "../../lib/ctx";
 
-const Header = ({ profileRef, setProfilePage, profilePage, componentId }) => {
+const Header = ({
+  profileRef,
+  setProfilePage,
+  profilePage,
+  componentId,
+  profileSheetRef,
+}) => {
   useDeviceContext(tw);
   useEffect(() => {
     console.log("render header");
@@ -52,7 +58,10 @@ const Header = ({ profileRef, setProfilePage, profilePage, componentId }) => {
               </Text>
             </View>
           </View>
-          <TouchableOpacity activeOpacity={0.5}>
+          <TouchableOpacity
+            activeOpacity={0.5}
+            onPress={() => profileSheetRef.current.show()}
+          >
             <ProfileMerchant />
           </TouchableOpacity>
         </View>

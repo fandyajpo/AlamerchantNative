@@ -1,23 +1,35 @@
-import React from "react";
-import { View, Text, ScrollView } from "react-native";
-import BackHandlerComponent from "../component/setting/BackHandler";
-import tw from "../lib/tailwind";
-import { Navigation } from "react-native-navigation";
+import React, { useEffect } from "react";
+import {
+  View,
+  Text,
+  ScrollView,
+  TextInput,
+  Keyboard,
+  Button,
+} from "react-native";
+import DefaultBackHandlerComponent from "../../component/defaultBackHandler";
+import tw from "../../lib/tailwind";
+import { BackHandlerPrinter } from "../../component/setting/BackHandler";
+import { PrinterSheet } from "../../component/setting/SettingSheet";
 
-const Setting = ({ componentId }) => {
+const MemoizePrinterSheet = React.memo(({ printerRef }) => {
+  return <PrinterSheet printerRef={printerRef} />;
+});
+
+const Printer = ({ componentId }) => {
+  const printerRef = React.useRef(null);
   return (
-    <View style={tw`w-full h-full bg-mgray pt-13`}>
-      <ScrollView contentContainerStyle={tw`pb-32`}>
-        <View style={tw`bg-white w-full h-20 border-b border-gray-300`}></View>
-        <View style={tw`bg-white w-full h-20 border-b border-gray-300`}></View>
-        <View style={tw`bg-white w-full h-20 border-b border-gray-300`}></View>
+    <View style={tw`w-full h-full bg-white pt-13`}>
+      <ScrollView contentContainerStyle={tw`pb-32  h-full`}>
+        <View style={tw`p-2`}></View>
       </ScrollView>
-      <BackHandlerComponent componentId={componentId} />
+      <MemoizePrinterSheet printerRef={printerRef} />
+      <BackHandlerPrinter componentId={componentId} printerRef={printerRef} />
     </View>
   );
 };
 
-Setting.options = {
+Printer.options = {
   bottomTabs: {
     visible: false,
     drawBehind: false,
@@ -70,4 +82,4 @@ Setting.options = {
   },
 };
 
-export default Setting;
+export default Printer;

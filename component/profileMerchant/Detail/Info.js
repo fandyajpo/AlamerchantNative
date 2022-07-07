@@ -15,7 +15,10 @@ const MemoizeJamOperasional = () => {
 
 const Info = () => {
   return (
-    <ScrollView style={tw`w-full pt-60 bg-mgray`}>
+    <ScrollView
+      style={tw`w-full pt-60 bg-mgray`}
+      showsVerticalScrollIndicator={false}
+    >
       <View style={tw`pt-4 pb-60 px-4`}>
         <View style={tw`mb-2`}>
           <Text style={tw`text-gray-800 text-sm font-bold mb-2`}>
@@ -23,17 +26,17 @@ const Info = () => {
           </Text>
           <View style={tw`flex-row flex-wrap`}>
             <Text
-              style={tw`bg-white py-2 px-4 text-gray-300 rounded-full mr-2`}
+              style={tw`bg-white py-2 px-4 text-gray-300 rounded-full mr-2 shadow-sm`}
             >
               Kopi
             </Text>
             <Text
-              style={tw`bg-white py-2 px-4 text-gray-300 rounded-full mr-2`}
+              style={tw`bg-white py-2 px-4 text-gray-300 rounded-full mr-2 shadow-sm`}
             >
               Coffee
             </Text>
             <Text
-              style={tw`bg-white py-2 px-4 text-gray-300 rounded-full mr-2`}
+              style={tw`bg-white py-2 px-4 text-gray-300 rounded-full mr-2 shadow-sm`}
             >
               Espresso
             </Text>
@@ -75,14 +78,68 @@ const Info = () => {
         <View style={tw`mb-2`}>
           <Text style={tw`text-gray-800 text-sm font-bold mb-2`}>Galery</Text>
           <View style={tw`flex-row justify-between mb-4`}>
-            <View style={tw`bg-gray-500 w-28 h-28`} />
-            <View style={tw`bg-gray-500 w-28 h-28`} />
-            <View style={tw`bg-gray-500 w-28 h-28`} />
+            <View
+              style={[
+                { flex: 1 },
+                tw`bg-white w-24 h-24 rounded-md justify-center items-center`,
+              ]}
+            >
+              <View
+                style={tw`bg-black w-11/12 h-11/12 shadow-sm rounded-md `}
+              />
+            </View>
+            <View
+              style={[
+                { flex: 1 },
+                tw`bg-white w-24 h-24 rounded-md justify-center items-center`,
+              ]}
+            >
+              <View
+                style={tw`bg-black w-11/12 h-11/12 shadow-sm rounded-md `}
+              />
+            </View>
+            <View
+              style={[
+                { flex: 1 },
+                tw`bg-white w-24 h-24 rounded-md justify-center items-center`,
+              ]}
+            >
+              <View
+                style={tw`bg-black w-11/12 h-11/12 shadow-sm rounded-md `}
+              />
+            </View>
           </View>
           <View style={tw`flex-row justify-between`}>
-            <View style={tw`bg-gray-500 w-28 h-28`} />
-            <View style={tw`bg-gray-500 w-28 h-28`} />
-            <View style={tw`bg-gray-500 w-28 h-28`} />
+            <View
+              style={[
+                { flex: 1 },
+                tw`bg-white w-24 h-24 rounded-md justify-center items-center`,
+              ]}
+            >
+              <View
+                style={tw`bg-black w-11/12 h-11/12 shadow-sm rounded-md `}
+              />
+            </View>
+            <View
+              style={[
+                { flex: 1 },
+                tw`bg-white w-24 h-24 rounded-md justify-center items-center`,
+              ]}
+            >
+              <View
+                style={tw`bg-black w-11/12 h-11/12 shadow-sm rounded-md `}
+              />
+            </View>
+            <View
+              style={[
+                { flex: 1 },
+                tw`bg-white w-24 h-24 rounded-md justify-center items-center`,
+              ]}
+            >
+              <View
+                style={tw`bg-black w-11/12 h-11/12 shadow-sm rounded-md `}
+              />
+            </View>
           </View>
         </View>
 
@@ -97,4 +154,4 @@ const Info = () => {
   );
 };
 
-export default Info;
+export default React.memo(Info);

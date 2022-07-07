@@ -5,6 +5,10 @@ import { Dropdown } from "../lib/listSvg";
 import tw from "../lib/tailwind";
 import BottomSheet from "../component/followers/BottomSheet";
 
+const MemoizeBottomSheet = React.memo(({ sheetRef }) => {
+  return <BottomSheet sheetRef={sheetRef} />;
+});
+
 const DATA = [];
 
 const getItem = (data, index) => ({
@@ -13,7 +17,7 @@ const getItem = (data, index) => ({
   title: `Fandy Ahmad ${index + 1}`,
 });
 
-const getItemCount = (data) => 100;
+const getItemCount = (data) => 10;
 
 const Item = ({ title, sheetRef }) => (
   <View
@@ -53,9 +57,7 @@ const Followers = ({ componentId }) => {
           // ListFooterComponent={}
         />
       </View>
-      {React.useMemo(() => {
-        return <BottomSheet sheetRef={sheetRef} />;
-      }, [])}
+      <MemoizeBottomSheet sheetRef={sheetRef} />
       <BackHandlerComponent componentId={componentId} />
     </View>
   );

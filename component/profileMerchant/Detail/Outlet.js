@@ -6,7 +6,10 @@ import { PushRoute } from "../../../lib/ctx";
 
 const Outlet = ({ componentId }) => {
   return (
-    <ScrollView style={tw`w-full pt-60 bg-mgray`}>
+    <ScrollView
+      style={tw`w-full pt-60 bg-mgray`}
+      showsVerticalScrollIndicator={false}
+    >
       <View style={tw`p-4 flex-row items-center justify-center `}>
         <View
           style={tw`bg-white w-2/4 h-16 rounded-xl border-gray-300 border flex-row items-center justify-center`}
@@ -32,44 +35,47 @@ const Outlet = ({ componentId }) => {
           </View>
         </View>
       </View>
-      <View style={tw`flex-row justify-center`}>
-        <View style={tw`m-2`}>
-          <View style={tw`bg-myellow/20 w-20 h-20 rounded-xl`} />
+      <View style={tw`flex-row justify-center items-center`}>
+        <View style={[{ flex: 1 }, tw`m-2 justify-center items-center`]}>
+          <View style={tw`bg-myellow/20 w-16 h-16 rounded-xl`} />
           <Text style={tw`text-gray-800 text-center text-xs`}>Cabang</Text>
         </View>
-        <View style={tw`m-2`}>
-          <View style={tw`bg-violet-500/20 w-20 h-20 rounded-xl`} />
+        <View style={[{ flex: 1 }, tw`m-2 justify-center items-center`]}>
+          <View style={tw`bg-violet-500/20 w-16 h-16 rounded-xl`} />
           <Text style={tw`text-gray-800 text-center text-xs`}>Privilage</Text>
         </View>
-        <View style={tw`m-2`}>
-          <View style={tw`bg-red-500/20 w-20 h-20 rounded-xl`} />
+        <View style={[{ flex: 1 }, tw`m-2 justify-center items-center`]}>
+          <View style={tw`bg-red-500/20 w-16 h-16 rounded-xl`} />
           <Text style={tw`text-gray-800 text-center text-xs`}>Member</Text>
         </View>
-        <View style={tw`m-2`}>
-          <View style={tw`bg-blue-500/20 w-20 h-20 rounded-xl`} />
+        <View style={[{ flex: 1 }, tw`m-2 justify-center items-center`]}>
+          <View style={tw`bg-blue-500/20 w-16 h-16 rounded-xl`} />
           <Text style={tw`text-gray-800 text-center text-xs`}>Report</Text>
         </View>
       </View>
       <View style={tw`flex-row justify-center`}>
-        <View style={tw`m-2`}>
-          <View style={tw`bg-orange-500/20 w-20 h-20 rounded-xl`} />
+        <View style={[{ flex: 1 }, tw`m-2 justify-center items-center`]}>
+          <View style={tw`bg-orange-500/20 w-16 h-16 rounded-xl`} />
           <Text style={tw`text-gray-800 text-center text-xs`}>Table</Text>
         </View>
-        <View style={tw`m-2`}>
-          <View style={tw`bg-green-800/20 w-20 h-20 rounded-xl`} />
+        <View style={[{ flex: 1 }, tw`m-2 justify-center items-center`]}>
+          <View style={tw`bg-green-800/20 w-16 h-16 rounded-xl`} />
           <Text style={tw`text-gray-800 text-center text-xs`}>
             Menu & Stock
           </Text>
         </View>
         <Pressable
           onPress={() => PushRoute(componentId, "Setting")}
-          style={({ pressed }) => [{ opacity: pressed ? 0.5 : 1.0 }, tw`m-2`]}
+          style={({ pressed }) => [
+            { opacity: pressed ? 0.5 : 1.0, flex: 1 },
+            tw`m-2 justify-center items-center`,
+          ]}
         >
-          <View style={tw`bg-black/20 w-20 h-20 rounded-xl`} />
+          <View style={tw`bg-black/20 w-16 h-16 rounded-xl`} />
           <Text style={tw`text-gray-800 text-center text-xs`}>Setting</Text>
         </Pressable>
-        <View style={tw`m-2`}>
-          <View style={tw`bg-blue-500 w-20 h-20 rounded-xl`} />
+        <View style={[{ flex: 1 }, tw`m-2 justify-center items-center`]}>
+          <View style={tw`bg-blue-500 w-16 h-16 rounded-xl`} />
           <Text style={tw`text-gray-800 text-center text-xs`}>Delivery</Text>
         </View>
       </View>
@@ -77,4 +83,4 @@ const Outlet = ({ componentId }) => {
   );
 };
 
-export default Outlet;
+export default React.memo(Outlet);

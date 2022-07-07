@@ -7,6 +7,19 @@ import tw from "../lib/tailwind";
 import Header from "../component/history/Header";
 import PendapatanBersih from "../component/history/PendapatanBersih";
 import FilterTime from "../component/history/FilterTime";
+
+const MemoizePendapatanBersih = React.memo(() => {
+  return <PendapatanBersih />;
+});
+
+const MemoizeFilterTime = React.memo(() => {
+  return <FilterTime />;
+});
+
+const MemoizeHistoryPage = ({ typeRef, type, setType }) => {
+  return <HistoryPage typeRef={typeRef} type={type} setType={setType} />;
+};
+
 const History = ({ componentId }) => {
   const { state, fnr, setSecure } = React.useContext(GlobalContext);
 
@@ -27,10 +40,6 @@ const History = ({ componentId }) => {
   const [type, setType] = React.useState(0);
   const typeRef = React.useRef(null);
 
-  React.useEffect(() => {
-    console.log("aa");
-  });
-
   return (
     <View style={[styles.root, tw`bg-mgray`]}>
       {React.useMemo(() => {
@@ -39,17 +48,17 @@ const History = ({ componentId }) => {
       <View
         style={tw`mt-30 top-26 px-2 py-2 w-full  items-center justify-center`}
       >
-        <PendapatanBersih />
+        <MemoizePendapatanBersih />
       </View>
       <View
         style={tw`flex items-center justify-center h-full w-full pt-25 pb-14`}
       >
         <View style={tw`w-full h-full `}>
-          <HistoryPage typeRef={typeRef} type={type} setType={setType} />
+          <MemoizeHistoryPage typeRef={typeRef} type={type} setType={setType} />
         </View>
       </View>
 
-      <FilterTime />
+      <MemoizeFilterTime />
     </View>
   );
 };

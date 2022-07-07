@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { View, Text } from "react-native";
 import PagerView from "react-native-pager-view";
 import tw from "../../lib/tailwind";
@@ -17,18 +17,23 @@ const MemoizeInfo = React.memo(() => {
   return <Info />;
 });
 
-const FeedPage = ({ componentId }) => {
+const FeedPage = ({ componentId, profileSheetRef }) => {
   const profileRef = React.useRef(0);
   const [profilePage, setProfilePage] = React.useState(0);
 
   return (
     <View style={({ flex: 1 }, tw`bg-mgray`)}>
-      <Header
-        componentId={componentId}
-        profileRef={profileRef}
-        profilePage={profilePage}
-        setProfilePage={setProfilePage}
-      />
+      {useMemo(() => {
+        return (
+          <Header
+            componentId={componentId}
+            profileSheetRef={profileSheetRef}
+            profileRef={profileRef}
+            profilePage={profilePage}
+            setProfilePage={setProfilePage}
+          />
+        );
+      }, [profilePage])}
       <View style={tw`w-full h-full bg-mgray`}>
         <PagerView
           style={{ flex: 1 }}
@@ -37,10 +42,18 @@ const FeedPage = ({ componentId }) => {
           onPageSelected={(e) => setProfilePage(e.nativeEvent.position)}
         >
           <View style={tw`bg-mgray`}>
-            <MemoizeOutlet componentId={componentId} />
+            {useMemo(() => {
+              console.log("render outlet");
+              return <Outlet />;
+            })}
+            {/* <MemoizeOutlet componentId={componentId} /> */}
           </View>
           <View style={tw`bg-mgray`}>
-            <MemoizeInfo />
+            {useMemo(() => {
+              console.log("render info");
+              return <Info />;
+            })}
+            {/* <MemoizeInfo /> */}
           </View>
         </PagerView>
       </View>

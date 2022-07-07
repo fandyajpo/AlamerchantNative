@@ -22,7 +22,7 @@ const Header = ({ feedRef, feedSwitch, setFeedSwitch, componentId }) => {
         <View style={tw`flex-row justify-between w-full`}>
           <View style={tw`flex-row items-center`}>
             <View style={tw`mr-4`}>
-              <View style={tw`w-20 h-20 rounded-full shadow-md`}>
+              <View style={tw`w-20 h-20 rounded-full shadow-md shadow-sm `}>
                 <Image
                   style={tw`w-full h-full`}
                   resizeMode="cover"

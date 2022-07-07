@@ -5,7 +5,7 @@ import { CalenderIcon } from "../../lib/listSvg";
 const JamOperasional = () => {
   return (
     <View>
-      <View style={tw`flex-row justify-between border-b border-gray-300 py-2`}>
+      <View style={tw`flex-row justify-between border-b border-gray-300 py-2 `}>
         <View style={tw`flex-row items-center`}>
           <CalenderIcon />
           <Text style={tw`text-gray-800 text-xs font-bold ml-2`}>Senin</Text>

@@ -12,6 +12,7 @@ import { GlobalContext, GlobalProvider } from "./lib/ctx";
 
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { SheetProvider } from "react-native-actions-sheet";
 import { GlobalPortal } from "./lib/sheet";
 
 import EnterScreen from "./screens/EnterApp";
@@ -20,13 +21,92 @@ import HomeScreen from "./screens/Order";
 import HistoryScreen from "./screens/History";
 import FeedScreen from "./screens/Feed";
 import PromoScreen from "./screens/Promo";
-import ProfileScreen from "./screens/Profile";
+import ProfileScreen from "./screens/Profile/Profile";
 import MerchantStatusScreen from "./screens/MerchantStatus";
 import FollowersScreen from "./screens/Followers";
 import CameraScreen from "./screens/Camera";
 import CommentScreen from "./screens/SeeComment";
-import OrderDetalScreen from "./screens/OrderDetail";
-import SettingScreen from "./screens/Setting";
+import OrderDetailScreen from "./screens/OrderDetail";
+
+//SETTING GROUP
+import SettingScreen from "./screens/Settings/Setting";
+import TaxAndService from "./screens/Settings/TaxAndService";
+import DebitBankScreen from "./screens/Settings/DebitBank";
+import BiayaTakeawayScreen from "./screens/Settings/BiayaTakeaway";
+import LanguageScreen from "./screens/Settings/Language";
+import PrinterScreen from "./screens/Settings/Printer";
+
+//PROFILE GROUP
+import EditProfileScreen from "./screens/Profile/EditProfile";
+import UpdateOutletCategoryScreen from "./screens/Profile/UpdateOutletCategory";
+import UpdateAlamatScreen from "./screens/Profile/UpdateAlamat";
+import UpdateOperasionalScreen from "./screens/Profile/UpdateJamOperasi";
+import UpdateGaleryScreen from "./screens/Profile/UpdateGalery";
+
+Navigation.registerComponent(
+  "UpdateGalery",
+  () => (props) =>
+    (
+      <SheetProvider>
+        <GlobalProvider>
+          <UpdateGaleryScreen {...props} />
+        </GlobalProvider>
+      </SheetProvider>
+    ),
+  () => UpdateGaleryScreen
+);
+
+Navigation.registerComponent(
+  "UpdateOperasional",
+  () => (props) =>
+    (
+      <SheetProvider>
+        <GlobalProvider>
+          <UpdateOperasionalScreen {...props} />
+        </GlobalProvider>
+      </SheetProvider>
+    ),
+  () => UpdateOperasionalScreen
+);
+
+Navigation.registerComponent(
+  "UpdateAlamatOutlet",
+  () => (props) =>
+    (
+      <SheetProvider>
+        <GlobalProvider>
+          <UpdateAlamatScreen {...props} />
+        </GlobalProvider>
+      </SheetProvider>
+    ),
+  () => UpdateAlamatScreen
+);
+
+Navigation.registerComponent(
+  "UpdateOutletCategory",
+  () => (props) =>
+    (
+      <SheetProvider>
+        <GlobalProvider>
+          <UpdateOutletCategoryScreen {...props} />
+        </GlobalProvider>
+      </SheetProvider>
+    ),
+  () => UpdateOutletCategoryScreen
+);
+
+Navigation.registerComponent(
+  "EditProfile",
+  () => (props) =>
+    (
+      <SheetProvider>
+        <GlobalProvider>
+          <EditProfileScreen {...props} />
+        </GlobalProvider>
+      </SheetProvider>
+    ),
+  () => EditProfileScreen
+);
 
 Navigation.registerComponent(
   "Setting",
@@ -40,14 +120,69 @@ Navigation.registerComponent(
 );
 
 Navigation.registerComponent(
+  "Printer",
+  () => (props) =>
+    (
+      <GlobalProvider>
+        <PrinterScreen {...props} />
+      </GlobalProvider>
+    ),
+  () => PrinterScreen
+);
+
+Navigation.registerComponent(
+  "Language",
+  () => (props) =>
+    (
+      <GlobalProvider>
+        <LanguageScreen {...props} />
+      </GlobalProvider>
+    ),
+  () => LanguageScreen
+);
+
+Navigation.registerComponent(
+  "BiayaTakeaway",
+  () => (props) =>
+    (
+      <GlobalProvider>
+        <BiayaTakeawayScreen {...props} />
+      </GlobalProvider>
+    ),
+  () => BiayaTakeawayScreen
+);
+
+Navigation.registerComponent(
+  "DebitBank",
+  () => (props) =>
+    (
+      <GlobalProvider>
+        <DebitBankScreen {...props} />
+      </GlobalProvider>
+    ),
+  () => DebitBankScreen
+);
+
+Navigation.registerComponent(
+  "TaxAndService",
+  () => (props) =>
+    (
+      <GlobalProvider>
+        <TaxAndService {...props} />
+      </GlobalProvider>
+    ),
+  () => TaxAndService
+);
+
+Navigation.registerComponent(
   "OrderDetail",
   () => (props) =>
     (
       <GlobalProvider>
-        <OrderDetalScreen {...props} />
+        <OrderDetailScreen {...props} />
       </GlobalProvider>
     ),
-  () => OrderDetalScreen
+  () => OrderDetailScreen
 );
 
 Navigation.registerComponent(
@@ -151,9 +286,11 @@ Navigation.registerComponent(
   () => (props) =>
     (
       <GestureHandlerRootView style={{ flex: 1 }}>
-        <GlobalProvider>
-          <ProfileScreen {...props} />
-        </GlobalProvider>
+        <SheetProvider>
+          <GlobalProvider>
+            <ProfileScreen {...props} />
+          </GlobalProvider>
+        </SheetProvider>
       </GestureHandlerRootView>
     ),
   () => ProfileScreen
@@ -351,6 +488,78 @@ const mainRoot = {
             name: "Setting",
             passProps: {
               text: "Setting screen",
+            },
+          },
+        },
+        {
+          component: {
+            name: "TaxAndService",
+            passProps: {
+              text: "Manage tax and service screen",
+            },
+          },
+        },
+        {
+          component: {
+            name: "DebitBank",
+            passProps: {
+              text: "Manage tax and service screen",
+            },
+          },
+        },
+        {
+          component: {
+            name: "BiayaTakeaway",
+            passProps: {
+              text: "Manage biaya takeaway screen",
+            },
+          },
+        },
+        {
+          component: {
+            name: "Language",
+            passProps: {
+              text: "Manage bahasa screen",
+            },
+          },
+        },
+        {
+          component: {
+            name: "EditProfile",
+            passProps: {
+              text: "Edit merchant profile screen",
+            },
+          },
+        },
+        {
+          component: {
+            name: "UpdateOutletCategory",
+            passProps: {
+              text: "Update outlet category screen",
+            },
+          },
+        },
+        {
+          component: {
+            name: "UpdateAlamatOutlet",
+            passProps: {
+              text: "Update outlet category screen",
+            },
+          },
+        },
+        {
+          component: {
+            name: "UpdateOperasional",
+            passProps: {
+              text: "Update jam operasional screen",
+            },
+          },
+        },
+        {
+          component: {
+            name: "UpdateGalery",
+            passProps: {
+              text: "Update galery screen",
             },
           },
         },

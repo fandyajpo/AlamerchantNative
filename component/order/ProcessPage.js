@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { View, StyleSheet, Text } from "react-native";
 import PagerView from "react-native-pager-view";
 import Animated, { useHandler, useEvent } from "react-native-reanimated";
@@ -37,10 +37,8 @@ const ProcessPage = ({ pageRef, setPages, componentId }) => {
       style={{ flex: 1 }}
       initialPage={0}
       onPageSelected={(e) => {
-        console.log("postion process : ", e.nativeEvent.position);
         setPages(e.nativeEvent.position);
       }}
-      // onPageScroll={handler}
     >
       <View style={tw`bg-mgray`}>
         <MemoizeNewService componentId={componentId} />

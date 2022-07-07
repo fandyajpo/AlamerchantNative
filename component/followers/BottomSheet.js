@@ -8,7 +8,7 @@ import { View, Text, Button, TouchableOpacity } from "react-native";
 import tw from "../../lib/tailwind";
 import { RightDropdown } from "../../lib/listSvg";
 
-function MySheet({ id, sheetRef }) {
+function Follower({ id, sheetRef }) {
   return (
     <View style={tw`absolute bottom-0`}>
       <ActionSheet
@@ -33,16 +33,15 @@ function MySheet({ id, sheetRef }) {
       >
         <View style={tw`h-auto`}>
           <View>
-            <TouchableOpacity style={tw`py-4 border-b border-gray-300`}>
+            <TouchableOpacity style={tw`py-4 border-b border-gray-200`}>
               <View style={tw` flex-row items-center justify-between px-4`}>
                 <Text style={tw`text-gray-800 font-bold text-base`}>
                   Beri Peran Follower
                 </Text>
-
                 <RightDropdown />
               </View>
             </TouchableOpacity>
-            <TouchableOpacity style={tw`py-4 border-b border-gray-300`}>
+            <TouchableOpacity style={tw`py-4 border-b border-gray-200`}>
               <Text style={tw`text-gray-800 font-bold text-base px-4`}>
                 Hapus Follower
               </Text>
@@ -68,6 +67,6 @@ function MySheet({ id, sheetRef }) {
   );
 }
 
-registerSheet("mysheet", MySheet);
+registerSheet("follower", Follower);
 
-export default React.memo(MySheet);
+export default React.memo(Follower);
