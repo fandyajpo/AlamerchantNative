@@ -14,7 +14,7 @@ import tw from "../../lib/tailwind";
 import { UploadImage, NoCategory, RightDropdown } from "../../lib/listSvg";
 import { PushRoute } from "../../lib/ctx";
 
-const EditProfile = ({ componentId }) => {
+const AvailableServiceType = ({ componentId }) => {
   const editProfileRef = React.useRef(null);
   return (
     <View style={tw`w-full h-full bg-white pt-13`}>
@@ -92,7 +92,7 @@ const EditProfile = ({ componentId }) => {
   );
 };
 
-EditProfile.options = {
+AvailableServiceType.options = {
   bottomTabs: {
     visible: false,
     drawBehind: false,
@@ -145,4 +145,4 @@ EditProfile.options = {
   },
 };
 
-export default EditProfile;
+export default AvailableServiceType;

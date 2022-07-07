@@ -33,7 +33,7 @@ const FeedPage = ({ componentId, profileSheetRef }) => {
             setProfilePage={setProfilePage}
           />
         );
-      }, [profilePage])}
+      }, [])}
       <View style={tw`w-full h-full bg-mgray`}>
         <PagerView
           style={{ flex: 1 }}
@@ -42,18 +42,10 @@ const FeedPage = ({ componentId, profileSheetRef }) => {
           onPageSelected={(e) => setProfilePage(e.nativeEvent.position)}
         >
           <View style={tw`bg-mgray`}>
-            {useMemo(() => {
-              console.log("render outlet");
-              return <Outlet />;
-            })}
-            {/* <MemoizeOutlet componentId={componentId} /> */}
+            <MemoizeOutlet componentId={componentId} />
           </View>
           <View style={tw`bg-mgray`}>
-            {useMemo(() => {
-              console.log("render info");
-              return <Info />;
-            })}
-            {/* <MemoizeInfo /> */}
+            <MemoizeInfo />
           </View>
         </PagerView>
       </View>

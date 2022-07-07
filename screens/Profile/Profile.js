@@ -5,7 +5,6 @@ import { SheetManager } from "react-native-actions-sheet";
 import tw from "../../lib/tailwind";
 import { EditMerchantProfileSheet } from "../../component/profileMerchant/BottomSheet";
 import ProfilePage from "../../component/profileMerchant/ProfilePage";
-import { Button } from "react-native-paper";
 
 const ProfileMerchant = ({ componentId }) => {
   const profileSheetRef = React.useRef(null);
@@ -23,6 +22,7 @@ const ProfileMerchant = ({ componentId }) => {
       <View
         style={tw`border-b-2 border-r border-l rounded-full border-gray-300 z-10 w-full absolute bottom-0 w-full h-4 pb-2`}
       />
+
       <EditMerchantProfileSheet
         profileSheetRef={profileSheetRef}
         componentId={componentId}

@@ -94,7 +94,7 @@ const UpdateOutletCategory = ({ componentId }) => {
   );
 };
 
-EditProfile.options = {
+UpdateOutletCategory.options = {
   bottomTabs: {
     visible: false,
     drawBehind: false,
@@ -147,4 +147,4 @@ EditProfile.options = {
   },
 };
 
-export default EditProfile;
+export default UpdateOutletCategory;
