@@ -1,14 +1,42 @@
 import React from "react";
 import ActionSheet, {
   SheetManager,
-  SheetProps,
   registerSheet,
 } from "react-native-actions-sheet";
-import { View, Text, Button, TouchableOpacity } from "react-native";
+import { View, Text, Pressable } from "react-native";
 import tw from "../../lib/tailwind";
 import { RightDropdown } from "../../lib/listSvg";
+import { PushRoute } from "../../lib/ctx";
 
-function Follower({ id, sheetRef }) {
+const Back = (currentSheet, prevSheet) => {
+  new Promise.all([
+    SheetManager.hide(currentSheet),
+    SheetManager.show(prevSheet),
+  ]);
+};
+
+const Follower = React.memo(({ id, componentId, sheetRef }) => {
+  const Remove = React.useCallback(() => {
+    new Promise.all([
+      SheetManager.hide("follower_bottom_sheet"),
+      SheetManager.show("follower_remove_follower"),
+    ]);
+  }, []);
+
+  const BlockUser = React.useCallback(() => {
+    new Promise.all([
+      SheetManager.hide("follower_bottom_sheet"),
+      SheetManager.show("follower_block_user"),
+    ]);
+  }, []);
+
+  const AddRoleUser = React.useCallback(() => {
+    new Promise.all([
+      SheetManager.hide("follower_bottom_sheet"),
+      PushRoute(componentId, "AddUserRole"),
+    ]);
+  }, []);
+
   return (
     <View style={tw`absolute bottom-0`}>
       <ActionSheet
@@ -26,47 +54,156 @@ function Follower({ id, sheetRef }) {
         }
         delayActionSheetDraw={0}
         id={id}
-        bounceOnOpen={true}
         ref={sheetRef}
+        bounceOnOpen={true}
         gestureEnabled={true}
         springOffset={100}
       >
         <View style={tw`h-auto`}>
           <View>
-            <TouchableOpacity style={tw`py-4 border-b border-gray-200`}>
+            <Pressable
+              style={tw`py-4 border-b border-gray-200`}
+              onPress={AddRoleUser}
+            >
               <View style={tw` flex-row items-center justify-between px-4`}>
                 <Text style={tw`text-gray-800 font-bold text-base`}>
                   Beri Peran Follower
                 </Text>
                 <RightDropdown />
               </View>
-            </TouchableOpacity>
-            <TouchableOpacity style={tw`py-4 border-b border-gray-200`}>
+            </Pressable>
+            <Pressable
+              style={tw`py-4 border-b border-gray-200`}
+              onPress={Remove}
+            >
               <Text style={tw`text-gray-800 font-bold text-base px-4`}>
                 Hapus Follower
               </Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={tw`py-4 border-b border-gray-300`}>
+            </Pressable>
+            <Pressable
+              style={tw`py-4 border-b border-gray-300`}
+              onPress={BlockUser}
+            >
               <Text style={tw`text-gray-800 font-bold text-base px-4`}>
                 Block
               </Text>
-            </TouchableOpacity>
+            </Pressable>
           </View>
 
           <View style={tw`pt-4 pl-4 pr-4 pb-12`}>
-            <TouchableOpacity
-              onPress={() => sheetRef.current.hide()}
+            <Pressable
+              onPress={() => SheetManager.hide("follower_block_user")}
               style={tw`w-full bg-mgray h-13 rounded-full items-center justify-center `}
             >
               <Text style={tw`text-myellow text-sm font-bold`}>Kembali</Text>
-            </TouchableOpacity>
+            </Pressable>
           </View>
         </View>
       </ActionSheet>
     </View>
   );
-}
+});
+
+export const BlockUser = React.memo(({ id, sheetRef }) => {
+  return (
+    <View style={tw`absolute bottom-0`}>
+      <ActionSheet
+        bounciness={5}
+        closeAnimationDuration={200}
+        indicatorColor={"blue"}
+        delayActionSheetDrawTime={0}
+        CustomHeaderComponent={
+          <View style={tw`flex-col p-4`}>
+            <Text style={tw`text-gray-800 font-bold text-lg`}>
+              Anda yakin block user?
+            </Text>
+            <Text style={tw`text-gray-300`}>
+              User akan masuk daftar block Outlet Anda
+            </Text>
+          </View>
+        }
+        delayActionSheetDraw={0}
+        id={id}
+        ref={sheetRef}
+        bounceOnOpen={true}
+        gestureEnabled={true}
+        springOffset={100}
+      >
+        <View style={tw`h-auto`}>
+          <View style={tw`pt-4 pl-4 pr-4 pb-12 flex-row justify-center`}>
+            <Pressable
+              onPress={() =>
+                Back("follower_block_user", "follower_bottom_sheet")
+              }
+              style={tw`w-2/4 bg-myellow h-13 rounded-full items-center justify-center `}
+            >
+              <Text style={tw`text-white text-sm font-bold`}>Kembali</Text>
+            </Pressable>
+            <View style={tw`w-2`} />
+            <Pressable
+              onPress={() => sheetRef.current.hide()}
+              style={tw`w-2/4 bg-mgray h-13 rounded-full items-center justify-center `}
+            >
+              <Text style={tw`text-myellow text-sm font-bold`}>Ok</Text>
+            </Pressable>
+          </View>
+        </View>
+      </ActionSheet>
+    </View>
+  );
+});
+
+export const RemoveFollower = React.memo(({ id, sheetRef }) => {
+  return (
+    <View style={tw`absolute bottom-0`}>
+      <ActionSheet
+        bounciness={5}
+        closeAnimationDuration={200}
+        indicatorColor={"blue"}
+        delayActionSheetDrawTime={0}
+        CustomHeaderComponent={
+          <View style={tw`flex-col p-4`}>
+            <Text style={tw`text-gray-800 font-bold text-lg`}>
+              Anda yakin hapus follower?
+            </Text>
+            <Text style={tw`text-gray-300`}>
+              User akan dihapus dari daftar followers Outlet Anda
+            </Text>
+          </View>
+        }
+        delayActionSheetDraw={0}
+        id={id}
+        ref={sheetRef}
+        bounceOnOpen={true}
+        gestureEnabled={true}
+        springOffset={100}
+      >
+        <View style={tw`h-auto`}>
+          <View style={tw`pt-4 pl-4 pr-4 pb-12 flex-row justify-center`}>
+            <Pressable
+              onPress={() =>
+                Back("follower_remove_follower", "follower_bottom_sheet")
+              }
+              style={tw`w-2/4 bg-myellow h-13 rounded-full items-center justify-center `}
+            >
+              <Text style={tw`text-white text-sm font-bold`}>Kembali</Text>
+            </Pressable>
+            <View style={tw`w-2`} />
+            <Pressable
+              onPress={() => SheetManager.hide("follower_remove_follower")}
+              style={tw`w-2/4 bg-mgray h-13 rounded-full items-center justify-center `}
+            >
+              <Text style={tw`text-myellow text-sm font-bold`}>Ok</Text>
+            </Pressable>
+          </View>
+        </View>
+      </ActionSheet>
+    </View>
+  );
+});
 
 registerSheet("follower", Follower);
+registerSheet("remove_follower", RemoveFollower);
+registerSheet("block_user", BlockUser);
 
-export default React.memo(Follower);
+export default Follower;

@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useMemo, useState } from "react";
 import { Navigation } from "react-native-navigation";
 import SplashScreen from "react-native-splash-screen";
 import tw from "twrnc";
+import { Alamerchant } from "../lib/listSvg";
 import { GlobalContext } from "../lib/ctx";
 import { useForm, Controller } from "react-hook-form";
 
@@ -34,8 +35,8 @@ const FormLogin = React.memo(({ isHide }) => {
     mode: "onChange",
     defaultValues: {
       uri: "login",
-      username: __DEV__ ? "tes_gmedia" : "",
-      password: __DEV__ ? "Gmedia123456" : "",
+      username: __DEV__ ? "Fandy" : "",
+      password: __DEV__ ? "123" : "",
     },
   });
 
@@ -137,6 +138,7 @@ const FormLogin = React.memo(({ isHide }) => {
       <View style={tw`flex flex-row justify-end w-full`}>
         <Pressable
           disabled={isSubmitting}
+          // onPress={handleSubmit(onSubmit)}
           onPress={handleSubmit(onSubmit)}
           style={tw`bg-blue-900 border border-white p-4 rounded-md flex items-center justify-center w-full`}
         >
@@ -172,26 +174,13 @@ const Login = ({ componentId }) => {
 
   return (
     <View style={styles.root}>
-      <Loading isHidden={isHidden} />
-      <View
-        style={tw`w-full h-22 bg-blue-900 absolute top-0 z-10 flex justify-end`}
-      >
-        <Text style={tw`text-white font-bold text-lg px-4 py-3`}>Login</Text>
+      <View style={tw`absolute top-0 left-0`}>
+        <Alamerchant />
       </View>
-      <Image
-        source={image}
-        resizeMode="cover"
-        style={tw`absolute w-full bg-transparent`}
-      />
-      <Image
-        source={logImage}
-        resizeMode="cover"
-        style={tw`absolute bottom-0 w-full bg-transparent`}
-      />
+      <Loading isHidden={isHidden} />
 
       <View style={tw`w-full h-full flex justify-center`}>
         <KeyboardAvoidingView
-          style={tw``}
           {...(Platform.OS === "ios" && { behavior: "padding" })}
         >
           <FormLogin isHide={isHide} />
@@ -201,6 +190,59 @@ const Login = ({ componentId }) => {
   );
 };
 export default Login;
+
+Login.options = {
+  bottomTabs: {
+    visible: false,
+    drawBehind: false,
+    animate: false,
+  },
+  topBar: {
+    visible: false,
+    backButton: {
+      visible: false,
+    },
+  },
+  statusBar: {
+    drawBehind: true,
+    translucent: true,
+    style: "dark",
+    backgroundColor: "transparent",
+  },
+  animations: {
+    push: {
+      waitForRender: true,
+      content: {
+        translationX: {
+          from: require("react-native").Dimensions.get("window").width,
+          to: 0,
+          duration: 200,
+        },
+      },
+    },
+    pop: {
+      waitForRender: true,
+      content: {
+        translationX: {
+          from: 0,
+          to: require("react-native").Dimensions.get("window").width,
+          duration: 200,
+        },
+      },
+    },
+    setRoot: {
+      enter: {
+        waitForRender: true,
+        enabled: true,
+        translationY: {
+          from: 0,
+          to: 1,
+          duration: 3,
+        },
+      },
+    },
+  },
+};
 
 const styles = StyleSheet.create({
   root: {

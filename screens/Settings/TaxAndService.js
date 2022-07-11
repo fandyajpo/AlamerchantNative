@@ -1,16 +1,8 @@
-import React, { useEffect } from "react";
-import {
-  View,
-  Text,
-  ScrollView,
-  TextInput,
-  Keyboard,
-  Button,
-} from "react-native";
-import DefaultBackHandlerComponent from "../../component/defaultBackHandler";
+import React from "react";
+import { View, Text, ScrollView, TextInput } from "react-native";
 import tw from "../../lib/tailwind";
 import { RadioButton } from "react-native-paper";
-import { BackHandlerPrinter } from "../../component/setting/BackHandler";
+import { BackHandlerTaxAndService } from "../../component/profileMerchant/BackHandler";
 
 const TaxService = ({ componentId }) => {
   return (
@@ -57,10 +49,7 @@ const TaxService = ({ componentId }) => {
           </View>
         </View>
       </ScrollView>
-      <DefaultBackHandlerComponent
-        componentId={componentId}
-        title={"Tax & Service"}
-      />
+      <BackHandlerTaxAndService componentId={componentId} />
     </View>
   );
 };

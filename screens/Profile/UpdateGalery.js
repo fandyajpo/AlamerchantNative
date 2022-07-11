@@ -1,17 +1,13 @@
 import React, { useEffect } from "react";
-import {
-  View,
-  Text,
-  ScrollView,
-  TextInput,
-  Keyboard,
-  Button,
-  Pressable,
-} from "react-native";
+import { View, Text, ScrollView, Image } from "react-native";
 import { BackHandlerEditProfile } from "../../component/profileMerchant/BackHandler";
 import { TaggingSheet } from "../../component/profileMerchant/BottomSheet";
 import tw from "../../lib/tailwind";
-import { UploadImage, NoCategory, RightDropdown } from "../../lib/listSvg";
+import {
+  UploadImageGalery,
+  NoCategory,
+  RightDropdown,
+} from "../../lib/listSvg";
 import { PushRoute } from "../../lib/ctx";
 
 const UpdateGalery = ({ componentId }) => {
@@ -21,22 +17,46 @@ const UpdateGalery = ({ componentId }) => {
       <ScrollView style={tw`mb-32`}>
         <View style={tw`p-2`}>
           <Text style={tw`text-gray-800 font-bold text-sm`}>Galery</Text>
-          <Text style={tw`text-gray-300 text-sm`}>
+          <Text style={tw`text-gray-300 text-sm mb-2`}>
             Upload foto Galeri Outlet Anda minimal 500x500px
           </Text>
-          <View style={tw`flex-row w-full bg-white`}>
-            <View style={[{ flex: 1 }, tw`justify-center items-center`]}>
-              <View style={tw`w-11/12 h-11/12 bg-red-500`} />
+          <View
+            style={tw`flex-row justify-between w-full bg-white mb-2 sm:mb-4`}
+          >
+            <View
+              style={tw`w-24 h-24 sm:w-30 sm:h-30 sm:bg-red-500 bg-blue-500 rounded-xl items-center justify-center`}
+            >
+              <UploadImageGalery />
             </View>
-            <View style={[{ flex: 1 }, tw`justify-center items-center`]}>
-              <View style={tw`w-11/12 h-11/12 bg-red-500`} />
+            <View
+              style={tw`w-24 h-24 sm:w-30 sm:h-30 sm:bg-red-500 bg-blue-500 rounded-xl items-center justify-center`}
+            >
+              <UploadImageGalery />
             </View>
-            <View style={[{ flex: 1 }, tw`justify-center items-center`]}>
-              <View style={tw`w-11/12 h-11/12 bg-red-500`} />
+            <View
+              style={tw`w-24 h-24 sm:w-30 sm:h-30 sm:bg-red-500 bg-blue-500 rounded-xl items-center justify-center`}
+            >
+              <UploadImageGalery />
+            </View>
+          </View>
+          <View style={tw`flex-row justify-between w-full bg-white `}>
+            <View
+              style={tw`w-24 h-24 sm:w-30 sm:h-30 sm:bg-red-500 bg-blue-500 rounded-xl items-center justify-center`}
+            >
+              <UploadImageGalery />
+            </View>
+            <View
+              style={tw`w-24 h-24 sm:w-30 sm:h-30 sm:bg-red-500 bg-blue-500 rounded-xl items-center justify-center`}
+            >
+              <UploadImageGalery />
+            </View>
+            <View
+              style={tw`w-24 h-24 sm:w-30 sm:h-30 sm:bg-red-500 bg-blue-500 rounded-xl items-center justify-center`}
+            >
+              <UploadImageGalery />
             </View>
           </View>
         </View>
-        <View style={tw`bg-mgray w-full h-2 mb-2`} />
       </ScrollView>
       <TaggingSheet editProfileRef={editProfileRef} />
       <BackHandlerEditProfile

@@ -13,10 +13,9 @@ import Header from "../component/order/Header";
 import ProccessType from "../component/order/ProcessType";
 import FlyButton from "../component/order/FlyButton";
 
-import BottomSheet from "@gorhom/bottom-sheet";
-import Sheet from "../component/order/BottomSheet";
-
 import ProcessPage from "../component/order/ProcessPage";
+
+const MemoizeFlyButton = React.memo(FlyButton);
 
 const Order = ({ componentId }) => {
   const { state, fnr, setSecure, getSecure, logGer } =
@@ -44,7 +43,7 @@ const Order = ({ componentId }) => {
 
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
-      <FlyButton />
+      <MemoizeFlyButton />
       {React.useMemo(() => {
         return <Header componentId={componentId} />;
       }, [])}

@@ -7,13 +7,13 @@ import {
   Keyboard,
   Button,
 } from "react-native";
-import DefaultBackHandlerComponent from "../../component/defaultBackHandler";
-import tw from "../../lib/tailwind";
-import { BackHandlerPrinter } from "../../component/setting/BackHandler";
-import { PrinterSheet } from "../../component/setting/SettingSheet";
 
-const MemoizePrinterSheet = React.memo(({ printerRef }) => {
-  return <PrinterSheet printerRef={printerRef} />;
+import tw from "../../lib/tailwind";
+import { BackHandlerPrinter } from "../../component/profileMerchant/BackHandler";
+import { PrinterSheet } from "../../component/profileMerchant/BottomSheet";
+
+const MemoizePrinterSheet = React.memo(({ printerRef, componentId }) => {
+  return <PrinterSheet printerRef={printerRef} componentId={componentId} />;
 });
 
 const Printer = ({ componentId }) => {
@@ -23,7 +23,7 @@ const Printer = ({ componentId }) => {
       <ScrollView contentContainerStyle={tw`pb-32  h-full`}>
         <View style={tw`p-2`}></View>
       </ScrollView>
-      <MemoizePrinterSheet printerRef={printerRef} />
+      <MemoizePrinterSheet printerRef={printerRef} componentId={componentId} />
       <BackHandlerPrinter componentId={componentId} printerRef={printerRef} />
     </View>
   );

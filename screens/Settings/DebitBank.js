@@ -6,10 +6,9 @@ import {
   TextInput,
   KeyboardAvoidingView,
 } from "react-native";
-import DefaultBackHandlerComponent from "../../component/defaultBackHandler";
 import tw from "../../lib/tailwind";
 import { Bank, Delete, Add } from "../../lib/listSvg";
-import { BackHandlerDebitBank } from "../../component/setting/BackHandler";
+import { BackHandlerDebitBank } from "../../component/profileMerchant/BackHandler";
 
 const MemoizeBackHandlerDebitBank = ({ componentId }) => {
   return <BackHandlerDebitBank componentId={componentId} />;

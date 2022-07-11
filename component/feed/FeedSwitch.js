@@ -1,21 +1,16 @@
 import React from "react";
 import { View, Text, Pressable } from "react-native";
 import tw from "../../lib/tailwind";
-import {
-  Star,
-  EditProfile,
-  Message,
-  Activity,
-  Settings,
-} from "../../lib/listSvg";
-const FeedSwitch = ({ feedRef, feedSwitch, setFeedSwitch }) => {
+import { Activity, Settings } from "../../lib/listSvg";
+import { PushRoute } from "../../lib/ctx";
+const FeedSwitch = ({ feedRef, feedSwitch, setFeedSwitch, componentId }) => {
   const moveNav = React.useCallback((i) => {
     feedRef.current.setPage(i);
     setFeedSwitch(i);
   }, []);
 
   return (
-    <View style={tw`flex flex-col justify-center absolute top-0 z-10 w-full`}>
+    <View style={tw`flex flex-col justify-center  z-10 w-full`}>
       <View style={tw`border-b border-gray-300 my-2`} />
       <View style={tw`w-full flex-row`}>
         <View
@@ -64,24 +59,30 @@ const FeedSwitch = ({ feedRef, feedSwitch, setFeedSwitch }) => {
             </Text>
           </Pressable>
           <View style={tw`w-[1px] h-auto bg-gray-300 ml-2`} />
-          <View style={tw`w-full flex-row items-center`}>
+          {/* <View style={tw`w-full flex-row items-center`}>
             <View style={tw`flex-row items-center w-1/4 justify-around`}>
-              <Pressable style={tw`bg-myellow/10`}>
+              <Pressable style={tw`bg-myellow/10`} onPress={() => alert("lol")}>
                 <Activity />
               </Pressable>
               <Pressable style={tw`bg-myellow/10`}>
                 <Settings />
               </Pressable>
             </View>
-          </View>
+          </View> */}
         </View>
         <View style={tw`w-[1px] h-auto bg-gray-300 ml-2`} />
         <View style={tw`w-full flex-row items-center`}>
           <View style={tw`flex-row items-center w-1/4 justify-around`}>
-            <Pressable style={tw`bg-myellow/10`}>
+            <Pressable
+              style={tw`bg-myellow/10`}
+              onPress={() => PushRoute(componentId, "FeedActivity")}
+            >
               <Activity />
             </Pressable>
-            <Pressable style={tw`bg-myellow/10`}>
+            <Pressable
+              style={tw`bg-myellow/10`}
+              onPress={() => PushRoute(componentId, "FeedSetting")}
+            >
               <Settings />
             </Pressable>
           </View>

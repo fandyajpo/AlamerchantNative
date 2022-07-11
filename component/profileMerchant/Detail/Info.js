@@ -6,12 +6,11 @@ import {
   DineInService,
   TakeItService,
   TakeawayService,
+  UploadImageGalery,
 } from "../../../lib/listSvg";
 import JamOperasional from "../JamOperasional";
 
-const MemoizeJamOperasional = () => {
-  return <JamOperasional />;
-};
+const MemoizeJamOperasional = React.memo(JamOperasional);
 
 const Info = () => {
   return (
@@ -19,7 +18,7 @@ const Info = () => {
       style={tw`w-full pt-60 bg-mgray`}
       showsVerticalScrollIndicator={false}
     >
-      <View style={tw`pt-4 pb-60 px-4`}>
+      <View style={tw`py-4 pb-60 px-2`}>
         <View style={tw`mb-2`}>
           <Text style={tw`text-gray-800 text-sm font-bold mb-2`}>
             Outlet Tag
@@ -77,72 +76,29 @@ const Info = () => {
         </View>
         <View style={tw`mb-2`}>
           <Text style={tw`text-gray-800 text-sm font-bold mb-2`}>Galery</Text>
-          <View style={tw`flex-row justify-between mb-4`}>
+          <View style={tw`flex-row justify-between w-full mb-2 sm:mb-4`}>
             <View
-              style={[
-                { flex: 1 },
-                tw`bg-white w-24 h-24 rounded-md justify-center items-center`,
-              ]}
-            >
-              <View
-                style={tw`bg-black w-11/12 h-11/12 shadow-sm rounded-md `}
-              />
-            </View>
+              style={tw`w-24 h-24 bg-blue-500 sm:w-30 sm:h-30 sm:bg-red-500 rounded-xl items-center justify-center`}
+            ></View>
             <View
-              style={[
-                { flex: 1 },
-                tw`bg-white w-24 h-24 rounded-md justify-center items-center`,
-              ]}
-            >
-              <View
-                style={tw`bg-black w-11/12 h-11/12 shadow-sm rounded-md `}
-              />
-            </View>
+              style={tw`w-24 h-24 bg-blue-500 sm:w-30 sm:h-30 sm:bg-red-500 rounded-xl items-center justify-center`}
+            ></View>
             <View
-              style={[
-                { flex: 1 },
-                tw`bg-white w-24 h-24 rounded-md justify-center items-center`,
-              ]}
-            >
-              <View
-                style={tw`bg-black w-11/12 h-11/12 shadow-sm rounded-md `}
-              />
-            </View>
+              style={tw`w-24 h-24 bg-blue-500 sm:w-30 sm:h-30 sm:bg-red-500 rounded-xl items-center justify-center`}
+            ></View>
           </View>
-          <View style={tw`flex-row justify-between`}>
+          <View style={tw`flex-row justify-between w-full `}>
             <View
-              style={[
-                { flex: 1 },
-                tw`bg-white w-24 h-24 rounded-md justify-center items-center`,
-              ]}
-            >
-              <View
-                style={tw`bg-black w-11/12 h-11/12 shadow-sm rounded-md `}
-              />
-            </View>
+              style={tw`w-24 h-24 bg-blue-500 sm:w-30 sm:h-30 sm:bg-red-500 rounded-xl items-center justify-center`}
+            ></View>
             <View
-              style={[
-                { flex: 1 },
-                tw`bg-white w-24 h-24 rounded-md justify-center items-center`,
-              ]}
-            >
-              <View
-                style={tw`bg-black w-11/12 h-11/12 shadow-sm rounded-md `}
-              />
-            </View>
+              style={tw`w-24 h-24 bg-blue-500 sm:w-30 sm:h-30 sm:bg-red-500 rounded-xl items-center justify-center`}
+            ></View>
             <View
-              style={[
-                { flex: 1 },
-                tw`bg-white w-24 h-24 rounded-md justify-center items-center`,
-              ]}
-            >
-              <View
-                style={tw`bg-black w-11/12 h-11/12 shadow-sm rounded-md `}
-              />
-            </View>
+              style={tw`w-24 h-24 bg-blue-500 sm:w-30 sm:h-30 sm:bg-red-500 rounded-xl items-center justify-center`}
+            ></View>
           </View>
         </View>
-
         <View style={tw`mb-2`}>
           <Text style={tw`text-gray-800 text-sm font-bold mb-2`}>
             Jam Operasional

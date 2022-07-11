@@ -7,7 +7,7 @@ import {
   Keyboard,
   Button,
 } from "react-native";
-import DefaultBackHandlerComponent from "../../component/defaultBackHandler";
+import { BackHandlerBiayaTakeaway } from "../../component/profileMerchant/BackHandler";
 import tw from "../../lib/tailwind";
 import { RadioButton } from "react-native-paper";
 
@@ -52,10 +52,7 @@ const BiayaTakeaway = ({ componentId }) => {
           </View>
         </View>
       </ScrollView>
-      <DefaultBackHandlerComponent
-        componentId={componentId}
-        title={"Biaya Takeaway"}
-      />
+      <BackHandlerBiayaTakeaway componentId={componentId} />
     </View>
   );
 };

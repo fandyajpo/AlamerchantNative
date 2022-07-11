@@ -12,8 +12,9 @@ import {
 import FeedSwitch from "./FeedSwitch";
 import { PushRoute } from "../../lib/ctx";
 
-const Header = ({ feedRef, feedSwitch, setFeedSwitch, componentId }) => {
+const Header = ({ componentId }) => {
   useDeviceContext(tw);
+
   return (
     <View
       style={tw`h-[15rem] flex flex-col justify-center bg-mgray/95 absolute top-0 z-10 w-full px-4`}
@@ -62,13 +63,7 @@ const Header = ({ feedRef, feedSwitch, setFeedSwitch, componentId }) => {
           </Text>
         </TouchableOpacity>
       </View>
-      <View style={tw`w-full flex-row pb-12`}>
-        <FeedSwitch
-          feedRef={feedRef}
-          feedSwitch={feedSwitch}
-          setFeedSwitch={setFeedSwitch}
-        />
-      </View>
+      <View style={tw`w-full flex-row pb-12`}></View>
     </View>
   );
 };

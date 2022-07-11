@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { View, Text, ScrollView, TextInput, Pressable } from "react-native";
 import { BackHandlerEditProfile } from "../../component/profileMerchant/BackHandler";
 import { TaggingSheet } from "../../component/profileMerchant/BottomSheet";
 import tw from "../../lib/tailwind";
 import { OpenMap } from "../../lib/listSvg";
-import { PushRoute } from "../../lib/ctx";
 
 const UpdateAlamat = ({ componentId }) => {
   const editProfileRef = React.useRef(null);

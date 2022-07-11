@@ -10,7 +10,7 @@ const Outlet = ({ componentId }) => {
       style={tw`w-full pt-60 bg-mgray`}
       showsVerticalScrollIndicator={false}
     >
-      <View style={tw`p-4 flex-row items-center justify-center `}>
+      <View style={tw`py-4 px-2 flex-row items-center justify-center `}>
         <View
           style={tw`bg-white w-2/4 h-16 rounded-xl border-gray-300 border flex-row items-center justify-center`}
         >
@@ -44,10 +44,16 @@ const Outlet = ({ componentId }) => {
           <View style={tw`bg-violet-500/20 w-16 h-16 rounded-xl`} />
           <Text style={tw`text-gray-800 text-center text-xs`}>Privilage</Text>
         </View>
-        <View style={[{ flex: 1 }, tw`m-2 justify-center items-center`]}>
+        <Pressable
+          onPress={() => PushRoute(componentId, "Member")}
+          style={({ pressed }) => [
+            { opacity: pressed ? 0.5 : 1.0, flex: 1 },
+            tw`m-2 justify-center items-center`,
+          ]}
+        >
           <View style={tw`bg-red-500/20 w-16 h-16 rounded-xl`} />
           <Text style={tw`text-gray-800 text-center text-xs`}>Member</Text>
-        </View>
+        </Pressable>
         <View style={[{ flex: 1 }, tw`m-2 justify-center items-center`]}>
           <View style={tw`bg-blue-500/20 w-16 h-16 rounded-xl`} />
           <Text style={tw`text-gray-800 text-center text-xs`}>Report</Text>
@@ -58,12 +64,15 @@ const Outlet = ({ componentId }) => {
           <View style={tw`bg-orange-500/20 w-16 h-16 rounded-xl`} />
           <Text style={tw`text-gray-800 text-center text-xs`}>Table</Text>
         </View>
-        <View style={[{ flex: 1 }, tw`m-2 justify-center items-center`]}>
+        <Pressable
+          onPress={() => PushRoute(componentId, "MenuDanStock")}
+          style={[{ flex: 1 }, tw`m-2 justify-center items-center`]}
+        >
           <View style={tw`bg-green-800/20 w-16 h-16 rounded-xl`} />
           <Text style={tw`text-gray-800 text-center text-xs`}>
             Menu & Stock
           </Text>
-        </View>
+        </Pressable>
         <Pressable
           onPress={() => PushRoute(componentId, "Setting")}
           style={({ pressed }) => [

@@ -1,32 +1,13 @@
-import React, { useCallback, useEffect } from "react";
+import React from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import tw from "../../lib/tailwind";
-import { useDeviceContext } from "twrnc";
 import { Star, EditProfile, ProfileMerchant } from "../../lib/listSvg";
-import ProfileSwitch from "./ProfileSwitch";
 import { PushRoute } from "../../lib/ctx";
 
-const Header = ({
-  profileRef,
-  setProfilePage,
-  profilePage,
-  componentId,
-  profileSheetRef,
-}) => {
-  useDeviceContext(tw);
-  useEffect(() => {
-    console.log("render header");
-  });
-
-  const MemoizeProfileSwitch = React.memo(() => {
-    return (
-      <ProfileSwitch
-        profileRef={profileRef}
-        setProfilePage={setProfilePage}
-        profilePage={profilePage}
-      />
-    );
-  });
+const Header = ({ componentId, profileSheetRef }) => {
+  const handleOpenProfileUpdateSheet = React.useCallback(() => {
+    profileSheetRef.current.show();
+  }, []);
 
   return (
     <View
@@ -60,7 +41,7 @@ const Header = ({
           </View>
           <TouchableOpacity
             activeOpacity={0.5}
-            onPress={() => profileSheetRef.current.show()}
+            onPress={handleOpenProfileUpdateSheet}
           >
             <ProfileMerchant />
           </TouchableOpacity>
@@ -78,9 +59,7 @@ const Header = ({
           </Text>
         </TouchableOpacity>
       </View>
-      <View style={tw`w-full flex-row pb-12`}>
-        <MemoizeProfileSwitch />
-      </View>
+      <View style={tw`w-full flex-row pb-12`} />
     </View>
   );
 };

@@ -1,25 +1,13 @@
 import React from "react";
-import { View, Text, ScrollView, Pressable } from "react-native";
-import DefaultBackHandlerComponent from "../../component/defaultBackHandler";
+import { View, Text, ScrollView } from "react-native";
 import tw from "../../lib/tailwind";
+import { LogoutSheet } from "../../component/profileMerchant/BottomSheet";
+import { BackHandlerSetting } from "../../component/profileMerchant/BackHandler";
+import SettingMenu from "../../component/profileMerchant/Setting/SettingMenu/";
 
-import { LogoutSheet } from "../../component/setting/SettingSheet";
-
-import SettingMenu from "../../component/setting/SettingMenu";
-
-import { BackHandlerSetting } from "../../component/setting/BackHandler";
-
-const MemoizeBackHandlerSetting = React.memo(({ componentId }) => {
-  return <BackHandlerSetting componentId={componentId} />;
-});
-
-const MemoizeSettingMenu = React.memo(({ componentId, logoutRef }) => {
-  return <SettingMenu componentId={componentId} logoutRef={logoutRef} />;
-});
-
-const MemoizeLogoutSheet = React.memo(({ logoutRef }) => {
-  return <LogoutSheet logoutRef={logoutRef} />;
-});
+const MemoizeBackHandlerSetting = React.memo(BackHandlerSetting);
+const MemoizeSettingMenu = React.memo(SettingMenu);
+const MemoizeLogoutSheet = React.memo(LogoutSheet);
 
 const Setting = ({ componentId }) => {
   const logoutRef = React.useRef(null);

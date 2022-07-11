@@ -1,21 +1,16 @@
-import React, { useEffect, useMemo } from "react";
+import React from "react";
 import { View, Text } from "react-native";
 import PagerView from "react-native-pager-view";
 import tw from "../../lib/tailwind";
 import Header from "./Header";
-
 import Outlet from "./Detail/Outlet";
 import Info from "./Detail/Info";
+import ProfileSwitch from "./ProfileSwitch";
 
-const MemoizeOutlet = React.memo(({ componentId }) => {
-  console.log("ALERT : [OUTLET] Appear means im rerendered");
-  return <Outlet componentId={componentId} />;
-});
-
-const MemoizeInfo = React.memo(() => {
-  console.log("ALERT : [INFO] Appear means im rerendered");
-  return <Info />;
-});
+const MemoizeHeader = React.memo(Header);
+const MemoizeProfileSwitch = React.memo(ProfileSwitch);
+const MemoizeOutlet = React.memo(Outlet);
+const MemoizeInfo = React.memo(Info);
 
 const FeedPage = ({ componentId, profileSheetRef }) => {
   const profileRef = React.useRef(0);
@@ -23,17 +18,19 @@ const FeedPage = ({ componentId, profileSheetRef }) => {
 
   return (
     <View style={({ flex: 1 }, tw`bg-mgray`)}>
-      {useMemo(() => {
-        return (
-          <Header
-            componentId={componentId}
-            profileSheetRef={profileSheetRef}
+      <View>
+        <MemoizeHeader
+          componentId={componentId}
+          profileSheetRef={profileSheetRef}
+        />
+        <View style={tw`w-full absolute z-20 top-44 flex-row`}>
+          <MemoizeProfileSwitch
             profileRef={profileRef}
-            profilePage={profilePage}
             setProfilePage={setProfilePage}
+            profilePage={profilePage}
           />
-        );
-      }, [])}
+        </View>
+      </View>
       <View style={tw`w-full h-full bg-mgray`}>
         <PagerView
           style={{ flex: 1 }}

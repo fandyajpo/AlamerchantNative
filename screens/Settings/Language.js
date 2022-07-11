@@ -1,9 +1,9 @@
 import React from "react";
 import { View, Text, ScrollView } from "react-native";
-import DefaultBackHandlerComponent from "../../component/defaultBackHandler";
+import { BackHandlerLanguage } from "../../component/profileMerchant/BackHandler";
 import tw from "../../lib/tailwind";
 import { RadioButton } from "react-native-paper";
-import { LanguageSheet } from "../../component/setting/SettingSheet";
+import { LanguageSheet } from "../../component/profileMerchant/BottomSheet";
 
 const MemoizeLanguageSheet = React.memo(({ langRef, lang, setLang }) => {
   return <LanguageSheet langRef={langRef} lang={lang} setLang={setLang} />;
@@ -55,7 +55,7 @@ const Language = ({ componentId }) => {
         </View>
       </ScrollView>
       <MemoizeLanguageSheet langRef={langRef} lang={lang} setLang={setLang} />
-      <DefaultBackHandlerComponent componentId={componentId} title={"Bahasa"} />
+      <BackHandlerLanguage componentId={componentId} />
     </View>
   );
 };

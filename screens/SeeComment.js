@@ -1,10 +1,8 @@
 import React from "react";
-import { View, Text, Button, StyleSheet } from "react-native";
+import { View, Text } from "react-native";
 import { GlobalContext } from "../lib/ctx";
 import tw from "twrnc";
-import Header from "../component/merchantStatus/Header";
 import BackHandlerComponent from "../component/comment/BackHandler";
-import Status from "../component/merchantStatus/StatusList";
 import { Navigation } from "react-native-navigation";
 const SeeComment = ({ componentId }) => {
   const { state, fnr, setSecure, getSecure, logGer } =
@@ -25,7 +23,6 @@ const SeeComment = ({ componentId }) => {
 
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
-      <Header />
       <View style={tw`items-center justify-center h-full w-full`}>
         <Text style={tw`text-black font-bold`}>Comment Page</Text>
       </View>

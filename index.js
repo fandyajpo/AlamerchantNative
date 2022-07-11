@@ -2,46 +2,173 @@
  * @format
  */
 import React from "react";
-import { View, Text, Button, StyleSheet } from "react-native";
 import { Navigation } from "react-native-navigation";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 // import { MMKV } from 'react-native-mmkv'
 // const storage = new MMKV()
 import { storage } from "./lib/strg";
-import { GlobalContext, GlobalProvider } from "./lib/ctx";
+import { GlobalProvider } from "./lib/ctx";
 
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SheetProvider } from "react-native-actions-sheet";
-import { GlobalPortal } from "./lib/sheet";
 
+//MAIN SCREEN
 import EnterScreen from "./screens/EnterApp";
 import LoginScreen from "./screens/Login";
 import HomeScreen from "./screens/Order";
 import HistoryScreen from "./screens/History";
-import FeedScreen from "./screens/Feed";
-import PromoScreen from "./screens/Promo";
 import ProfileScreen from "./screens/Profile/Profile";
 import MerchantStatusScreen from "./screens/MerchantStatus";
-import FollowersScreen from "./screens/Followers";
 import CameraScreen from "./screens/Camera";
 import CommentScreen from "./screens/SeeComment";
 import OrderDetailScreen from "./screens/OrderDetail";
 
-//SETTING GROUP
+//SETTING GROUP SCREEN
 import SettingScreen from "./screens/Settings/Setting";
 import TaxAndService from "./screens/Settings/TaxAndService";
 import DebitBankScreen from "./screens/Settings/DebitBank";
 import BiayaTakeawayScreen from "./screens/Settings/BiayaTakeaway";
 import LanguageScreen from "./screens/Settings/Language";
 import PrinterScreen from "./screens/Settings/Printer";
+import AddPrinterScreen from "./screens/Settings/AddPrinter";
 
-//PROFILE GROUP
+//PROFILE UDPDATE GROUP SCREEN
 import EditProfileScreen from "./screens/Profile/EditProfile";
 import UpdateOutletCategoryScreen from "./screens/Profile/UpdateOutletCategory";
 import UpdateAlamatScreen from "./screens/Profile/UpdateAlamat";
 import UpdateOperasionalScreen from "./screens/Profile/UpdateJamOperasi";
 import UpdateGaleryScreen from "./screens/Profile/UpdateGalery";
+import AvailableServiceTypeScreen from "./screens/Profile/AvailableServiceType";
+
+//MEMBER GROUP SCREEN
+import MemberScreen from "./screens/Member/Member";
+
+//REGISTER SCREEN
+import RegisterPage from "./screens/Register";
+
+//PROMO GROUP SCREEN
+import PromoAlacarteScreen from "./screens/Promo/PromoAlacarte";
+import PromoAlaMerchantScreen from "./screens/Promo/PromoMerchant";
+import PromoScreen from "./screens/Promo/Promo";
+
+//FOLLOWER GROUP SCREEN
+import FollowersScreen from "./screens/Follower/Followers";
+import AddUserRoleScreen from "./screens/Follower/AddUserRole";
+
+//FEED GROUP SCREEN
+import FeedScreen from "./screens/Feed/Feed";
+import FeedActivityScreen from "./screens/Feed/Activity";
+import FeedSettingScreen from "./screens/Feed/Setting";
+import BlockUserListScreen from "./screens/Feed/BlockUserList";
+
+//MENU DAN STOCK SCREEN
+import MenuDanStockScreen from "./screens/MenuDanStock/MenuDanStock";
+
+Navigation.registerComponent(
+  "MenuDanStock",
+  () => (props) =>
+    (
+      <GlobalProvider>
+        <MenuDanStockScreen {...props} />
+      </GlobalProvider>
+    ),
+  () => MenuDanStockScreen
+);
+
+Navigation.registerComponent(
+  "BlockUser",
+  () => (props) =>
+    (
+      <GlobalProvider>
+        <BlockUserListScreen {...props} />
+      </GlobalProvider>
+    ),
+  () => BlockUserListScreen
+);
+
+Navigation.registerComponent(
+  "FeedSetting",
+  () => (props) =>
+    (
+      <GlobalProvider>
+        <FeedSettingScreen {...props} />
+      </GlobalProvider>
+    ),
+  () => FeedSettingScreen
+);
+
+Navigation.registerComponent(
+  "FeedActivity",
+  () => (props) =>
+    (
+      <GlobalProvider>
+        <FeedActivityScreen {...props} />
+      </GlobalProvider>
+    ),
+  () => FeedActivityScreen
+);
+
+Navigation.registerComponent(
+  "AddUserRole",
+  () => (props) =>
+    (
+      <GlobalProvider>
+        <AddUserRoleScreen {...props} />
+      </GlobalProvider>
+    ),
+  () => AddUserRoleScreen
+);
+
+Navigation.registerComponent(
+  "Register",
+  () => (props) =>
+    (
+      <GlobalProvider>
+        <RegisterPage {...props} />
+      </GlobalProvider>
+    ),
+  () => RegisterPage
+);
+
+Navigation.registerComponent(
+  "Member",
+  () => (props) =>
+    (
+      <SheetProvider>
+        <GlobalProvider>
+          <MemberScreen {...props} />
+        </GlobalProvider>
+      </SheetProvider>
+    ),
+  () => MemberScreen
+);
+
+Navigation.registerComponent(
+  "AddPrinter",
+  () => (props) =>
+    (
+      <SheetProvider>
+        <GlobalProvider>
+          <AddPrinterScreen {...props} />
+        </GlobalProvider>
+      </SheetProvider>
+    ),
+  () => AddPrinterScreen
+);
+
+Navigation.registerComponent(
+  "AvailableServiceType",
+  () => (props) =>
+    (
+      <SheetProvider>
+        <GlobalProvider>
+          <AvailableServiceTypeScreen {...props} />
+        </GlobalProvider>
+      </SheetProvider>
+    ),
+  () => AvailableServiceTypeScreen
+);
 
 Navigation.registerComponent(
   "UpdateGalery",
@@ -99,11 +226,9 @@ Navigation.registerComponent(
   "EditProfile",
   () => (props) =>
     (
-      <SheetProvider>
-        <GlobalProvider>
-          <EditProfileScreen {...props} />
-        </GlobalProvider>
-      </SheetProvider>
+      <GlobalProvider>
+        <EditProfileScreen {...props} />
+      </GlobalProvider>
     ),
   () => EditProfileScreen
 );
@@ -282,15 +407,35 @@ Navigation.registerComponent(
 );
 
 Navigation.registerComponent(
+  "PromoCarte",
+  () => (props) =>
+    (
+      <GlobalProvider>
+        <PromoAlacarteScreen {...props} />
+      </GlobalProvider>
+    ),
+  () => PromoAlacarteScreen
+);
+
+Navigation.registerComponent(
+  "PromoMerchant",
+  () => (props) =>
+    (
+      <GlobalProvider>
+        <PromoAlaMerchantScreen {...props} />
+      </GlobalProvider>
+    ),
+  () => PromoAlaMerchantScreen
+);
+
+Navigation.registerComponent(
   "Profile",
   () => (props) =>
     (
       <GestureHandlerRootView style={{ flex: 1 }}>
-        <SheetProvider>
-          <GlobalProvider>
-            <ProfileScreen {...props} />
-          </GlobalProvider>
-        </SheetProvider>
+        <GlobalProvider>
+          <ProfileScreen {...props} />
+        </GlobalProvider>
       </GestureHandlerRootView>
     ),
   () => ProfileScreen
@@ -563,6 +708,46 @@ const mainRoot = {
             },
           },
         },
+        {
+          component: {
+            name: "AvailableServiceType",
+            passProps: {
+              text: "Available service type screen",
+            },
+          },
+        },
+        {
+          component: {
+            name: "AddPrinter",
+            passProps: {
+              text: "Add printer screen",
+            },
+          },
+        },
+        {
+          component: {
+            name: "Member",
+            passProps: {
+              text: "Member screen",
+            },
+          },
+        },
+        // {
+        //   component: {
+        //     name: "PromoMerchant",
+        //     passProps: {
+        //       text: "Promo merchant screen",
+        //     },
+        //   },
+        // },
+        // {
+        //   component: {
+        //     name: "PromoCarte",
+        //     passProps: {
+        //       text: "Promo carte screen",
+        //     },
+        //   },
+        // },
       ],
     },
   },
@@ -585,15 +770,45 @@ const loginRoot = {
 
 const enterApp = {
   root: {
-    component: {
-      name: "Enter",
-      options: {
-        statusBar: {
-          drawBehind: true,
-          backgroundColor: "transparent",
-          animate: false,
+    stack: {
+      children: [
+        {
+          component: {
+            name: "Register",
+            options: {
+              statusBar: {
+                drawBehind: true,
+                backgroundColor: "transparent",
+                animate: false,
+              },
+            },
+          },
         },
-      },
+        {
+          component: {
+            name: "Login",
+            options: {
+              statusBar: {
+                drawBehind: true,
+                backgroundColor: "transparent",
+                animate: false,
+              },
+            },
+          },
+        },
+        {
+          component: {
+            name: "Enter",
+            options: {
+              statusBar: {
+                drawBehind: true,
+                backgroundColor: "transparent",
+                animate: false,
+              },
+            },
+          },
+        },
+      ],
     },
   },
 };
@@ -610,12 +825,10 @@ const listener = storage.addOnValueChangedListener(async (changedKey) => {
 
 function isLoggedIn(vals) {
   storage.delete("screen");
-  // storage.clearAll()
   const tok = storage.contains("token");
   return tok;
 }
 
 Navigation.events().registerAppLaunchedListener(() => {
   Navigation.setRoot(mainRoot);
-  //mainRoot
 });
