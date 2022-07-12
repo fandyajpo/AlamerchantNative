@@ -48,7 +48,7 @@ const Order = ({ componentId }) => {
         return <Header componentId={componentId} />;
       }, [])}
       <ProccessType pageRef={pageRef} pages={pages} setPages={setPages} />
-      <View style={tw`flex items-center justify-center h-full w-full pt-44`}>
+      <View style={tw`flex items-center justify-center h-full w-full`}>
         <View style={tw`w-full h-full`}>
           <ProcessPage
             pageRef={pageRef}

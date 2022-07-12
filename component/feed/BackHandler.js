@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, Pressable } from "react-native";
 import tw from "../../lib/tailwind";
 import { Back } from "../../lib/listSvg";
-import { PushRoute, BackRoute } from "../../lib/ctx";
+import { BackRoute } from "../../lib/ctx";
 const BackHandlerActivity = React.memo(({ componentId }) => {
   return (
     <View

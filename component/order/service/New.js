@@ -24,6 +24,56 @@ const NewService = ({ componentId }) => {
       payment_status: "Pay now",
     },
     {
+      table: "2B",
+      user: "Wilson Ray",
+      order_created: "08:18, 06 Jul",
+      service_type: "dine_in",
+      item_length: 9,
+      grand_total: "90.000",
+      payment_method: "Tunai",
+      payment_status: "Pay now",
+    },
+    {
+      table: "2B",
+      user: "Wilson Ray",
+      order_created: "08:18, 06 Jul",
+      service_type: "dine_in",
+      item_length: 9,
+      grand_total: "90.000",
+      payment_method: "Tunai",
+      payment_status: "Pay now",
+    },
+    {
+      table: "2B",
+      user: "Wilson Ray",
+      order_created: "08:18, 06 Jul",
+      service_type: "dine_in",
+      item_length: 9,
+      grand_total: "90.000",
+      payment_method: "Tunai",
+      payment_status: "Pay now",
+    },
+    {
+      table: "2B",
+      user: "Wilson Ray",
+      order_created: "08:18, 06 Jul",
+      service_type: "dine_in",
+      item_length: 9,
+      grand_total: "90.000",
+      payment_method: "Tunai",
+      payment_status: "Pay now",
+    },
+    {
+      table: "2B",
+      user: "Wilson Ray",
+      order_created: "08:18, 06 Jul",
+      service_type: "dine_in",
+      item_length: 9,
+      grand_total: "90.000",
+      payment_method: "Tunai",
+      payment_status: "Pay now",
+    },
+    {
       table: "6C",
       user: "Faouzia",
       order_created: "08:18, 06 Jul",
@@ -36,7 +86,10 @@ const NewService = ({ componentId }) => {
   ];
 
   return (
-    <ScrollView style={tw`w-full px-2`} showsVerticalScrollIndicator={false}>
+    <ScrollView
+      contentContainerStyle={tw`w-full px-2 pt-44`}
+      showsVerticalScrollIndicator={false}
+    >
       {newData.map((d, i) => {
         return (
           <View

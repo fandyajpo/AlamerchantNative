@@ -9,20 +9,12 @@ import Canceled from "./orderService/Canceled";
 import OrderDone from "./orderService/OrderDone";
 import Rejected from "./orderService/Rejected";
 
-const MemoizaAllOrder = React.memo(() => {
-  return <AllOrder />;
-});
-const MemoizaCanceled = React.memo(() => {
-  return <Canceled />;
-});
-const MemoizaOrderDone = React.memo(() => {
-  return <OrderDone />;
-});
-const MemoizaRejected = React.memo(() => {
-  return <Rejected />;
-});
+const MemoizaAllOrder = React.memo(AllOrder);
+const MemoizaCanceled = React.memo(Canceled);
+const MemoizaOrderDone = React.memo(OrderDone);
+const MemoizaRejected = React.memo(Rejected);
 
-const AnimatedPager = Animated.createAnimatedComponent(PagerView);
+const AnimatedPager = React.memo(Animated.createAnimatedComponent(PagerView));
 
 export function usePagerScrollHandler(handlers, dependencies) {
   const { context, doDependenciesDiffer } = useHandler(handlers, dependencies);

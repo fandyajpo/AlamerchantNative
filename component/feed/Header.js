@@ -63,6 +63,7 @@ const Header = ({ componentId }) => {
           </Text>
         </TouchableOpacity>
       </View>
+
       <View style={tw`w-full flex-row pb-12`}></View>
     </View>
   );

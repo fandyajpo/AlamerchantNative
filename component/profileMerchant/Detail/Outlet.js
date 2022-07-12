@@ -40,10 +40,16 @@ const Outlet = ({ componentId }) => {
           <View style={tw`bg-myellow/20 w-16 h-16 rounded-xl`} />
           <Text style={tw`text-gray-800 text-center text-xs`}>Cabang</Text>
         </View>
-        <View style={[{ flex: 1 }, tw`m-2 justify-center items-center`]}>
+        <Pressable
+          onPress={() => PushRoute(componentId, "Privilage")}
+          style={({ pressed }) => [
+            { opacity: pressed ? 0.5 : 1.0, flex: 1 },
+            tw`m-2 justify-center items-center`,
+          ]}
+        >
           <View style={tw`bg-violet-500/20 w-16 h-16 rounded-xl`} />
           <Text style={tw`text-gray-800 text-center text-xs`}>Privilage</Text>
-        </View>
+        </Pressable>
         <Pressable
           onPress={() => PushRoute(componentId, "Member")}
           style={({ pressed }) => [

@@ -1,15 +1,13 @@
-import React from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
-import tw from '../../lib/tailwind';
-import {Dropdown, PendapatanBersihIcon} from '../../lib/listSvg';
-import {List} from 'react-native-paper';
+import React from "react";
+import { View, Text, TouchableOpacity } from "react-native";
+import tw from "../../lib/tailwind";
+import { Dropdown, PendapatanBersihIcon } from "../../lib/listSvg";
+import { List } from "react-native-paper";
 const PendapatanBersih = () => {
-  const [expanded, setExpanded] = React.useState(true);
-
-  const handlePress = () => setExpanded(!expanded);
   return (
     <View
-      style={tw`bg-white shadow-sm w-full rounded-3xl border border-gray-300 px-3 py-4`}>
+      style={tw`bg-mgray/95 w-full border border-gray-300 px-3 py-4 absolute top-30 z-20`}
+    >
       <View style={tw`flex-row items-center justify-between`}>
         <View>
           <View style={tw`flex-row items-center`}>

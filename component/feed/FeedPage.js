@@ -72,7 +72,7 @@ const FeedPage = ({ componentId }) => {
         </View>
       </View>
       <View style={tw`w-full h-full`}>
-        <FlyButton />
+        {/* <FlyButton /> */}
         <AnimatedPager
           ref={feedRef}
           style={{ flex: 1 }}

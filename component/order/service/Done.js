@@ -1,17 +1,28 @@
-import React from 'react';
-import tw from '../../../lib/tailwind';
-import {View, ScrollView, Text} from 'react-native';
-import {Dropdown, EPayment, InRoom, AlacarteLable} from '../../../lib/listSvg';
+import React from "react";
+import tw from "../../../lib/tailwind";
+import { View, ScrollView, Text } from "react-native";
+import {
+  Dropdown,
+  EPayment,
+  InRoom,
+  AlacarteLable,
+} from "../../../lib/listSvg";
 const DoneService = () => {
   return (
-    <ScrollView style={tw`w-full px-2`} showsVerticalScrollIndicator={false}>
+    <ScrollView
+      contentContainerStyle={tw`w-full px-2 pt-44`}
+      showsVerticalScrollIndicator={false}
+    >
       <View
-        style={tw`w-full h-auto bg-white/95 rounded-xl border border-gray-300 shadow-sm my-2`}>
+        style={tw`w-full h-auto bg-white/95 rounded-xl border border-gray-300 shadow-sm my-2`}
+      >
         <View
-          style={tw`w-full border-b border-gray-300 flex-row items-center justify-between p-3`}>
+          style={tw`w-full border-b border-gray-300 flex-row items-center justify-between p-3`}
+        >
           <View style={tw`flex-row items-center`}>
             <View
-              style={tw`bg-myellow/20 w-16 h-16 rounded-md mr-2 items-center justify-center`}>
+              style={tw`bg-myellow/20 w-16 h-16 rounded-md mr-2 items-center justify-center`}
+            >
               <Text style={tw`text-myellow font-bold text-base`}>2999</Text>
             </View>
             <View>

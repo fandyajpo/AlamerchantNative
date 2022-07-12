@@ -39,7 +39,7 @@ import UpdateOutletCategoryScreen from "./screens/Profile/UpdateOutletCategory";
 import UpdateAlamatScreen from "./screens/Profile/UpdateAlamat";
 import UpdateOperasionalScreen from "./screens/Profile/UpdateJamOperasi";
 import UpdateGaleryScreen from "./screens/Profile/UpdateGalery";
-import AvailableServiceTypeScreen from "./screens/Profile/AvailableServiceType";
+import TipeServisDanTipeBayarScreen from "./screens/Profile/TipeServisDanTipeBayar";
 
 //MEMBER GROUP SCREEN
 import MemberScreen from "./screens/Member/Member";
@@ -64,6 +64,32 @@ import BlockUserListScreen from "./screens/Feed/BlockUserList";
 
 //MENU DAN STOCK SCREEN
 import MenuDanStockScreen from "./screens/MenuDanStock/MenuDanStock";
+
+//PRIVILAGE GROUP SCREEN
+import PrivilageScreen from "./screens/Privilage/Privilage";
+import PilihCabangScreen from "./screens/Privilage/PilihCabang";
+
+Navigation.registerComponent(
+  "PilihCabang",
+  () => (props) =>
+    (
+      <GlobalProvider>
+        <PilihCabangScreen {...props} />
+      </GlobalProvider>
+    ),
+  () => PilihCabangScreen
+);
+
+Navigation.registerComponent(
+  "Privilage",
+  () => (props) =>
+    (
+      <GlobalProvider>
+        <PrivilageScreen {...props} />
+      </GlobalProvider>
+    ),
+  () => PrivilageScreen
+);
 
 Navigation.registerComponent(
   "MenuDanStock",
@@ -158,16 +184,16 @@ Navigation.registerComponent(
 );
 
 Navigation.registerComponent(
-  "AvailableServiceType",
+  "TipeServisDanTipeBayar",
   () => (props) =>
     (
       <SheetProvider>
         <GlobalProvider>
-          <AvailableServiceTypeScreen {...props} />
+          <TipeServisDanTipeBayarScreen {...props} />
         </GlobalProvider>
       </SheetProvider>
     ),
-  () => AvailableServiceTypeScreen
+  () => TipeServisDanTipeBayarScreen
 );
 
 Navigation.registerComponent(
@@ -710,7 +736,7 @@ const mainRoot = {
         },
         {
           component: {
-            name: "AvailableServiceType",
+            name: "TipeServisDanTipeBayar",
             passProps: {
               text: "Available service type screen",
             },
@@ -732,22 +758,6 @@ const mainRoot = {
             },
           },
         },
-        // {
-        //   component: {
-        //     name: "PromoMerchant",
-        //     passProps: {
-        //       text: "Promo merchant screen",
-        //     },
-        //   },
-        // },
-        // {
-        //   component: {
-        //     name: "PromoCarte",
-        //     passProps: {
-        //       text: "Promo carte screen",
-        //     },
-        //   },
-        // },
       ],
     },
   },

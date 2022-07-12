@@ -8,17 +8,9 @@ import Header from "../component/history/Header";
 import PendapatanBersih from "../component/history/PendapatanBersih";
 import FilterTime from "../component/history/FilterTime";
 
-const MemoizePendapatanBersih = React.memo(() => {
-  return <PendapatanBersih />;
-});
-
-const MemoizeFilterTime = React.memo(() => {
-  return <FilterTime />;
-});
-
-const MemoizeHistoryPage = ({ typeRef, type, setType }) => {
-  return <HistoryPage typeRef={typeRef} type={type} setType={setType} />;
-};
+const MemoizePendapatanBersih = React.memo(PendapatanBersih);
+const MemoizeFilterTime = React.memo(FilterTime);
+const MemoizeHistoryPage = React.memo(HistoryPage);
 
 const History = ({ componentId }) => {
   const { state, fnr, setSecure } = React.useContext(GlobalContext);
@@ -29,8 +21,9 @@ const History = ({ componentId }) => {
         componentDidAppear: () => {
           fnr({ type: "screen", payload: "history" });
         },
-        componentDidDisappear: () =>
-          console.log(`componentDidDisappear ${componentId}`),
+        componentDidDisappear: () => {
+          console.log(`componentDidDisappear ${componentId}`);
+        },
       },
       componentId
     );
@@ -45,14 +38,10 @@ const History = ({ componentId }) => {
       {React.useMemo(() => {
         return <Header typeRef={typeRef} type={type} setType={setType} />;
       }, [type])}
-      <View
-        style={tw`mt-30 top-26 px-2 py-2 w-full  items-center justify-center`}
-      >
+      <View style={tw`top-2 py-2 w-full  items-center justify-center`}>
         <MemoizePendapatanBersih />
       </View>
-      <View
-        style={tw`flex items-center justify-center h-full w-full pt-25 pb-14`}
-      >
+      <View style={tw`flex items-center justify-center h-full w-full`}>
         <View style={tw`w-full h-full `}>
           <MemoizeHistoryPage typeRef={typeRef} type={type} setType={setType} />
         </View>
