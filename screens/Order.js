@@ -14,6 +14,8 @@ import FlyButton from "../component/order/FlyButton";
 import ProcessPage from "../component/order/ProcessPage";
 
 const MemoizeFlyButton = React.memo(FlyButton);
+const MemoizeProccessType = React.memo(ProccessType);
+const MemoizeProcessPage = React.memo(ProcessPage);
 
 const Order = ({ componentId }) => {
   const { state, fnr, setSecure, getSecure, logGer } =
@@ -45,10 +47,14 @@ const Order = ({ componentId }) => {
       {React.useMemo(() => {
         return <Header componentId={componentId} />;
       }, [])}
-      <ProccessType pageRef={pageRef} pages={pages} setPages={setPages} />
+      <MemoizeProccessType
+        pageRef={pageRef}
+        pages={pages}
+        setPages={setPages}
+      />
       <View style={tw`flex items-center justify-center h-full w-full`}>
         <View style={tw`w-full h-full`}>
-          <ProcessPage
+          <MemoizeProcessPage
             pageRef={pageRef}
             setPages={setPages}
             pages={pages}

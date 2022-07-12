@@ -37,10 +37,7 @@ const MemoizeFeed = React.memo(Feed);
 const MemoizeEvent = React.memo(Event);
 const MemoizeMention = React.memo(Mention);
 
-const FeedPage = ({ componentId }) => {
-  const feedRef = React.useRef(0);
-  const [feedSwitch, setFeedSwitch] = React.useState(0);
-
+const FeedPage = ({ componentId, feedRef, setFeedSwitch }) => {
   const handler = React.useCallback(
     usePagerScrollHandler({
       onPageScroll: (e) => {
@@ -62,14 +59,6 @@ const FeedPage = ({ componentId }) => {
       />
       <View>
         <MemoizeHeader componentId={componentId} />
-        <View style={tw`absolute top-44 w-full z-20 px-2`}>
-          <MemoizeFeedSwitch
-            feedRef={feedRef}
-            feedSwitch={feedSwitch}
-            setFeedSwitch={setFeedSwitch}
-            componentId={componentId}
-          />
-        </View>
       </View>
       <View style={tw`w-full h-full`}>
         {/* <FlyButton /> */}
