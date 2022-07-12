@@ -15,6 +15,7 @@ const Feed = ({ componentId }) => {
     <View>
       <View style={tw`absolute top-44 w-full z-20 px-2`}>
         <MemoizeFeedSwitch
+          componentId={componentId}
           feedSwitch={feedSwitch}
           feedRef={feedRef}
           setFeedSwitch={setFeedSwitch}
