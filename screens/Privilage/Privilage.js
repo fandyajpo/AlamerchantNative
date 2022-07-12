@@ -5,10 +5,10 @@ import { BackHandlerPrivilage } from "../../component/profileMerchant/BackHandle
 import tw from "../../lib/tailwind";
 import Privilage from "../../component/profileMerchant/Privilage/UserList";
 import Header from "../../component/profileMerchant/Privilage/Header";
-const MenuDanStockScreen = ({ componentId }) => {
+const PrivilageScreen = ({ componentId }) => {
   return (
     <View style={tw`pt-10 w-full h-full pb-32 bg-white`}>
-      <Header />
+      <Header componentId={componentId} />
       <ScrollView
         contentContainerStyle={tw`pb-12 bg-white`}
         horizontal={false}
@@ -21,7 +21,7 @@ const MenuDanStockScreen = ({ componentId }) => {
   );
 };
 
-MenuDanStockScreen.options = {
+PrivilageScreen.options = {
   bottomTabs: {
     visible: false,
     drawBehind: false,
@@ -74,4 +74,4 @@ MenuDanStockScreen.options = {
   },
 };
 
-export default MenuDanStockScreen;
+export default PrivilageScreen;

@@ -10,25 +10,11 @@ import ReadyService from "./service/Ready";
 import UnpaidService from "./service/Unpaid";
 import DoneService from "./service/Done";
 
-const MemoizeNewService = React.memo(({ componentId }) => {
-  return <NewService componentId={componentId} />;
-});
-
-const MemoizeProcessService = React.memo(({ componentId }) => {
-  return <ProcessService componentId={componentId} />;
-});
-
-const MemoizeReadyService = React.memo(({ componentId }) => {
-  return <ReadyService componentId={componentId} />;
-});
-
-const MemoizeUnpaidService = React.memo(({ componentId }) => {
-  return <UnpaidService componentId={componentId} />;
-});
-
-const MemoizeDoneService = React.memo(({ componentId }) => {
-  return <DoneService componentId={componentId} />;
-});
+const MemoizeNewService = React.memo(NewService);
+const MemoizeProcessService = React.memo(ProcessService);
+const MemoizeReadyService = React.memo(ReadyService);
+const MemoizeUnpaidService = React.memo(UnpaidService);
+const MemoizeDoneService = React.memo(DoneService);
 
 const ProcessPage = ({ pageRef, setPages, componentId }) => {
   return (
@@ -40,21 +26,11 @@ const ProcessPage = ({ pageRef, setPages, componentId }) => {
         setPages(e.nativeEvent.position);
       }}
     >
-      <View style={tw`bg-mgray`}>
-        <MemoizeNewService componentId={componentId} />
-      </View>
-      <View style={tw`bg-mgray`}>
-        <MemoizeProcessService componentId={componentId} />
-      </View>
-      <View style={tw`bg-mgray`}>
-        <MemoizeReadyService componentId={componentId} />
-      </View>
-      <View style={tw`bg-mgray`}>
-        <MemoizeUnpaidService componentId={componentId} />
-      </View>
-      <View style={tw`bg-mgray`}>
-        <MemoizeDoneService componentId={componentId} />
-      </View>
+      <MemoizeNewService componentId={componentId} />
+      <MemoizeProcessService componentId={componentId} />
+      <MemoizeReadyService componentId={componentId} />
+      <MemoizeUnpaidService componentId={componentId} />
+      <MemoizeDoneService componentId={componentId} />
     </PagerView>
   );
 };

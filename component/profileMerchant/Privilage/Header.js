@@ -6,7 +6,7 @@ import { PushRoute } from "../../../lib/ctx";
 const Header = ({ componentId }) => {
   return (
     <Pressable
-      onPress={PushRoute(componentId, "PilihCabang")}
+      onPress={() => PushRoute(componentId, "PilihCabang")}
       style={tw`bg-mgray w-full p-5 flex-row items-center justify-between`}
     >
       <View style={tw`flex-row items-center`}>

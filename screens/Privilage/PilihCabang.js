@@ -10,6 +10,7 @@ import {
   MultiMenu,
   PrivilageDefault,
 } from "../../lib/listSvg";
+import { BackHandlerPilihCabang } from "../../component/profileMerchant/BackHandler";
 
 const Users = [
   {
@@ -26,9 +27,9 @@ const Users = [
   },
 ];
 
-const MenuDanStock = ({ componentId }) => {
+const PilihCabang = ({ componentId }) => {
   return (
-    <View style={tw`w-full h-full bg-white`}>
+    <View style={tw`w-full h-full bg-white pt-10`}>
       {Users.length > 0 &&
         Users.map((u, i) => {
           return (
@@ -52,8 +53,62 @@ const MenuDanStock = ({ componentId }) => {
             </View>
           );
         })}
+      <BackHandlerPilihCabang componentId={componentId} />
     </View>
   );
 };
 
-export default MenuDanStock;
+PilihCabang.options = {
+  bottomTabs: {
+    visible: false,
+    drawBehind: false,
+    animate: false,
+  },
+  topBar: {
+    visible: false,
+    backButton: {
+      visible: false,
+    },
+  },
+  statusBar: {
+    drawBehind: true,
+    translucent: true,
+    style: "dark",
+    backgroundColor: "transparent",
+  },
+  animations: {
+    push: {
+      waitForRender: true,
+      content: {
+        translationX: {
+          from: require("react-native").Dimensions.get("window").width,
+          to: 0,
+          duration: 200,
+        },
+      },
+    },
+    pop: {
+      waitForRender: true,
+      content: {
+        translationX: {
+          from: 0,
+          to: require("react-native").Dimensions.get("window").width,
+          duration: 200,
+        },
+      },
+    },
+    setRoot: {
+      enter: {
+        waitForRender: true,
+        enabled: true,
+        translationY: {
+          from: 0,
+          to: 1,
+          duration: 3,
+        },
+      },
+    },
+  },
+};
+
+export default PilihCabang;

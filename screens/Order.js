@@ -4,10 +4,8 @@ import SplashScreen from "react-native-splash-screen";
 
 import { GlobalContext } from "../lib/ctx";
 import tw from "../lib/tailwind";
-import { navOption } from "../lib/ctx";
-import { Navigation } from "react-native-navigation";
 
-import { CloseOutlet } from "../lib/listSvg";
+import { Navigation } from "react-native-navigation";
 
 import Header from "../component/order/Header";
 import ProccessType from "../component/order/ProcessType";
