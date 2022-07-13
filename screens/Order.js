@@ -1,4 +1,4 @@
-import { View, ScrollView, Text } from "react-native";
+import { View } from "react-native";
 import React from "react";
 import SplashScreen from "react-native-splash-screen";
 

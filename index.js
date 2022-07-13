@@ -48,9 +48,11 @@ import MemberScreen from "./screens/Member/Member";
 import RegisterPage from "./screens/Register";
 
 //PROMO GROUP SCREEN
-import PromoAlacarteScreen from "./screens/Promo/PromoAlacarte";
-import PromoAlaMerchantScreen from "./screens/Promo/PromoMerchant";
+import PromoAlacarteScreen from "./screens/Promo/Alacarte/PromoAlacarte";
+import PromoAlaMerchantScreen from "./screens/Promo/AlaMerchant/PromoMerchant";
 import PromoScreen from "./screens/Promo/Promo";
+import PilihMenuScreen from "./screens/Promo/PilihMenu";
+import DiskonMenuScreen from "./screens/Promo/Alacarte/DiskonMenu";
 
 //FOLLOWER GROUP SCREEN
 import FollowersScreen from "./screens/Follower/Followers";
@@ -68,6 +70,30 @@ import MenuDanStockScreen from "./screens/MenuDanStock/MenuDanStock";
 //PRIVILAGE GROUP SCREEN
 import PrivilageScreen from "./screens/Privilage/Privilage";
 import PilihCabangScreen from "./screens/Privilage/PilihCabang";
+
+Navigation.registerComponent(
+  "DiskonMenu",
+  () => (props) =>
+    (
+      <GlobalProvider>
+        <DiskonMenuScreen {...props} />
+      </GlobalProvider>
+    ),
+  () => DiskonMenuScreen
+);
+
+Navigation.registerComponent(
+  "PilihMenuPromo",
+  () => (props) =>
+    (
+      <SheetProvider>
+        <GlobalProvider>
+          <PilihMenuScreen {...props} />
+        </GlobalProvider>
+      </SheetProvider>
+    ),
+  () => PilihMenuScreen
+);
 
 Navigation.registerComponent(
   "PilihCabang",

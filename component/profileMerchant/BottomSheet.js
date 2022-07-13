@@ -151,7 +151,7 @@ const EditMerchantProfileSheet = React.memo(
                 style={tw`py-4 border-b border-gray-200`}
                 onPress={() => {
                   profileSheetRef.current.hide();
-                  PushRoute(componentId, "AvailableServiceType");
+                  PushRoute(componentId, "TipeServisDanTipeBayar");
                 }}
               >
                 <View style={tw` flex-row items-center justify-between px-4`}>

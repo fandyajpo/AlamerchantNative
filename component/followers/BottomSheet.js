@@ -92,7 +92,7 @@ const Follower = React.memo(({ id, componentId, sheetRef }) => {
 
           <View style={tw`pt-4 pl-4 pr-4 pb-12`}>
             <Pressable
-              onPress={() => SheetManager.hide("follower_block_user")}
+              onPress={() => SheetManager.hide("follower_bottom_sheet")}
               style={tw`w-full bg-mgray h-13 rounded-full items-center justify-center `}
             >
               <Text style={tw`text-myellow text-sm font-bold`}>Kembali</Text>
