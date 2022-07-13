@@ -26,11 +26,21 @@ const ProcessPage = ({ pageRef, setPages, componentId }) => {
         setPages(e.nativeEvent.position);
       }}
     >
-      <MemoizeNewService componentId={componentId} />
-      <MemoizeProcessService componentId={componentId} />
-      <MemoizeReadyService componentId={componentId} />
-      <MemoizeUnpaidService componentId={componentId} />
-      <MemoizeDoneService componentId={componentId} />
+      <View>
+        <MemoizeNewService componentId={componentId} />
+      </View>
+      <View>
+        <MemoizeProcessService componentId={componentId} />
+      </View>
+      <View>
+        <MemoizeReadyService componentId={componentId} />
+      </View>
+      <View>
+        <MemoizeUnpaidService componentId={componentId} />
+      </View>
+      <View>
+        <MemoizeDoneService componentId={componentId} />
+      </View>
     </PagerView>
   );
 };

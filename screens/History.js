@@ -46,7 +46,6 @@ const History = ({ componentId }) => {
           <MemoizeHistoryPage typeRef={typeRef} type={type} setType={setType} />
         </View>
       </View>
-
       <MemoizeFilterTime />
     </View>
   );

@@ -1,5 +1,5 @@
-import React, { useCallback } from "react";
-import { View, StyleSheet, Text } from "react-native";
+import React from "react";
+import { View } from "react-native";
 import PagerView from "react-native-pager-view";
 import Animated, { useHandler, useEvent } from "react-native-reanimated";
 import tw from "../../lib/tailwind";
@@ -35,7 +35,7 @@ export function usePagerScrollHandler(handlers, dependencies) {
   );
 }
 
-const HistoryPage = ({ typeRef, type, setType }) => {
+const HistoryPage = ({ typeRef, setType }) => {
   const handler = usePagerScrollHandler({
     onPageScroll: (e) => {
       "worklet";
@@ -43,14 +43,16 @@ const HistoryPage = ({ typeRef, type, setType }) => {
     },
   });
 
+  const onPageSelected = React.useCallback((e) => {
+    setType(e.nativeEvent.position);
+  }, []);
+
   return (
     <AnimatedPager
       ref={typeRef}
       style={[{ flex: 1 }, tw`bg-mgray`]}
       initialPage={0}
-      onPageSelected={useCallback((e) => {
-        setType(e.nativeEvent.position);
-      }, [])}
+      onPageSelected={onPageSelected}
       onPageScroll={handler}
     >
       <View>

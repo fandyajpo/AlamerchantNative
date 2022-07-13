@@ -57,11 +57,8 @@ const FeedPage = ({ componentId, feedRef, setFeedSwitch }) => {
       <View
         style={tw`border-t-2 border-r border-l rounded-full border-gray-300 z-10 w-full absolute top-60 w-full h-4`}
       />
-      <View>
-        <MemoizeHeader componentId={componentId} />
-      </View>
+
       <View style={tw`w-full h-full`}>
-        {/* <FlyButton /> */}
         <AnimatedPager
           ref={feedRef}
           style={{ flex: 1 }}
@@ -69,9 +66,15 @@ const FeedPage = ({ componentId, feedRef, setFeedSwitch }) => {
           onPageSelected={onPageSelected}
           onPageScroll={handler}
         >
-          <MemoizeFeed componentId={componentId} />
-          <MemoizeEvent componentId={componentId} />
-          <MemoizeMention componentId={componentId} />
+          <View>
+            <MemoizeFeed componentId={componentId} />
+          </View>
+          <View>
+            <MemoizeEvent componentId={componentId} />
+          </View>
+          <View>
+            <MemoizeMention componentId={componentId} />
+          </View>
         </AnimatedPager>
       </View>
       <View
