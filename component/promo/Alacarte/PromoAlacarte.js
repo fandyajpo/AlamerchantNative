@@ -90,7 +90,8 @@ const PromoAlacarte = ({ componentId }) => {
         </View>
         <RightDropdown />
       </Pressable>
-      <View
+      <Pressable
+        onPress={() => SheetManager.show("gratisMenuTertentu")}
         style={tw`bg-mgray w-full bg-mgray rounded-md border border-gray-300 mb-2 flex-row items-center justify-between p-3 shadow-sm`}
       >
         <View style={tw`flex-row items-center`}>
@@ -109,9 +110,9 @@ const PromoAlacarte = ({ componentId }) => {
           </View>
         </View>
         <RightDropdown />
-      </View>
+      </Pressable>
       <Pressable
-        onPress={() => SheetManager.show("diskon_minimum_transaksi")}
+        onPress={() => SheetManager.show("diskonMinimumTransaksi")}
         style={tw`bg-mgray w-full bg-mgray rounded-md border border-gray-300 mb-2 flex-row items-center justify-between p-3 shadow-sm`}
       >
         <View style={tw`flex-row items-center`}>

@@ -2,7 +2,10 @@ import React from "react";
 import { View, ScrollView, Image } from "react-native";
 
 import { BackHandlerPromoAlacarte } from "../../../component/promo/BackHandler";
-import { DiskonMinimumTransaksi } from "../../../component/promo/BottomSheet";
+import {
+  DiskonMinimumTransaksi,
+  GratisMenuTertentu,
+} from "../../../component/promo/BottomSheet";
 
 import tw from "../../../lib/tailwind";
 import PromoCarte from "../../../component/promo/Alacarte/PromoAlacarte";
@@ -68,6 +71,7 @@ const PromoAlacarte = ({ componentId }) => {
         <PromoCarte componentId={componentId} />
       </ScrollView>
       <DiskonMinimumTransaksi componentId={componentId} />
+      <GratisMenuTertentu componentId={componentId} />
       <BackHandlerPromoAlacarte componentId={componentId} />
     </View>
   );

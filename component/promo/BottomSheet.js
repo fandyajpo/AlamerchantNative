@@ -14,7 +14,7 @@ const MemoizeDatePicker = React.memo(DatePicker);
 export const DiskonMinimumTransaksi = React.memo(({ id, componentId }) => {
   const MoveTo = (route) => () => {
     new Promise.all([
-      SheetManager.hide("diskon_minimum_transaksi"),
+      SheetManager.hide("diskonMinimumTransaksi"),
       PushRoute(componentId, route),
     ]);
   };
@@ -34,7 +34,7 @@ export const DiskonMinimumTransaksi = React.memo(({ id, componentId }) => {
           </View>
         }
         delayActionSheetDraw={0}
-        id={"diskon_minimum_transaksi"}
+        id={"diskonMinimumTransaksi"}
         bounceOnOpen={true}
         gestureEnabled={true}
         springOffset={100}
@@ -160,5 +160,85 @@ export const DiskonMenuPilihTanggal = React.memo(
   }
 );
 
+export const GratisMenuTertentu = React.memo(({ id, componentId }) => {
+  const MoveTo = (route) => () => {
+    new Promise.all([
+      SheetManager.hide("gratisMenuTertentu"),
+      PushRoute(componentId, route),
+    ]);
+  };
+
+  return (
+    <View style={tw`absolute bottom-0`}>
+      <ActionSheet
+        bounciness={5}
+        closeAnimationDuration={200}
+        indicatorColor={"blue"}
+        delayActionSheetDrawTime={0}
+        CustomHeaderComponent={
+          <View style={tw`flex-row items-center p-4`}>
+            <Text style={tw`text-gray-800 font-bold text-lg`}>
+              Gratis Menu Tertentu
+            </Text>
+          </View>
+        }
+        delayActionSheetDraw={0}
+        id={"gratisMenuTertentu"}
+        bounceOnOpen={true}
+        gestureEnabled={true}
+        springOffset={100}
+      >
+        <View style={tw`h-auto`}>
+          <View>
+            <Pressable
+              style={tw`py-4 border-b border-gray-200`}
+              onPress={MoveTo("PilihMenuPromo")}
+            >
+              <View style={tw` flex-row items-center justify-between px-4`}>
+                <View>
+                  <Text style={tw`text-gray-800 font-bold text-base`}>
+                    Gratis Dengan Menu
+                  </Text>
+                  <Text style={tw`text-gray-300 text-base`}>
+                    Diskon dalam nominal dari minimum transaksi.
+                  </Text>
+                </View>
+
+                <RightDropdown />
+              </View>
+            </Pressable>
+            <Pressable
+              style={tw`py-4 border-b border-gray-200`}
+              onPress={MoveTo("PilihMenuPromo")}
+            >
+              <View style={tw` flex-row items-center justify-between px-4`}>
+                <View>
+                  <Text style={tw`text-gray-800 font-bold text-base`}>
+                    Persentase
+                  </Text>
+                  <Text style={tw`text-gray-300 text-base`}>
+                    Diskon dalam persentase dari minimum transaksi.
+                  </Text>
+                </View>
+
+                <RightDropdown />
+              </View>
+            </Pressable>
+          </View>
+
+          <View style={tw`pt-4 pl-4 pr-4 pb-12`}>
+            <Pressable
+              style={tw`w-full bg-mgray h-13 rounded-full items-center justify-center `}
+            >
+              <Text style={tw`text-myellow text-sm font-bold`}>Kembali</Text>
+            </Pressable>
+          </View>
+        </View>
+      </ActionSheet>
+    </View>
+  );
+});
+
 registerSheet("diskonMinimumTransaksi", DiskonMinimumTransaksi);
 registerSheet("diskonMenuPilihTanggal", DiskonMenuPilihTanggal);
+registerSheet("gratisMenuTertentu", GratisMenuTertentu);
