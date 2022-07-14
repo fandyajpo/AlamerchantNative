@@ -21,8 +21,8 @@ const MenuCategory = [
         name: "Nasi Goreng",
         variant: [
           { nama: "Nasi Goreng Jakarta", price: "25.000" },
-          { nama: "Nasi Goreng Lombok", price: "25.000" },
-          { nama: "Nasi Goreng Bali", price: "25.000" },
+          { nama: "Nasi Goreng Lombok", price: "29.000" },
+          { nama: "Nasi Goreng Bali", price: "32.000" },
         ],
       },
       {
@@ -220,7 +220,7 @@ const PilihMenu = ({ componentId }) => {
       >
         <Image
           source={require("./../../assets/gif/alamerch.gif")}
-          style={{ width: 100, height: 100 }}
+          style={{ width: 200, height: 200 }}
         />
       </View>
     );

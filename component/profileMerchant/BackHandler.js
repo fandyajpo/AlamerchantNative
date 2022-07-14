@@ -603,35 +603,6 @@ export const BackHandlerCategoryMenu = React.memo(({ componentId }) => {
 });
 
 export const BackHandlerAddCategory = React.memo(({ componentId }) => {
-  const [keyboardShow, setKeyboardShow] = React.useState(false);
-
-  React.useEffect(() => {
-    console.log("keyboard printer render");
-  });
-
-  React.useEffect(() => {
-    const keyboardDidShowListener = Keyboard.addListener(
-      "keyboardDidShow",
-      () => {
-        setKeyboardShow(true);
-      }
-    );
-    const keyboardDidHideListener = Keyboard.addListener(
-      "keyboardDidHide",
-      () => {
-        setKeyboardShow(false);
-      }
-    );
-
-    return () => {
-      keyboardDidHideListener.remove();
-      keyboardDidShowListener.remove();
-    };
-  }, []);
-
-  const backKey = React.useCallback(() => {
-    keyboardShow ? Keyboard.dismiss() : BackRoute(componentId);
-  });
   return (
     <View
       style={tw`absolute bottom-0 w-full h-44 bg-white p-4 z-50 border-t-2 border-l border-r border-gray-300 rounded-xl`}

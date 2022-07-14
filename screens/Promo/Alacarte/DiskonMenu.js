@@ -1,17 +1,21 @@
 import React from "react";
-import { View, ScrollView, Text } from "react-native";
+import { View, ScrollView, Image } from "react-native";
 import { BackHandlerDiskonMenu } from "../../../component/promo/BackHandler";
+import { DiskonMenuPilihTanggal } from "../../../component/promo/BottomSheet";
 import tw from "../../../lib/tailwind";
 import { Navigation } from "react-native-navigation";
 import DiskonMenu from "../../../component/promo/Alacarte/DiskonMenu";
 
+const MemoizeDiskonMenu = React.memo(DiskonMenu);
+
 const PromoAlacarte = ({ componentId }) => {
+  const pilihTanggalRef = React.useRef();
   const [appIsReady, setAppIsReady] = React.useState(false);
 
   React.useEffect(() => {
     async function prepare() {
       try {
-        await new Promise((resolve) => setTimeout(resolve, 500));
+        await new Promise((resolve) => setTimeout(resolve, 1000));
       } catch (e) {
         console.warn(e);
       } finally {
@@ -42,22 +46,31 @@ const PromoAlacarte = ({ componentId }) => {
 
   if (!appIsReady) {
     return (
-      <View style={tw`w-full h-full flex-row items-center justify-center`}>
-        <Text style={tw`text-gray-800`}>dkmskfns</Text>
+      <View
+        style={tw`w-full bg-white h-full flex-row items-center justify-center`}
+      >
+        <Image
+          source={require("../../../assets/gif/alamerch.gif")}
+          style={{ width: 200, height: 200 }}
+        />
       </View>
     );
   }
 
   return (
-    <View style={tw`mt-13 w-full h-full pb-20 bg-white`}>
+    <View style={tw`mt-13 w-full h-full bg-white`}>
       <ScrollView
-        contentContainerStyle={tw`pb-12 bg-white px-2`}
+        contentContainerStyle={tw`bg-white pb-48`}
         horizontal={false}
         showsVerticalScrollIndicator={false}
         scrollEnabled={true}
       >
-        <DiskonMenu />
+        <MemoizeDiskonMenu pilihTanggalRef={pilihTanggalRef} />
       </ScrollView>
+      <DiskonMenuPilihTanggal
+        id="diskonMenuPilihTanggal"
+        pilihTanggalRef={pilihTanggalRef}
+      />
       <BackHandlerDiskonMenu componentId={componentId} />
     </View>
   );
@@ -85,20 +98,20 @@ PromoAlacarte.options = {
     push: {
       waitForRender: true,
       content: {
-        translationX: {
-          from: require("react-native").Dimensions.get("window").width,
-          to: 0,
-          duration: 200,
+        alpha: {
+          from: 0,
+          to: 1,
+          duration: 300,
         },
       },
     },
     pop: {
       waitForRender: true,
       content: {
-        translationX: {
-          from: 0,
-          to: require("react-native").Dimensions.get("window").width,
-          duration: 200,
+        alpha: {
+          from: 1,
+          to: 0,
+          duration: 300,
         },
       },
     },
@@ -106,10 +119,10 @@ PromoAlacarte.options = {
       enter: {
         waitForRender: true,
         enabled: true,
-        translationY: {
-          from: 0,
-          to: 1,
-          duration: 3,
+        alpha: {
+          from: 1,
+          to: 0,
+          duration: 300,
         },
       },
     },

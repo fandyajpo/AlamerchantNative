@@ -20,8 +20,8 @@ const CategoryList = ({ statusRef, setStatus }) => {
       onPageSelected={onPageSelected}
       onPageScroll={scrollLog}
     >
-      <View style={tw`bg-black w-full h-full`}></View>
-      <View style={tw`bg-gray-300 w-full h-full`}></View>
+      <View style={tw`bg-white w-full h-full`}></View>
+      <View style={tw`bg-white w-full h-full`}></View>
     </PagerView>
   );
 };

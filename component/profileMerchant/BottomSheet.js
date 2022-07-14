@@ -7,7 +7,7 @@ import ActionSheet, {
 import { View, Text, TextInput, Pressable } from "react-native";
 import tw from "../../lib/tailwind";
 import { RightDropdown } from "../../lib/listSvg";
-import { PushRoute } from "../../lib/ctx";
+import { PushRoute, BackRoute } from "../../lib/ctx";
 import DatePicker from "react-native-modern-datepicker";
 
 export const TaggingSheet = React.memo(({ id, editProfileRef }) => {
@@ -457,10 +457,13 @@ export const LanguageSheet = React.memo(({ id, langRef, lang, setLang }) => {
   );
 });
 
-export const CancelAddCategory = React.memo(({ id }) => {
-  const CancelAdd = () => {
-    new Promise.all([]);
-  };
+export const CancelAddCategory = React.memo(({ id, componentId }) => {
+  const CancelAdd = React.useCallback(() => {
+    new Promise.all([
+      BackRoute(componentId),
+      SheetManager.hide("cancelAddCategory"),
+    ]);
+  }, []);
 
   return (
     <View style={tw`absolute bottom-0`}>
@@ -495,7 +498,7 @@ export const CancelAddCategory = React.memo(({ id }) => {
             </Pressable>
             <View style={tw`w-2`} />
             <Pressable
-              onPress={() => SheetManager.hide()}
+              onPress={CancelAdd}
               style={tw`w-2/4 bg-mgray h-10 sm:h-12 rounded-full items-center justify-center `}
             >
               <Text style={tw`text-myellow text-sm font-bold`}>Ok</Text>

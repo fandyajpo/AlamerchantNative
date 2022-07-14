@@ -16,9 +16,7 @@ const FeedSetting = ({ componentId }) => {
   return (
     <View style={tw`w-full h-full bg-white`}>
       <View style={tw`px-2`}>
-        <Text style={tw`text-gray-800 font-bold text-base`}>
-          Aktifkan Komentar
-        </Text>
+        <Text style={tw`text-gray-800 font-bold text-base`}>Status</Text>
 
         <View style={tw`flex-col border-b py-2 border-mgray`}>
           <Text style={tw`text-base text-gray-300 mb-2 w-9/12`}>

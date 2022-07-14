@@ -14,7 +14,7 @@ const PromoAlacarte = ({ componentId }) => {
   React.useEffect(() => {
     async function prepare() {
       try {
-        await new Promise((resolve) => setTimeout(resolve, 500));
+        await new Promise((resolve) => setTimeout(resolve, 1000));
       } catch (e) {
         console.warn(e);
       } finally {
@@ -50,8 +50,8 @@ const PromoAlacarte = ({ componentId }) => {
         style={tw`w-full bg-white h-full flex-row items-center justify-center`}
       >
         <Image
-          source={require("./../../../assets/gif/alamerch.gif")}
-          style={{ width: 100, height: 100 }}
+          source={require("../../../assets/gif/alamerch.gif")}
+          style={{ width: 200, height: 200 }}
         />
       </View>
     );

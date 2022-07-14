@@ -1,7 +1,7 @@
 import React from "react";
 import tw from "../../lib/tailwind";
 import { BackRoute, PushRoute } from "../../lib/ctx";
-import { View, Text, Pressable } from "react-native";
+import { View, Text, Pressable, Keyboard } from "react-native";
 import { Back, Search } from "../../lib/listSvg";
 const BackHandlerPromoAlacarte = React.memo(({ componentId }) => {
   return (
@@ -59,15 +59,44 @@ const BackHandlerPilihMenu = React.memo(({ componentId }) => {
 });
 
 const BackHandlerDiskonMenu = React.memo(({ componentId }) => {
+  const [keyboardShow, setKeyboardShow] = React.useState(false);
+
+  React.useEffect(() => {
+    console.log("keyboard printer render");
+  });
+
+  React.useEffect(() => {
+    const keyboardDidShowListener = Keyboard.addListener(
+      "keyboardDidShow",
+      () => {
+        setKeyboardShow(true);
+      }
+    );
+    const keyboardDidHideListener = Keyboard.addListener(
+      "keyboardDidHide",
+      () => {
+        setKeyboardShow(false);
+      }
+    );
+
+    return () => {
+      keyboardDidHideListener.remove();
+      keyboardDidShowListener.remove();
+    };
+  }, []);
+
+  const backKey = React.useCallback(() => {
+    keyboardShow ? Keyboard.dismiss() : BackRoute(componentId);
+  });
   return (
     <View
       style={tw`absolute bg-white bottom-0 w-full h-44 p-4 z-50 border-t-2 border-l border-r border-gray-300 rounded-xl`}
     >
-      <View style={tw`flex-row items-center justify-between w-full`}>
-        <Pressable style={tw`w-2/6`} onPress={() => BackRoute(componentId)}>
+      <View style={tw`flex-row items-center justify-between`}>
+        <Pressable style={tw`w-2/6`} onPress={backKey}>
           <Back />
         </Pressable>
-        <View style={tw`w-full h-8`}>
+        <View style={tw`w-2/6 h-8`}>
           <Text style={tw`text-gray-800 text-lg font-bold text-center`}>
             Diskon Menu
           </Text>
@@ -75,6 +104,19 @@ const BackHandlerDiskonMenu = React.memo(({ componentId }) => {
         </View>
         <View style={tw`w-2/6 h-2`} />
       </View>
+      <Pressable
+        activeOpacity={0.5}
+        style={tw`mt-3 shadow-xl`}
+        onPress={() => PushRoute(componentId, "DiskonMenu")}
+      >
+        <View
+          style={tw`w-full bg-myellow h-13 rounded-full flex items-center justify-center`}
+        >
+          <Text style={tw`text-sm font-bold text-white`}>
+            Simpan & buat Promo
+          </Text>
+        </View>
+      </Pressable>
     </View>
   );
 });

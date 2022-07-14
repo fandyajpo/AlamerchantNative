@@ -1,9 +1,57 @@
 import React from "react";
-import { View, ScrollView } from "react-native";
+import { View, ScrollView, Image } from "react-native";
 import { BackHandlerMenuDanStock } from "../../component/profileMerchant/BackHandler";
 import tw from "../../lib/tailwind";
 import MenuDanStock from "../../component/profileMerchant/MenuDanStock/MenuDanStock";
+import { Navigation } from "react-native-navigation";
 const MenuDanStockScreen = ({ componentId }) => {
+  const [appIsReady, setAppIsReady] = React.useState(false);
+
+  React.useEffect(() => {
+    async function prepare() {
+      try {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+      } catch (e) {
+        console.warn(e);
+      } finally {
+        setAppIsReady(true);
+      }
+    }
+    prepare();
+  }, []);
+
+  React.useEffect(() => {
+    const unsubscribe = Navigation.events().registerComponentListener(
+      {
+        componentWillAppear: () =>
+          console.log("berada dihalaman menunggu render"),
+        componentDidAppear: () => {
+          setAppIsReady(true);
+          console.log(`componentDidAppear ${componentId}`);
+        },
+        componentDidDisappear: () => {
+          setAppIsReady(false);
+          console.log(`componentDidDisappear ${componentId}`);
+        },
+      },
+      componentId
+    );
+    return () => unsubscribe.remove();
+  }, [componentId]);
+
+  if (!appIsReady) {
+    return (
+      <View
+        style={tw`w-full bg-white h-full flex-row items-center justify-center`}
+      >
+        <Image
+          source={require("../../assets/gif/alamerch.gif")}
+          style={{ width: 200, height: 200 }}
+        />
+      </View>
+    );
+  }
+
   return (
     <View style={tw`mt-13 w-full h-full pb-32 bg-white`}>
       <ScrollView

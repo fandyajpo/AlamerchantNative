@@ -67,43 +67,47 @@ const PilihMenuPromo = ({ MenuCategory, menuRef, setMenu }) => {
                             )}
                           </View>
                         </View>
-                        {p.variant && (
-                          <View style={tw`p-2`}>
-                            <View
-                              style={tw`flex-row items-center justify-between`}
-                            >
-                              <View
-                                style={tw`flex-row items-center justify-center`}
-                              >
+                        {p.variant &&
+                          p.variant.map((v, i) => {
+                            console.log("aaa", v);
+                            return (
+                              <View style={tw`p-2`} key={i}>
                                 <View
-                                  style={tw`w-16 h-16 rounded-xl mr-2 justify-end flex-row`}
+                                  style={tw`flex-row items-center justify-between`}
                                 >
                                   <View
-                                    style={tw`bg-black w-10 h-10 rounded-xl`}
-                                  />
-                                </View>
-                                <View>
-                                  <Text
-                                    style={tw`text-gray-800 text-sm font-bold`}
+                                    style={tw`flex-row items-center justify-center`}
                                   >
-                                    {p.name}
-                                  </Text>
-                                  <Text style={tw`text-black text-[10px]`}>
-                                    Harga awal
-                                  </Text>
-                                  <Text
-                                    style={tw`text-gray-800 text-sm font-bold`}
-                                  >
-                                    {p.price}
-                                  </Text>
+                                    <View
+                                      style={tw`w-16 h-16 rounded-xl mr-2 justify-end flex-row`}
+                                    >
+                                      <View
+                                        style={tw`bg-black w-10 h-10 rounded-xl`}
+                                      />
+                                    </View>
+                                    <View>
+                                      <Text
+                                        style={tw`text-gray-800 text-sm font-bold`}
+                                      >
+                                        {v.nama}
+                                      </Text>
+                                      <Text style={tw`text-black text-[10px]`}>
+                                        Harga awal
+                                      </Text>
+                                      <Text
+                                        style={tw`text-gray-800 text-sm font-bold`}
+                                      >
+                                        {v.price}
+                                      </Text>
+                                    </View>
+                                  </View>
+                                  <View style={tw``}>
+                                    <Check />
+                                  </View>
                                 </View>
                               </View>
-                              <View style={tw``}>
-                                <Check />
-                              </View>
-                            </View>
-                          </View>
-                        )}
+                            );
+                          })}
                       </View>
                     );
                   })}
