@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, Pressable } from "react-native";
 import tw from "../../../lib/tailwind";
 import {
   MenuAktif,
@@ -9,6 +9,7 @@ import {
   DataAnalisa,
   MultiMenu,
 } from "../../../lib/listSvg";
+import { PushRoute } from "../../../lib/ctx";
 
 const MenuDanStock = ({ componentId }) => {
   return (
@@ -115,7 +116,8 @@ const MenuDanStock = ({ componentId }) => {
         </View>
       </View>
 
-      <View
+      <Pressable
+        onPress={() => PushRoute(componentId, "CategoryList")}
         style={tw`bg-mgray w-full bg-mgray rounded-md border border-gray-300 mb-2 flex-row items-center justify-between p-3 shadow-sm`}
       >
         <View style={tw`flex-row items-center`}>
@@ -130,7 +132,7 @@ const MenuDanStock = ({ componentId }) => {
           </View>
         </View>
         <RightDropdown />
-      </View>
+      </Pressable>
       <View
         style={tw`bg-mgray w-full bg-mgray rounded-md border border-gray-300 mb-2 flex-row items-center justify-between p-3 shadow-sm`}
       >

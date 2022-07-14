@@ -5,7 +5,7 @@ import PagerView from "react-native-pager-view";
 import { Check } from "../../lib/listSvg";
 import tw from "../../lib/tailwind";
 
-const PilihMenuPromo = ({ MenuCategory, menuRef, menu, setMenu }) => {
+const PilihMenuPromo = ({ MenuCategory, menuRef, setMenu }) => {
   const onPageSelected = (e) => setMenu(e.nativeEvent.position);
 
   return (
@@ -36,32 +36,74 @@ const PilihMenuPromo = ({ MenuCategory, menuRef, menu, setMenu }) => {
                         key={i}
                         style={tw`bg-white border border-gray-300 w-full rounded-xl mb-2`}
                       >
-                        <View
-                          style={tw`flex-row items-center p-2 items-center justify-between`}
-                        >
-                          <View style={tw`flex-row items-center`}>
-                            <View
-                              style={tw`bg-black w-16 h-16 rounded-xl mr-2`}
-                            />
-                            {p.price && (
+                        <View style={tw`p-2`}>
+                          <View
+                            style={tw`flex-row items-center justify-between`}
+                          >
+                            <View style={tw`flex-row items-center`}>
                               <View
-                                style={tw`flex-row items-center justify-between`}
+                                style={tw`bg-black w-16 h-16 rounded-xl mr-2`}
+                              />
+                              <View>
+                                <Text
+                                  style={tw`text-gray-800 text-sm font-bold`}
+                                >
+                                  {p.name}
+                                </Text>
+                                <Text style={tw`text-black text-[10px]`}>
+                                  Harga awal
+                                </Text>
+                                <Text
+                                  style={tw`text-gray-800 text-sm font-bold`}
+                                >
+                                  {p.price}
+                                </Text>
+                              </View>
+                            </View>
+                            {!p.variant && (
+                              <View style={tw``}>
+                                <Check />
+                              </View>
+                            )}
+                          </View>
+                        </View>
+                        {p.variant && (
+                          <View style={tw`p-2`}>
+                            <View
+                              style={tw`flex-row items-center justify-between`}
+                            >
+                              <View
+                                style={tw`flex-row items-center justify-center`}
                               >
-                                <View style>
+                                <View
+                                  style={tw`w-16 h-16 rounded-xl mr-2 justify-end flex-row`}
+                                >
+                                  <View
+                                    style={tw`bg-black w-10 h-10 rounded-xl`}
+                                  />
+                                </View>
+                                <View>
                                   <Text
                                     style={tw`text-gray-800 text-sm font-bold`}
                                   >
                                     {p.name}
                                   </Text>
-                                  <Text style={tw`text-black`}>Ngentoy</Text>
-                                </View>
-                                <View style={tw``}>
-                                  <Check />
+                                  <Text style={tw`text-black text-[10px]`}>
+                                    Harga awal
+                                  </Text>
+                                  <Text
+                                    style={tw`text-gray-800 text-sm font-bold`}
+                                  >
+                                    {p.price}
+                                  </Text>
                                 </View>
                               </View>
-                            )}
+                              <View style={tw``}>
+                                <Check />
+                              </View>
+                            </View>
                           </View>
-                        </View>
+                        )}
                       </View>
                     );
                   })}

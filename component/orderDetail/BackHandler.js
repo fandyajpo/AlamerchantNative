@@ -6,7 +6,7 @@ import { PushRoute, BackRoute } from "../../lib/ctx";
 const BackHandlerComponent = ({ componentId }) => {
   return (
     <View
-      style={tw`absolute bottom-0 w-full h-44 bg-mgray p-4 z-50 border-t-2 border-l border-r border-gray-300 rounded-xl`}
+      style={tw`absolute bottom-0 w-full h-42 bg-mgray p-4 z-50 border-t-2 border-l border-r border-gray-300 rounded-xl`}
     >
       <View style={tw`flex-row items-center justify-between w-full`}>
         <Pressable
@@ -27,19 +27,29 @@ const BackHandlerComponent = ({ componentId }) => {
         <Text style={tw`text-sm font-bold text-gray-800`}>Grand Total</Text>
         <Text style={tw`text-sm font-bold text-gray-800`}>Rp90.000</Text>
       </View>
-      <View style={tw`flex-row items-center justify-between mr-2`}>
+      <View style={tw`flex-row items-center justify-between pr-2`}>
         <Pressable
-          style={tw`w-2/4 bg-red-500/20 h-10 rounded-full items-center justify-center`}
+          activeOpacity={0.5}
+          style={tw`w-2/4`}
           onPress={() => BackRoute(componentId)}
         >
-          <Text style={tw`text-red-500 font-bold`}>Refuse</Text>
+          <View
+            style={tw`w-full bg-red-500/20 h-10 sm:h-12 rounded-full flex items-center justify-center`}
+          >
+            <Text style={tw`text-sm font-bold text-red-500`}>Refuse</Text>
+          </View>
         </Pressable>
         <View style={tw`w-2`} />
         <Pressable
-          style={tw`w-2/4 bg-myellow/20 h-10 rounded-full items-center justify-center`}
+          activeOpacity={0.5}
+          style={tw`w-2/4`}
           onPress={() => BackRoute(componentId)}
         >
-          <Text style={tw`text-myellow font-bold`}>Bayar</Text>
+          <View
+            style={tw`w-full bg-green-500/20 h-10 sm:h-12 rounded-full flex items-center justify-center`}
+          >
+            <Text style={tw`text-sm font-bold text-green-500`}>Bayar</Text>
+          </View>
         </Pressable>
       </View>
     </View>

@@ -2,8 +2,12 @@ import React from "react";
 import PilihMenuPromo from "../../component/promo/PilihMenu";
 import PilihMenuSwitch from "../../component/promo/PilihMenuSwitch";
 import { BackHandlerPilihMenu } from "../../component/promo/BackHandler";
-import { View } from "react-native";
+import { View, Image } from "react-native";
 import tw from "../../lib/tailwind";
+import { Navigation } from "react-native-navigation";
+
+const MemoizePilihMenuSwitch = React.memo(PilihMenuSwitch);
+const MemoizePilihMenuPromo = React.memo(PilihMenuPromo);
 
 const MenuCategory = [
   {
@@ -174,11 +178,59 @@ const PilihMenu = ({ componentId }) => {
   const menuRef = React.useRef(0);
   const [menu, setMenu] = React.useState(0);
 
+  const [appIsReady, setAppIsReady] = React.useState(false);
+
+  React.useEffect(() => {
+    async function prepare() {
+      try {
+        await new Promise((resolve) => setTimeout(resolve, 500));
+      } catch (e) {
+        console.warn(e);
+      } finally {
+        setAppIsReady(true);
+      }
+    }
+    prepare();
+  }, []);
+
+  React.useEffect(() => {
+    const unsubscribe = Navigation.events().registerComponentListener(
+      {
+        componentWillAppear: () => {
+          setAppIsReady(true);
+          console.log("berada dihalaman menunggu render");
+        },
+        componentDidAppear: () => {
+          console.log(`componentDidAppear ${componentId}`);
+        },
+        componentDidDisappear: () => {
+          setAppIsReady(false);
+          console.log(`componentDidDisappear ${componentId}`);
+        },
+      },
+      componentId
+    );
+    return () => unsubscribe.remove();
+  }, [componentId]);
+
+  if (!appIsReady) {
+    return (
+      <View
+        style={tw`w-full bg-white h-full flex-row items-center justify-center`}
+      >
+        <Image
+          source={require("./../../assets/gif/alamerch.gif")}
+          style={{ width: 100, height: 100 }}
+        />
+      </View>
+    );
+  }
+
   return (
     <>
       <View style={tw`h-full flex-row`}>
         <View style={[{ flex: 0.25 }, tw`w-full h-full`]}>
-          <PilihMenuSwitch
+          <MemoizePilihMenuSwitch
             MenuCategory={MenuCategory}
             menuRef={menuRef}
             menu={menu}
@@ -186,10 +238,9 @@ const PilihMenu = ({ componentId }) => {
           />
         </View>
         <View style={[{ flex: 1 }, tw`w-full h-full `]}>
-          <PilihMenuPromo
+          <MemoizePilihMenuPromo
             MenuCategory={MenuCategory}
             menuRef={menuRef}
-            menu={menu}
             setMenu={setMenu}
           />
         </View>

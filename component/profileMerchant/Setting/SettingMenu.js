@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, ScrollView, Pressable } from "react-native";
+import { View, Text, Pressable } from "react-native";
 import tw from "../../../lib/tailwind";
 import { PushRoute } from "../../../lib/ctx";
 import {

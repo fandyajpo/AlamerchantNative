@@ -2,7 +2,7 @@ import React from "react";
 import { View, ScrollView } from "react-native";
 import { BackHandlerFeedSetting } from "../../component/feed/BackHandler";
 import tw from "../../lib/tailwind";
-import FeedSetting from "../../component/feed/Setting/Setting";
+import FeedSetting from "../../component/feed/Setting";
 
 const FeedSettings = ({ componentId }) => {
   const sheetRef = React.useRef(null);

@@ -2,10 +2,15 @@ import React from "react";
 import { View, Text, Pressable } from "react-native";
 import tw from "../../lib/tailwind";
 import { Back } from "../../lib/listSvg";
-import { BackRoute } from "../../lib/ctx";
+import { BackRoute, PushRoute } from "../../lib/ctx";
 import { Keyboard } from "react-native";
+import ActionSheet, {
+  SheetManager,
+  SheetProps,
+  registerSheet,
+} from "react-native-actions-sheet";
 
-const BackHandlerTaxAndService = React.memo(({ componentId }) => {
+export const BackHandlerTaxAndService = React.memo(({ componentId }) => {
   const [keyboardShow, setKeyboardShow] = React.useState(false);
 
   React.useEffect(() => {
@@ -38,7 +43,7 @@ const BackHandlerTaxAndService = React.memo(({ componentId }) => {
 
   return (
     <View
-      style={tw`absolute bottom-0 w-full h-32 bg-mgray/20 p-4 z-50 border-t-2 border-l border-r border-gray-300 rounded-xl`}
+      style={tw`absolute bottom-0 w-full h-32 bg-white p-4 z-50 border-t-2 border-l border-r border-gray-300 rounded-xl`}
     >
       <View style={tw`flex-row items-center justify-between w-full`}>
         <Pressable style={tw`w-2/6 shadow-xl`} onPress={backKey}>
@@ -65,7 +70,7 @@ const BackHandlerTaxAndService = React.memo(({ componentId }) => {
   );
 });
 
-const BackHandlerEditProfile = React.memo(({ componentId, title }) => {
+export const BackHandlerEditProfile = React.memo(({ componentId, title }) => {
   const [keyboardShow, setKeyboardShow] = React.useState(false);
 
   React.useEffect(() => {
@@ -125,7 +130,7 @@ const BackHandlerEditProfile = React.memo(({ componentId, title }) => {
   );
 });
 
-const BackHandlerPrinter = React.memo(({ componentId, printerRef }) => {
+export const BackHandlerPrinter = React.memo(({ componentId, printerRef }) => {
   const [keyboardShow, setKeyboardShow] = React.useState(false);
 
   React.useEffect(() => {
@@ -158,7 +163,7 @@ const BackHandlerPrinter = React.memo(({ componentId, printerRef }) => {
 
   return (
     <View
-      style={tw`absolute bottom-0 w-full h-32 bg-mgray/20 p-4 z-50 border-t-2 border-l border-r border-gray-300 rounded-xl`}
+      style={tw`absolute bottom-0 w-full h-32 bg-white p-4 z-50 border-t-2 border-l border-r border-gray-300 rounded-xl`}
     >
       <View style={tw`flex-row items-center justify-between w-full`}>
         <Pressable style={tw`w-2/6 shadow-xl`} onPress={backKey}>
@@ -187,7 +192,7 @@ const BackHandlerPrinter = React.memo(({ componentId, printerRef }) => {
   );
 });
 
-const BackHandlerSetting = React.memo(({ componentId }) => {
+export const BackHandlerSetting = React.memo(({ componentId }) => {
   const [keyboardShow, setKeyboardShow] = React.useState(false);
 
   React.useEffect(() => {
@@ -220,7 +225,7 @@ const BackHandlerSetting = React.memo(({ componentId }) => {
 
   return (
     <View
-      style={tw`absolute bottom-0 w-full h-32 bg-mgray/20 p-4 z-50 border-t-2 border-l border-r border-gray-300 rounded-xl`}
+      style={tw`absolute bottom-0 w-full h-32 bg-white p-4 z-50 border-t-2 border-l border-r border-gray-300 rounded-xl`}
     >
       <View style={tw`flex-row items-center justify-between w-full`}>
         <Pressable style={tw`w-2/6 shadow-xl`} onPress={backKey}>
@@ -236,7 +241,7 @@ const BackHandlerSetting = React.memo(({ componentId }) => {
   );
 });
 
-const BackHandlerDebitBank = React.memo(({ componentId }) => {
+export const BackHandlerDebitBank = React.memo(({ componentId }) => {
   const [keyboardShow, setKeyboardShow] = React.useState(false);
 
   React.useEffect(() => {
@@ -269,7 +274,7 @@ const BackHandlerDebitBank = React.memo(({ componentId }) => {
 
   return (
     <View
-      style={tw`absolute bottom-0 w-full h-32 bg-mgray/20 p-4 z-50 border-t-2 border-l border-r border-gray-300 rounded-xl`}
+      style={tw`absolute bottom-0 w-full h-32 bg-white p-4 z-50 border-t-2 border-l border-r border-gray-300 rounded-xl`}
     >
       <View style={tw`flex-row items-center justify-between w-full`}>
         <Pressable style={tw`w-2/6 shadow-xl`} onPress={backKey}>
@@ -296,7 +301,7 @@ const BackHandlerDebitBank = React.memo(({ componentId }) => {
   );
 });
 
-const BackHandlerLanguage = React.memo(({ componentId }) => {
+export const BackHandlerLanguage = React.memo(({ componentId }) => {
   const [keyboardShow, setKeyboardShow] = React.useState(false);
 
   React.useEffect(() => {
@@ -329,7 +334,7 @@ const BackHandlerLanguage = React.memo(({ componentId }) => {
 
   return (
     <View
-      style={tw`absolute bottom-0 w-full h-32 bg-mgray/20 p-4 z-50 border-t-2 border-l border-r border-gray-300 rounded-xl`}
+      style={tw`absolute bottom-0 w-full h-32 bg-white p-4 z-50 border-t-2 border-l border-r border-gray-300 rounded-xl`}
     >
       <View style={tw`flex-row items-center justify-between w-full`}>
         <Pressable style={tw`w-2/6 shadow-xl`} onPress={backKey}>
@@ -345,7 +350,7 @@ const BackHandlerLanguage = React.memo(({ componentId }) => {
   );
 });
 
-const BackHandlerBiayaTakeaway = React.memo(({ componentId }) => {
+export const BackHandlerBiayaTakeaway = React.memo(({ componentId }) => {
   const [keyboardShow, setKeyboardShow] = React.useState(false);
 
   React.useEffect(() => {
@@ -378,7 +383,7 @@ const BackHandlerBiayaTakeaway = React.memo(({ componentId }) => {
 
   return (
     <View
-      style={tw`absolute bottom-0 w-full h-32 bg-mgray/20 p-4 z-50 border-t-2 border-l border-r border-gray-300 rounded-xl`}
+      style={tw`absolute bottom-0 w-full h-32 bg-white p-4 z-50 border-t-2 border-l border-r border-gray-300 rounded-xl`}
     >
       <View style={tw`flex-row items-center justify-between w-full`}>
         <Pressable style={tw`w-2/6 shadow-xl`} onPress={backKey}>
@@ -407,7 +412,7 @@ const BackHandlerBiayaTakeaway = React.memo(({ componentId }) => {
   );
 });
 
-const BackHandlerAddPrinter = React.memo(({ componentId }) => {
+export const BackHandlerAddPrinter = React.memo(({ componentId }) => {
   const [keyboardShow, setKeyboardShow] = React.useState(false);
 
   React.useEffect(() => {
@@ -440,7 +445,7 @@ const BackHandlerAddPrinter = React.memo(({ componentId }) => {
 
   return (
     <View
-      style={tw`absolute bottom-0 w-full h-32 bg-mgray/20 p-4 z-50 border-t-2 border-l border-r border-gray-300 rounded-xl`}
+      style={tw`absolute bottom-0 w-full h-32 bg-white p-4 z-50 border-t-2 border-l border-r border-gray-300 rounded-xl`}
     >
       <View style={tw`flex-row items-center justify-between w-full`}>
         <Pressable style={tw`w-2/6 shadow-xl`} onPress={backKey}>
@@ -456,7 +461,7 @@ const BackHandlerAddPrinter = React.memo(({ componentId }) => {
   );
 });
 
-const BackHandlerMenuDanStock = React.memo(({ componentId }) => {
+export const BackHandlerMenuDanStock = React.memo(({ componentId }) => {
   return (
     <View
       style={tw`absolute bg-white bottom-0 w-full h-44 p-4 z-50 border-t-2 border-l border-r border-gray-300 rounded-xl`}
@@ -478,10 +483,10 @@ const BackHandlerMenuDanStock = React.memo(({ componentId }) => {
   );
 });
 
-const BackHandlerPrivilage = React.memo(({ componentId }) => {
+export const BackHandlerPrivilage = React.memo(({ componentId }) => {
   return (
     <View
-      style={tw`absolute bottom-0 w-full h-32 bg-mgray/20 p-4 z-50 border-t-2 border-l border-r border-gray-300 rounded-xl`}
+      style={tw`absolute bottom-0 w-full h-32 bg-white p-4 z-50 border-t-2 border-l border-r border-gray-300 rounded-xl`}
     >
       <View style={tw`flex-row items-center justify-between w-full`}>
         <Pressable
@@ -513,10 +518,10 @@ const BackHandlerPrivilage = React.memo(({ componentId }) => {
   );
 });
 
-const BackHandlerPilihCabang = React.memo(({ componentId }) => {
+export const BackHandlerPilihCabang = React.memo(({ componentId }) => {
   return (
     <View
-      style={tw`absolute bottom-0 w-full h-32 bg-mgray/20 p-4 z-50 border-t-2 border-l border-r border-gray-300 rounded-xl`}
+      style={tw`absolute bottom-0 w-full h-32 bg-white p-4 z-50 border-t-2 border-l border-r border-gray-300 rounded-xl`}
     >
       <View style={tw`flex-row items-center justify-between w-full`}>
         <Pressable
@@ -546,16 +551,117 @@ const BackHandlerPilihCabang = React.memo(({ componentId }) => {
   );
 });
 
-module.exports = {
-  BackHandlerTaxAndService,
-  BackHandlerEditProfile,
-  BackHandlerPrinter,
-  BackHandlerSetting,
-  BackHandlerDebitBank,
-  BackHandlerLanguage,
-  BackHandlerBiayaTakeaway,
-  BackHandlerAddPrinter,
-  BackHandlerMenuDanStock,
-  BackHandlerPrivilage,
-  BackHandlerPilihCabang,
-};
+export const BackHandlerCategoryMenu = React.memo(({ componentId }) => {
+  return (
+    <View
+      style={tw`absolute bottom-0 w-full h-44 bg-mgray p-4 z-50 border-t-2 border-l border-r border-gray-300 rounded-xl`}
+    >
+      <View style={tw`flex-row items-center justify-between w-full mb-4 `}>
+        <Pressable
+          style={tw`w-2/6 shadow-xl`}
+          onPress={() => BackRoute(componentId)}
+        >
+          <Back />
+        </Pressable>
+        <View style={tw`w-2/6 h-8 flex items-center justify-center`}>
+          <Text style={tw`text-gray-800 text-sm sm:text-lg font-bold`}>
+            Detail Pesanan
+          </Text>
+          <View style={tw`w-full h-0.5 rounded-full bg-myellow`} />
+        </View>
+        <View style={tw`w-2/6 shadow-xl flex items-end`}></View>
+      </View>
+      <View style={tw`flex-row items-center justify-between pr-4`}>
+        <Pressable
+          activeOpacity={0.5}
+          style={tw`w-2/4`}
+          onPress={() => BackRoute(componentId)}
+        >
+          <View
+            style={tw`w-full bg-yellow-500/20 h-10 sm:h-12 rounded-full flex items-center justify-center`}
+          >
+            <Text style={tw`text-sm font-bold text-yellow-500`}>Urutkan</Text>
+          </View>
+        </Pressable>
+        <View style={tw`w-4`} />
+        <Pressable
+          activeOpacity={0.5}
+          style={tw`w-2/4`}
+          onPress={() => PushRoute(componentId, "AddCategory")}
+        >
+          <View
+            style={tw`w-full bg-green-500/20 h-10 sm:h-12 rounded-full flex items-center justify-center`}
+          >
+            <Text style={tw`text-sm font-bold text-green-500`}>
+              Tambah Kategory
+            </Text>
+          </View>
+        </Pressable>
+      </View>
+    </View>
+  );
+});
+
+export const BackHandlerAddCategory = React.memo(({ componentId }) => {
+  const [keyboardShow, setKeyboardShow] = React.useState(false);
+
+  React.useEffect(() => {
+    console.log("keyboard printer render");
+  });
+
+  React.useEffect(() => {
+    const keyboardDidShowListener = Keyboard.addListener(
+      "keyboardDidShow",
+      () => {
+        setKeyboardShow(true);
+      }
+    );
+    const keyboardDidHideListener = Keyboard.addListener(
+      "keyboardDidHide",
+      () => {
+        setKeyboardShow(false);
+      }
+    );
+
+    return () => {
+      keyboardDidHideListener.remove();
+      keyboardDidShowListener.remove();
+    };
+  }, []);
+
+  const backKey = React.useCallback(() => {
+    keyboardShow ? Keyboard.dismiss() : BackRoute(componentId);
+  });
+  return (
+    <View
+      style={tw`absolute bottom-0 w-full h-44 bg-white p-4 z-50 border-t-2 border-l border-r border-gray-300 rounded-xl`}
+    >
+      <View style={tw`flex-row items-center justify-between w-full`}>
+        <Pressable
+          style={tw`w-2/6 shadow-xl`}
+          onPress={() => SheetManager.show("cancelAddCategory")}
+        >
+          <Back />
+        </Pressable>
+        <View style={tw`w-2/6 h-8 flex items-center justify-center`}>
+          <Text style={tw`text-gray-800 text-sm sm:text-lg font-bold`}>
+            Tambah Kategori
+          </Text>
+          <View style={tw`w-full h-0.5 rounded-full bg-myellow`} />
+        </View>
+        <View style={tw`w-2/6`} />
+      </View>
+      <Pressable
+        activeOpacity={0.5}
+        style={tw`mt-3 shadow-xl`}
+        onPress={() => BackRoute(componentId)}
+      >
+        <View
+          style={tw`w-full bg-myellow h-10 sm:h-12 rounded-full flex items-center justify-center`}
+        >
+          <Text style={tw`text-sm font-bold`}>Simpan</Text>
+        </View>
+      </Pressable>
+    </View>
+  );
+});

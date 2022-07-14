@@ -19,8 +19,6 @@ const DiskonMenu = ({ componentId }) => {
         Display dan Harga Setelah Diskon
       </Text>
       <View>
-        {/* PAtokan */}
-
         <View style={tw`bg-mgray rounded-t-xl border border-gray-300`}>
           <Text style={tw`text-gray-800 text-sm font-bold px-2 py-1`}>
             5 menu terpilih

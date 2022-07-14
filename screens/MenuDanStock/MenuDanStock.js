@@ -11,7 +11,7 @@ const MenuDanStockScreen = ({ componentId }) => {
         horizontal={false}
         scrollEnabled={true}
       >
-        <MenuDanStock />
+        <MenuDanStock componentId={componentId} />
       </ScrollView>
       <BackHandlerMenuDanStock componentId={componentId} />
     </View>

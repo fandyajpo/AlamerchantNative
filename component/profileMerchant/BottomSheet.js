@@ -10,7 +10,7 @@ import { RightDropdown } from "../../lib/listSvg";
 import { PushRoute } from "../../lib/ctx";
 import DatePicker from "react-native-modern-datepicker";
 
-const TaggingSheet = React.memo(({ id, editProfileRef }) => {
+export const TaggingSheet = React.memo(({ id, editProfileRef }) => {
   return (
     <View style={tw`absolute bottom-0`}>
       <ActionSheet
@@ -61,7 +61,7 @@ const TaggingSheet = React.memo(({ id, editProfileRef }) => {
   );
 });
 
-const EditMerchantProfileSheet = React.memo(
+export const EditMerchantProfileSheet = React.memo(
   ({ id, profileSheetRef, componentId }) => {
     return (
       <View style={tw`absolute bottom-0`}>
@@ -204,7 +204,7 @@ const EditMerchantProfileSheet = React.memo(
   }
 );
 
-const JamOperasionalSheet = React.memo(({ id, editJamRef }) => {
+export const JamOperasionalSheet = React.memo(({ id, editJamRef }) => {
   const [time, setTime] = React.useState("");
   return (
     <View style={tw`absolute bottom-0`}>
@@ -279,7 +279,7 @@ const JamOperasionalSheet = React.memo(({ id, editJamRef }) => {
   );
 });
 
-const PrinterSheet = React.memo(({ id, printerRef, componentId }) => {
+export const PrinterSheet = React.memo(({ id, printerRef, componentId }) => {
   const CallbackPush = React.useCallback((route) => {
     PushRoute(componentId, route);
     printerRef.current.hide();
@@ -355,7 +355,7 @@ const PrinterSheet = React.memo(({ id, printerRef, componentId }) => {
   );
 });
 
-const LogoutSheet = React.memo(({ id, logoutRef }) => {
+export const LogoutSheet = React.memo(({ id, logoutRef }) => {
   return (
     <View style={tw`absolute bottom-0`}>
       <ActionSheet
@@ -400,7 +400,7 @@ const LogoutSheet = React.memo(({ id, logoutRef }) => {
   );
 });
 
-const LanguageSheet = React.memo(({ id, langRef, lang, setLang }) => {
+export const LanguageSheet = React.memo(({ id, langRef, lang, setLang }) => {
   return (
     <View style={tw`absolute bottom-0`}>
       <ActionSheet
@@ -457,18 +457,60 @@ const LanguageSheet = React.memo(({ id, langRef, lang, setLang }) => {
   );
 });
 
+export const CancelAddCategory = React.memo(({ id }) => {
+  const CancelAdd = () => {
+    new Promise.all([]);
+  };
+
+  return (
+    <View style={tw`absolute bottom-0`}>
+      <ActionSheet
+        bounciness={5}
+        closeAnimationDuration={200}
+        indicatorColor={"blue"}
+        delayActionSheetDrawTime={0}
+        CustomHeaderComponent={
+          <View style={tw`flex-col p-4`}>
+            <Text style={tw`text-gray-800 font-bold text-lg`}>
+              Tambah Kategori
+            </Text>
+            <Text style={tw`text-gray-300`}>
+              Kategori yang tadi Anda buat gak jadi disimpan.
+            </Text>
+          </View>
+        }
+        delayActionSheetDraw={0}
+        id={id}
+        bounceOnOpen={true}
+        gestureEnabled={true}
+        springOffset={100}
+      >
+        <View style={tw`h-auto`}>
+          <View style={tw`p-4 flex-row justify-center`}>
+            <Pressable
+              // onPress={() => logoutRef.current.hide()}
+              style={tw`w-2/4 bg-myellow  h-10 sm:h-12 rounded-full items-center justify-center `}
+            >
+              <Text style={tw`text-white text-sm font-bold`}>Kembali</Text>
+            </Pressable>
+            <View style={tw`w-2`} />
+            <Pressable
+              onPress={() => SheetManager.hide()}
+              style={tw`w-2/4 bg-mgray h-10 sm:h-12 rounded-full items-center justify-center `}
+            >
+              <Text style={tw`text-myellow text-sm font-bold`}>Ok</Text>
+            </Pressable>
+          </View>
+        </View>
+      </ActionSheet>
+    </View>
+  );
+});
+
 registerSheet("taggingSheet", TaggingSheet);
 registerSheet("editProfileSheet", EditMerchantProfileSheet);
 registerSheet("jamOperasionalSheet", JamOperasionalSheet);
 registerSheet("printerSheet", PrinterSheet);
 registerSheet("logoutSheet", LogoutSheet);
 registerSheet("languageSheet", LanguageSheet);
-
-module.exports = {
-  TaggingSheet,
-  EditMerchantProfileSheet,
-  JamOperasionalSheet,
-  PrinterSheet,
-  LogoutSheet,
-  LanguageSheet,
-};
+registerSheet("cancenlAddCategory", CancelAddCategory);

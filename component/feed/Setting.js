@@ -1,8 +1,8 @@
 import React from "react";
 import { View, Text, Pressable } from "react-native";
-import tw from "../../../lib/tailwind";
-import { BlockArrow } from "../../../lib/listSvg";
-import { PushRoute } from "../../../lib/ctx";
+import tw from "../../lib/tailwind";
+import { BlockArrow } from "../../lib/listSvg";
+import { PushRoute } from "../../lib/ctx";
 const FeedSetting = ({ componentId }) => {
   const [status, setStatus] = React.useState({
     comment: false,

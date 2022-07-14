@@ -66,10 +66,36 @@ import BlockUserListScreen from "./screens/Feed/BlockUserList";
 
 //MENU DAN STOCK SCREEN
 import MenuDanStockScreen from "./screens/MenuDanStock/MenuDanStock";
+import CategoryListScreen from "./screens/MenuDanStock/KategoriDanMenu.js/CategoryList";
+import AddCategoryScreen from "./screens/MenuDanStock/KategoriDanMenu.js/AddCategory";
 
 //PRIVILAGE GROUP SCREEN
 import PrivilageScreen from "./screens/Privilage/Privilage";
 import PilihCabangScreen from "./screens/Privilage/PilihCabang";
+
+Navigation.registerComponent(
+  "AddCategory",
+  () => (props) =>
+    (
+      <SheetProvider>
+        <GlobalProvider>
+          <AddCategoryScreen {...props} />
+        </GlobalProvider>
+      </SheetProvider>
+    ),
+  () => AddCategoryScreen
+);
+
+Navigation.registerComponent(
+  "CategoryList",
+  () => (props) =>
+    (
+      <GlobalProvider>
+        <CategoryListScreen {...props} />
+      </GlobalProvider>
+    ),
+  () => CategoryListScreen
+);
 
 Navigation.registerComponent(
   "DiskonMenu",

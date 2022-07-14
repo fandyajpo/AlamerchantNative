@@ -48,9 +48,9 @@ const order = [
 const OrderDetail = ({ componentId }) => {
   const sheetRef = React.useRef(null);
   return (
-    <View style={tw`bg-white`}>
+    <View style={tw`bg-white pt-13`}>
       <ScrollView
-        style={tw`mt-13 w-full mb-44`}
+        contentContainerStyle={tw`w-full pb-50`}
         showsVerticalScrollIndicator={false}
         renderToHardwareTextureAndroid={true}
         shouldRasterizeIOS={true}

@@ -1,5 +1,5 @@
 import React from "react";
-import { View, ScrollView, Text } from "react-native";
+import { View, ScrollView, Image } from "react-native";
 
 import { BackHandlerPromoAlacarte } from "../../../component/promo/BackHandler";
 import { DiskonMinimumTransaksi } from "../../../component/promo/BottomSheet";
@@ -21,17 +21,17 @@ const PromoAlacarte = ({ componentId }) => {
         setAppIsReady(true);
       }
     }
-
     prepare();
   }, []);
 
   React.useEffect(() => {
     const unsubscribe = Navigation.events().registerComponentListener(
       {
-        componentWillAppear: () =>
-          console.log("berada dihalaman menunggu render"),
-        componentDidAppear: () => {
+        componentWillAppear: () => {
           setAppIsReady(true);
+          console.log("berada dihalaman menunggu render");
+        },
+        componentDidAppear: () => {
           console.log(`componentDidAppear ${componentId}`);
         },
         componentDidDisappear: () => {
@@ -46,8 +46,13 @@ const PromoAlacarte = ({ componentId }) => {
 
   if (!appIsReady) {
     return (
-      <View style={tw`w-full h-full flex-row items-center justify-center`}>
-        <Text style={tw`text-gray-800`}>Test</Text>
+      <View
+        style={tw`w-full bg-white h-full flex-row items-center justify-center`}
+      >
+        <Image
+          source={require("./../../../assets/gif/alamerch.gif")}
+          style={{ width: 100, height: 100 }}
+        />
       </View>
     );
   }

@@ -185,9 +185,7 @@ const PromoAlacarte = ({ componentId }) => {
             <Text style={tw`text-base text-gray-800 font-bold`}>
               Banner Slider
             </Text>
-            <Text
-              style={tw`text-[13px] text-gray-800 font-light w-44 sm:w-full`}
-            >
+            <Text style={tw`text-[13px] text-gray-800 font-light w-44 sm:w-64`}>
               Pasang promo outlet Anda di halaman utama Ala Carte.
             </Text>
           </View>

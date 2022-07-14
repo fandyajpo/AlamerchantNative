@@ -18,7 +18,6 @@ const PromoAlacarte = ({ componentId }) => {
         setAppIsReady(true);
       }
     }
-
     prepare();
   }, []);
 
@@ -44,7 +43,7 @@ const PromoAlacarte = ({ componentId }) => {
   if (!appIsReady) {
     return (
       <View style={tw`w-full h-full flex-row items-center justify-center`}>
-        <Text style={tw`text-gray-800`}>Test</Text>
+        <Text style={tw`text-gray-800`}>dkmskfns</Text>
       </View>
     );
   }
