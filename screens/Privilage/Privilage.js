@@ -1,10 +1,10 @@
 import React from "react";
 
-import { View, ScrollView, StatusBar } from "react-native";
-import { BackHandlerPrivilage } from "../../component/profileMerchant/BackHandler";
+import { View, ScrollView } from "react-native";
+import { BackHandlerPrivilage } from "../../component/Privilage/BackHandler";
 import tw from "../../lib/tailwind";
-import Privilage from "../../component/profileMerchant/Privilage/UserList";
-import Header from "../../component/profileMerchant/Privilage/Header";
+import Privilage from "../../component/Privilage/UserList";
+import Header from "../../component/Privilage/Header";
 const PrivilageScreen = ({ componentId }) => {
   return (
     <View style={tw`pt-10 w-full h-full pb-32 bg-white`}>

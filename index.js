@@ -72,11 +72,23 @@ import AddCategoryScreen from "./screens/MenuDanStock/KategoriDanMenu.js/AddCate
 //PRIVILAGE GROUP SCREEN
 import PrivilageScreen from "./screens/Privilage/Privilage";
 import PilihCabangScreen from "./screens/Privilage/PilihCabang";
+import TambahAkunPrivilageScreen from "./screens/Privilage/TambahAkunPrivilage";
 
 //AUTH GROUP SCREEN
 import OtpScreen from "./screens/Auth/Otp";
 import ConfirmPinScreen from "./screens/Auth/ConfirmPin";
 import DaftarOutletScreen from "./screens/Auth/Daftar";
+
+Navigation.registerComponent(
+  "TambahAKunPrivilage",
+  () => (props) =>
+    (
+      <GlobalProvider>
+        <TambahAkunPrivilageScreen {...props} />
+      </GlobalProvider>
+    ),
+  () => TambahAkunPrivilageScreen
+);
 
 Navigation.registerComponent(
   "DaftarOutlet",
@@ -925,5 +937,7 @@ function isLoggedIn(vals) {
 }
 
 Navigation.events().registerAppLaunchedListener(() => {
+  //set token at ./Auth/login.js
+
   Navigation.setRoot(isLoggedIn() ? mainRoot : enterApp);
 });

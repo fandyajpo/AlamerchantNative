@@ -2,8 +2,6 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import PagerView from "react-native-pager-view";
 import InputInformasiPemilik from "./InputInformasiPemilik";
-import InputInformasiOutlet from "./InputInformasiOutlet";
-import InputAlamatOutlet from "./InputAlamatOutlet";
 
 const MemoizeInputInformasiPemilik = React.memo(InputInformasiPemilik);
 const MemoizeInputInformasiOutlet = React.memo(InputInformasiOutlet);
@@ -27,12 +25,8 @@ const DaftarPage = ({ ourRef, daftar }) => {
       <View>
         <MemoizeInputInformasiPemilik />
       </View>
-      <View>
-        <MemoizeInputInformasiOutlet />
-      </View>
-      <View>
-        <MemoizeInputAlamatOutlet />
-      </View>
+      <View style={tw`bg-gray-400 w-full h-full`}></View>
+      <View style={tw`bg-gray-500 w-full h-full`}></View>
     </PagerView>
   );
 };
