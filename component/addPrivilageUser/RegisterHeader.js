@@ -10,7 +10,7 @@ import {
 const DaftarHeader = ({ daftar, setDaftar }) => {
   return (
     <View
-      style={tw`bg-mgray w-full h-28 flex-col items-center justify-between rounded-b-xl absolute top-0 px-4 pt-8 pb-4`}
+      style={tw`bg-mgray w-full h-28 flex-col items-center justify-between rounded-b-xl absolute top-0 px-4 pt-10 pb-4`}
     >
       <View style={tw`flex items-start w-full`}>
         {daftar === 0 ? (
