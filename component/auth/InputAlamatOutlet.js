@@ -8,8 +8,11 @@ import { OpenMap } from "../../lib/listSvg";
 const UpdateAlamat = ({ componentId }) => {
   const editProfileRef = React.useRef(null);
   return (
-    <View style={tw`w-full h-full bg-white pt-24`}>
-      <ScrollView style={tw`mb-32`}>
+    <View style={tw`w-full h-full bg-white pt-28`}>
+      <ScrollView
+        contentContainerStyle={tw`pb-32`}
+        showsVerticalScrollIndicator={false}
+      >
         <View style={tw`p-2`}>
           <Text style={tw`text-gray-800 font-bold text-sm`}>
             Alamat Lengkap

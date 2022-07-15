@@ -1,12 +1,10 @@
 import React from "react";
 import { View, Text, ScrollView, TextInput, Pressable } from "react-native";
 import { BackHandlerEditProfile } from "../../component/profileMerchant/BackHandler";
-import { TaggingSheet } from "../../component/profileMerchant/BottomSheet";
 import tw from "../../lib/tailwind";
 import { OpenMap } from "../../lib/listSvg";
 
 const UpdateAlamat = ({ componentId }) => {
-  const editProfileRef = React.useRef(null);
   return (
     <View style={tw`w-full h-full bg-white pt-13`}>
       <ScrollView style={tw`mb-32`}>
@@ -49,7 +47,6 @@ const UpdateAlamat = ({ componentId }) => {
           </View>
         </View>
       </ScrollView>
-      <TaggingSheet editProfileRef={editProfileRef} />
       <BackHandlerEditProfile componentId={componentId} title={"Edit Alamat"} />
     </View>
   );
@@ -108,4 +105,4 @@ UpdateAlamat.options = {
   },
 };
 
-export default React.memo(UpdateAlamat);
+export default UpdateAlamat;

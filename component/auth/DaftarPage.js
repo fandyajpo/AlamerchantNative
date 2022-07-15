@@ -1,21 +1,37 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View } from "react-native";
 import PagerView from "react-native-pager-view";
-import tw from "../../lib/tailwind";
 import InputInformasiPemilik from "./InputInformasiPemilik";
 import InputInformasiOutlet from "./InputInformasiOutlet";
 import InputAlamatOutlet from "./InputAlamatOutlet";
-const DaftarPage = ({ ourRef }) => {
+
+const MemoizeInputInformasiPemilik = React.memo(InputInformasiPemilik);
+const MemoizeInputInformasiOutlet = React.memo(InputInformasiOutlet);
+const MemoizeInputAlamatOutlet = React.memo(InputAlamatOutlet);
+
+const DaftarPage = ({ ourRef, daftar }) => {
+  const onPageSelected = React.useCallback(
+    (e) => {
+      ourRef.current.setPage(daftar);
+    },
+    [daftar]
+  );
+
   return (
-    <PagerView style={styles.pagerView} initialPage={0}>
-      <View key="1">
-        <InputInformasiPemilik />
+    <PagerView
+      style={styles.pagerView}
+      initialPage={0}
+      ref={ourRef}
+      onPageSelected={onPageSelected}
+    >
+      <View>
+        <MemoizeInputInformasiPemilik />
       </View>
-      <View key="2">
-        <InputInformasiOutlet ourRef={ourRef} />
+      <View>
+        <MemoizeInputInformasiOutlet />
       </View>
-      <View key="3">
-        <InputAlamatOutlet />
+      <View>
+        <MemoizeInputAlamatOutlet />
       </View>
     </PagerView>
   );

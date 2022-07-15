@@ -10,7 +10,7 @@ import { RightDropdown } from "../../lib/listSvg";
 import { PushRoute, BackRoute } from "../../lib/ctx";
 import DatePicker from "react-native-modern-datepicker";
 
-export const AddTaggingSheet = React.memo(({ id, ourRef }) => {
+export const AddTaggingSheet = React.memo(({ id }) => {
   return (
     <View style={tw`absolute bottom-0`}>
       <ActionSheet
@@ -28,7 +28,7 @@ export const AddTaggingSheet = React.memo(({ id, ourRef }) => {
         delayActionSheetDraw={0}
         id={id}
         bounceOnOpen={true}
-        ref={ourRef}
+        // ref={ourRef}
         gestureEnabled={true}
         springOffset={100}
       >
@@ -42,14 +42,14 @@ export const AddTaggingSheet = React.memo(({ id, ourRef }) => {
 
           <View style={tw`pt-4 pl-4 pr-4 pb-12 flex-row justify-center`}>
             <Pressable
-              onPress={() => ourRef.current.hide()}
+              // onPress={() => ourRef.current.hide()}
               style={tw`w-2/4 bg-myellow h-13 rounded-full items-center justify-center `}
             >
               <Text style={tw`text-white text-sm font-bold`}>Kembali</Text>
             </Pressable>
             <View style={tw`w-2`} />
             <Pressable
-              onPress={() => ourRef.current.hide()}
+              // onPress={() => ourRef.current.hide()}
               style={tw`w-2/4 bg-mgray h-13 rounded-full items-center justify-center `}
             >
               <Text style={tw`text-myellow text-sm font-bold`}>Ok</Text>

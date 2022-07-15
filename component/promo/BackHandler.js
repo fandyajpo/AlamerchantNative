@@ -3,7 +3,7 @@ import tw from "../../lib/tailwind";
 import { BackRoute, PushRoute } from "../../lib/ctx";
 import { View, Text, Pressable, Keyboard } from "react-native";
 import { Back, Search } from "../../lib/listSvg";
-const BackHandlerPromoAlacarte = React.memo(({ componentId }) => {
+export const BackHandlerPromoAlacarte = React.memo(({ componentId }) => {
   return (
     <View
       style={tw`absolute bg-white bottom-0 w-full h-44 p-4 z-50 border-t-2 border-l border-r border-gray-300 rounded-xl`}
@@ -24,7 +24,7 @@ const BackHandlerPromoAlacarte = React.memo(({ componentId }) => {
   );
 });
 
-const BackHandlerPilihMenu = React.memo(({ componentId }) => {
+export const BackHandlerPilihMenu = React.memo(({ componentId }) => {
   return (
     <View
       style={tw`absolute bg-white bottom-0 w-full h-32 p-4 z-50 border-t-2 border-l border-r border-gray-300 rounded-xl`}
@@ -58,7 +58,7 @@ const BackHandlerPilihMenu = React.memo(({ componentId }) => {
   );
 });
 
-const BackHandlerDiskonMenu = React.memo(({ componentId }) => {
+export const BackHandlerDiskonMenu = React.memo(({ componentId }) => {
   const [keyboardShow, setKeyboardShow] = React.useState(false);
 
   React.useEffect(() => {
@@ -120,9 +120,3 @@ const BackHandlerDiskonMenu = React.memo(({ componentId }) => {
     </View>
   );
 });
-
-module.exports = {
-  BackHandlerPromoAlacarte,
-  BackHandlerPilihMenu,
-  BackHandlerDiskonMenu,
-};

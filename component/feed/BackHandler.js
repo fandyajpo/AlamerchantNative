@@ -3,7 +3,7 @@ import { View, Text, Pressable } from "react-native";
 import tw from "../../lib/tailwind";
 import { Back } from "../../lib/listSvg";
 import { BackRoute } from "../../lib/ctx";
-const BackHandlerActivity = React.memo(({ componentId }) => {
+export const BackHandlerActivity = React.memo(({ componentId }) => {
   return (
     <View
       style={tw`absolute bg-white bottom-0 w-full h-44 p-4 z-50 border-t-2 border-l border-r border-gray-300 rounded-xl`}
@@ -25,7 +25,7 @@ const BackHandlerActivity = React.memo(({ componentId }) => {
   );
 });
 
-const BackHandlerFeedSetting = React.memo(({ componentId }) => {
+export const BackHandlerFeedSetting = React.memo(({ componentId }) => {
   return (
     <View
       style={tw`absolute bg-white bottom-0 w-full h-44 p-4 z-50 border-t-2 border-l border-r border-gray-300 rounded-xl`}
@@ -47,7 +47,7 @@ const BackHandlerFeedSetting = React.memo(({ componentId }) => {
   );
 });
 
-const BackHandlerBlockUser = React.memo(({ componentId }) => {
+export const BackHandlerBlockUser = React.memo(({ componentId }) => {
   return (
     <View
       style={tw`absolute bg-white bottom-0 w-full h-44 p-4 z-50 border-t-2 border-l border-r border-gray-300 rounded-xl`}
@@ -68,9 +68,3 @@ const BackHandlerBlockUser = React.memo(({ componentId }) => {
     </View>
   );
 });
-
-module.exports = {
-  BackHandlerActivity,
-  BackHandlerFeedSetting,
-  BackHandlerBlockUser,
-};

@@ -4,8 +4,8 @@
 import React from "react";
 import { Navigation } from "react-native-navigation";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-// import { MMKV } from 'react-native-mmkv'
-// const storage = new MMKV()
+import { MMKV } from "react-native-mmkv";
+// const storage = new MMKV();
 import { storage } from "./lib/strg";
 import { GlobalProvider, GlobalContext } from "./lib/ctx";
 
@@ -82,11 +82,11 @@ Navigation.registerComponent(
   "DaftarOutlet",
   () => (props) =>
     (
-      <SheetProvider>
-        <GlobalProvider>
-          <DaftarOutletScreen {...props} />
-        </GlobalProvider>
-      </SheetProvider>
+      // <SheetProvider>
+      <GlobalProvider>
+        <DaftarOutletScreen {...props} />
+      </GlobalProvider>
+      // </SheetProvider>
     ),
   () => DaftarOutletScreen
 );
@@ -925,5 +925,5 @@ function isLoggedIn(vals) {
 }
 
 Navigation.events().registerAppLaunchedListener(() => {
-  Navigation.setRoot(enterApp);
+  Navigation.setRoot(isLoggedIn() ? mainRoot : enterApp);
 });

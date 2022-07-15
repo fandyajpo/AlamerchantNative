@@ -73,9 +73,9 @@ Otp.options = {
     push: {
       waitForRender: true,
       content: {
-        translationX: {
-          from: require("react-native").Dimensions.get("window").width,
-          to: 0,
+        alpha: {
+          from: 0,
+          to: 1,
           duration: 200,
         },
       },
@@ -83,9 +83,9 @@ Otp.options = {
     pop: {
       waitForRender: true,
       content: {
-        translationX: {
-          from: 0,
-          to: require("react-native").Dimensions.get("window").width,
+        alpha: {
+          from: 1,
+          to: 0,
           duration: 200,
         },
       },

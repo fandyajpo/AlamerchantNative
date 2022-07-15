@@ -1,19 +1,14 @@
-import React, { useContext, useEffect, useMemo, useState } from "react";
-import { Navigation } from "react-native-navigation";
+import React from "react";
 import SplashScreen from "react-native-splash-screen";
-
 import tw from "../lib/tailwind";
-import { GlobalContext } from "../lib/ctx";
-import { navOption } from "../lib/ctx";
-
-import { View, Text, Button, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, Pressable } from "react-native";
 import { Market, Alamerchant } from "../lib/listSvg";
 import { PushRoute } from "../lib/ctx";
 
 export const delay = (ms) => new Promise((res) => setTimeout(res, ms));
 
 const Enter = ({ componentId }) => {
-  useEffect(() => {
+  React.useEffect(() => {
     SplashScreen.hide();
   }, []);
 
@@ -35,18 +30,18 @@ const Enter = ({ componentId }) => {
           </Text>
         </View>
         {/* <RegisterPage /> */}
-        <TouchableOpacity
-          style={tw`bg-myellow w-full h-12 rounded-full my-2 flex items-center justify-center`}
+        <Pressable
+          style={tw`bg-myellow w-full h-10 sm:h-12 rounded-full my-2 flex items-center justify-center`}
           onPress={() => PushRoute(componentId, "Login")}
         >
           <Text style={tw`font-bold `}>Login</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
+        </Pressable>
+        <Pressable
           onPress={() => PushRoute(componentId, "DaftarOutlet")}
-          style={tw`bg-mgray w-full h-12 rounded-full my-2 flex items-center justify-center`}
+          style={tw`bg-mgray w-full h-10 sm:h-12 rounded-full my-2 flex items-center justify-center`}
         >
           <Text style={tw`font-bold text-myellow`}>Daftar</Text>
-        </TouchableOpacity>
+        </Pressable>
       </View>
     </View>
   );

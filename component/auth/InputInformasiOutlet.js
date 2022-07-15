@@ -4,10 +4,13 @@ import tw from "../../lib/tailwind";
 import { BackHandlerTaxAndService } from "../../component/profileMerchant/BackHandler";
 import { PushRoute, BackRoute } from "../../lib/ctx";
 import { RightDropdown, UploadImage } from "../../lib/listSvg";
-const TaxService = ({ componentId, ourRef }) => {
+const TaxService = ({ componentId }) => {
   return (
-    <View style={tw`w-full h-full pt-24`}>
-      <ScrollView contentContainerStyle={tw`pb-32  h-full`}>
+    <View style={tw`w-full h-full pt-28`}>
+      <ScrollView
+        contentContainerStyle={tw`pb-32`}
+        showsVerticalScrollIndicator={false}
+      >
         <View style={tw`p-2`}>
           <Text style={tw`text-gray-800 font-bold text-sm`}>Nama Outlet</Text>
           <View style={tw`flex-col py-2 border-mgray`}>
@@ -66,7 +69,7 @@ const TaxService = ({ componentId, ourRef }) => {
               Tag akan membantu pelanggan dalam pencarian
             </Text>
             <Pressable
-              onPress={() => ourRef.current.show()}
+              // onPress={() => ourRef.current.show()}
               style={tw`bg-green-500/20 w-44 rounded-full flex items-center justify-center`}
             >
               <Text style={tw`p-2 text-green-500 font-bold text-sm`}>

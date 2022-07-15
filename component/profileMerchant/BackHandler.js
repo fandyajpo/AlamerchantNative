@@ -50,7 +50,9 @@ export const BackHandlerTaxAndService = React.memo(({ componentId }) => {
           <Back />
         </Pressable>
         <View style={tw`w-2/6 h-8 flex items-center justify-center`}>
-          <Text style={tw`text-gray-800 text-lg font-bold`}>Tax & Service</Text>
+          <Text style={tw`text-gray-800 text-sm sm:text-lg font-bold`}>
+            Tax & Service
+          </Text>
           <View style={tw`w-full h-0.5 rounded-full bg-myellow`} />
         </View>
         <View style={tw`w-2/6`} />
@@ -61,7 +63,7 @@ export const BackHandlerTaxAndService = React.memo(({ componentId }) => {
         onPress={() => printerRef.current.show()}
       >
         <View
-          style={tw`w-full bg-myellow h-13 rounded-full flex items-center justify-center`}
+          style={tw`w-full bg-myellow h-10 sm:h-12 rounded-full flex items-center justify-center`}
         >
           <Text style={tw`text-sm font-bold text-white`}>Simpan</Text>
         </View>
@@ -110,7 +112,9 @@ export const BackHandlerEditProfile = React.memo(({ componentId, title }) => {
           <Back />
         </Pressable>
         <View style={tw`h-8 flex items-center justify-center`}>
-          <Text style={tw`text-gray-800 text-lg font-bold`}>{title}</Text>
+          <Text style={tw`text-gray-800 text-sm sm:text-lg font-bold`}>
+            {title}
+          </Text>
           <View style={tw`w-full h-0.5 rounded-full bg-myellow`} />
         </View>
         <View style={tw`w-2/6`} />
@@ -121,7 +125,7 @@ export const BackHandlerEditProfile = React.memo(({ componentId, title }) => {
         onPress={() => BackRoute(componentId)}
       >
         <View
-          style={tw`w-full bg-myellow h-13 rounded-full flex items-center justify-center`}
+          style={tw`w-full bg-myellow h-10 sm:h-12 rounded-full flex items-center justify-center`}
         >
           <Text style={tw`text-sm font-bold text-white`}>Simpan</Text>
         </View>
@@ -170,7 +174,7 @@ export const BackHandlerPrinter = React.memo(({ componentId, printerRef }) => {
           <Back />
         </Pressable>
         <View style={tw`w-2/6 h-8 flex items-center justify-center`}>
-          <Text style={tw`text-gray-800 text-lg font-bold`}>
+          <Text style={tw`text-gray-800 text-sm sm:text-lg font-bold`}>
             Manage Printer
           </Text>
           <View style={tw`w-full h-0.5 rounded-full bg-green-500`} />
@@ -183,7 +187,7 @@ export const BackHandlerPrinter = React.memo(({ componentId, printerRef }) => {
         onPress={() => printerRef.current.show()}
       >
         <View
-          style={tw`w-full bg-green-500/20 h-13 rounded-full flex items-center justify-center`}
+          style={tw`w-full bg-green-500/20 h-10 sm:h-12 rounded-full flex items-center justify-center`}
         >
           <Text style={tw`text-sm font-bold text-green-500`}>Simpan</Text>
         </View>
@@ -232,7 +236,9 @@ export const BackHandlerSetting = React.memo(({ componentId }) => {
           <Back />
         </Pressable>
         <View style={tw`w-2/6 h-8 flex items-center justify-center`}>
-          <Text style={tw`text-gray-800 text-lg font-bold`}>Setting</Text>
+          <Text style={tw`text-gray-800 text-sm sm:text-lg font-bold`}>
+            Setting
+          </Text>
           <View style={tw`w-full h-0.5 rounded-full bg-myellow`} />
         </View>
         <View style={tw`w-2/6`} />
@@ -281,7 +287,9 @@ export const BackHandlerDebitBank = React.memo(({ componentId }) => {
           <Back />
         </Pressable>
         <View style={tw`w-2/6 h-8 flex items-center justify-center`}>
-          <Text style={tw`text-gray-800 text-lg font-bold`}>Pilih Bank</Text>
+          <Text style={tw`text-gray-800 text-sm sm:text-lg font-bold`}>
+            Pilih Bank
+          </Text>
           <View style={tw`w-full h-0.5 rounded-full bg-myellow`} />
         </View>
         <View style={tw`w-2/6`} />
@@ -292,7 +300,7 @@ export const BackHandlerDebitBank = React.memo(({ componentId }) => {
         onPress={() => printerRef.current.show()}
       >
         <View
-          style={tw`w-full bg-myellow h-13 rounded-full flex items-center justify-center`}
+          style={tw`w-full bg-myellow h-10 sm:h-12 rounded-full flex items-center justify-center`}
         >
           <Text style={tw`text-sm font-bold text-white`}>Simpan</Text>
         </View>
@@ -341,7 +349,9 @@ export const BackHandlerLanguage = React.memo(({ componentId }) => {
           <Back />
         </Pressable>
         <View style={tw`w-2/6 h-8 flex items-center justify-center`}>
-          <Text style={tw`text-gray-800 text-lg font-bold`}>Bahasa</Text>
+          <Text style={tw`text-gray-800 text-sm sm:text-lg font-bold`}>
+            Bahasa
+          </Text>
           <View style={tw`w-full h-0.5 rounded-full bg-myellow`} />
         </View>
         <View style={tw`w-2/6`} />
@@ -390,7 +400,7 @@ export const BackHandlerBiayaTakeaway = React.memo(({ componentId }) => {
           <Back />
         </Pressable>
         <View style={tw`w-2/6 h-8 flex items-center justify-center`}>
-          <Text style={tw`text-gray-800 text-lg font-bold`}>
+          <Text style={tw`text-gray-800 text-sm sm:text-lg font-bold`}>
             Biaya Takeaway
           </Text>
           <View style={tw`w-full h-0.5 rounded-full bg-myellow`} />
@@ -403,7 +413,7 @@ export const BackHandlerBiayaTakeaway = React.memo(({ componentId }) => {
         onPress={() => printerRef.current.show()}
       >
         <View
-          style={tw`w-full bg-myellow h-13 rounded-full flex items-center justify-center`}
+          style={tw`w-full bg-myellow h-10 sm:h-12 rounded-full flex items-center justify-center`}
         >
           <Text style={tw`text-sm font-bold text-white`}>Simpan</Text>
         </View>
@@ -452,7 +462,9 @@ export const BackHandlerAddPrinter = React.memo(({ componentId }) => {
           <Back />
         </Pressable>
         <View style={tw`w-2/6 h-8 flex items-center justify-center`}>
-          <Text style={tw`text-gray-800 text-lg font-bold`}>Bahasa</Text>
+          <Text style={tw`text-gray-800 text-sm sm:text-lg font-bold`}>
+            Bahasa
+          </Text>
           <View style={tw`w-full h-0.5 rounded-full bg-myellow`} />
         </View>
         <View style={tw`w-2/6`} />
@@ -474,7 +486,9 @@ export const BackHandlerMenuDanStock = React.memo(({ componentId }) => {
           <Back />
         </Pressable>
         <View style={tw`w-2/6 h-8 flex items-center justify-center`}>
-          <Text style={tw`text-gray-800 text-lg font-bold`}>Menu & Stock</Text>
+          <Text style={tw`text-gray-800 text-sm sm:text-lg font-bold`}>
+            Menu & Stock
+          </Text>
           <View style={tw`w-full h-0.5 rounded-full bg-myellow`} />
         </View>
         <View style={tw`w-2/6`} />
@@ -507,7 +521,7 @@ export const BackHandlerPrivilage = React.memo(({ componentId }) => {
         onPress={() => BackRoute(componentId)}
       >
         <View
-          style={tw`w-full bg-green-500/20 h-13 rounded-full flex items-center justify-center`}
+          style={tw`w-full bg-green-500/20 h-10 sm:h-12 rounded-full flex items-center justify-center`}
         >
           <Text style={tw`text-sm font-bold text-green-500`}>
             Tambah Akun Privilage
@@ -542,7 +556,7 @@ export const BackHandlerPilihCabang = React.memo(({ componentId }) => {
         onPress={() => BackRoute(componentId)}
       >
         <View
-          style={tw`w-full bg-myellow h-13 rounded-full flex items-center justify-center`}
+          style={tw`w-full bg-myellow h-10 sm:h-12 rounded-full flex items-center justify-center`}
         >
           <Text style={tw`text-sm font-bold`}>Simpan</Text>
         </View>

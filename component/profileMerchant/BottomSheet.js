@@ -9,6 +9,7 @@ import tw from "../../lib/tailwind";
 import { RightDropdown } from "../../lib/listSvg";
 import { PushRoute, BackRoute } from "../../lib/ctx";
 import DatePicker from "react-native-modern-datepicker";
+import { storage } from "../../lib/strg";
 
 export const TaggingSheet = React.memo(({ id, editProfileRef }) => {
   return (
@@ -40,17 +41,17 @@ export const TaggingSheet = React.memo(({ id, editProfileRef }) => {
             />
           </View>
 
-          <View style={tw`pt-4 pl-4 pr-4 pb-12 flex-row justify-center`}>
+          <View style={tw`p-4 flex-row justify-center`}>
             <Pressable
               onPress={() => editProfileRef.current.hide()}
-              style={tw`w-2/4 bg-myellow h-13 rounded-full items-center justify-center `}
+              style={tw`w-2/4 bg-myellow h-10 sm:h-12 rounded-full items-center justify-center `}
             >
               <Text style={tw`text-white text-sm font-bold`}>Kembali</Text>
             </Pressable>
             <View style={tw`w-2`} />
             <Pressable
               onPress={() => editProfileRef.current.hide()}
-              style={tw`w-2/4 bg-mgray h-13 rounded-full items-center justify-center `}
+              style={tw`w-2/4 bg-mgray h-10 sm:h-12 rounded-full items-center justify-center `}
             >
               <Text style={tw`text-myellow text-sm font-bold`}>Ok</Text>
             </Pressable>
@@ -261,14 +262,14 @@ export const JamOperasionalSheet = React.memo(({ id, editJamRef }) => {
           <View style={tw`pt-4 pl-4 pr-4 pb-12 flex-row justify-center`}>
             <Pressable
               onPress={() => editJamRef.current.hide()}
-              style={tw`w-2/4 bg-mgray h-13 rounded-full items-center justify-center `}
+              style={tw`w-2/4 bg-mgray h-10 sm:h-12 rounded-full items-center justify-center `}
             >
               <Text style={tw`text-myellow text-sm font-bold`}>Kembali</Text>
             </Pressable>
             <View style={tw`w-2`} />
             <Pressable
               onPress={() => editJamRef.current.hide()}
-              style={tw`w-2/4 bg-myellow h-13 rounded-full items-center justify-center `}
+              style={tw`w-2/4 bg-myellow h-10 sm:h-12 rounded-full items-center justify-center `}
             >
               <Text style={tw`text-white text-sm font-bold`}>Simpan</Text>
             </Pressable>
@@ -379,17 +380,20 @@ export const LogoutSheet = React.memo(({ id, logoutRef }) => {
         springOffset={100}
       >
         <View style={tw`h-auto`}>
-          <View style={tw`pt-4 pl-4 pr-4 pb-12 flex-row justify-center`}>
+          <View style={tw`p-4 flex-row justify-center`}>
             <Pressable
               onPress={() => logoutRef.current.hide()}
-              style={tw`w-2/4 bg-myellow h-13 rounded-full items-center justify-center `}
+              style={tw`w-2/4 bg-myellow h-10 sm:h-12 rounded-full items-center justify-center `}
             >
               <Text style={tw`text-white text-sm font-bold`}>Kembali</Text>
             </Pressable>
             <View style={tw`w-2`} />
             <Pressable
-              onPress={() => logoutRef.current.hide()}
-              style={tw`w-2/4 bg-mgray h-13 rounded-full items-center justify-center `}
+              onPress={() => {
+                storage.clearAll();
+                logoutRef.current.hide();
+              }}
+              style={tw`w-2/4 bg-mgray h-10 sm:h-12 rounded-full items-center justify-center `}
             >
               <Text style={tw`text-myellow text-sm font-bold`}>Ok</Text>
             </Pressable>
@@ -446,7 +450,7 @@ export const LanguageSheet = React.memo(({ id, langRef, lang, setLang }) => {
                       langRef.current.hide(r);
                     }
               }
-              style={tw`w-2/4 bg-mgray h-13 rounded-full items-center justify-center `}
+              style={tw`w-2/4 bg-mgray h-10 sm:h-12 rounded-full items-center justify-center `}
             >
               <Text style={tw`text-myellow text-sm font-bold`}>Ok</Text>
             </Pressable>

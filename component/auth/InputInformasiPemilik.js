@@ -6,8 +6,11 @@ import { BackHandlerTaxAndService } from "../../component/profileMerchant/BackHa
 import { PushRoute, BackRoute } from "../../lib/ctx";
 const TaxService = ({ componentId }) => {
   return (
-    <View style={tw`w-full h-full pt-24`}>
-      <ScrollView contentContainerStyle={tw`pb-32`}>
+    <View style={tw`w-full h-full pt-28`}>
+      <ScrollView
+        contentContainerStyle={tw`pb-32`}
+        showsVerticalScrollIndicator={false}
+      >
         <View style={tw`p-2`}>
           <Text style={tw`text-gray-800 font-bold text-sm`}>Nama</Text>
           <Text style={tw`text-gray-300  text-sm`}>

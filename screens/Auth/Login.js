@@ -6,6 +6,7 @@ import { Alamerchant, IndonesiaFlag } from "../../lib/listSvg";
 import { GlobalContext } from "../../lib/ctx";
 import { useForm, Controller } from "react-hook-form";
 import { BackRoute, PushRoute } from "../../lib/ctx";
+import { storage } from "../../lib/strg";
 
 const image = require("../assets/images/loginBackground.png");
 const logImage = require("../assets/images/loginImage.png");
@@ -145,7 +146,8 @@ const FormLogin = React.memo(({ isHide, componentId }) => {
           <Pressable
             activeOpacity={0.5}
             style={tw`w-2/4`}
-            onPress={() => PushRoute(componentId, "Otp")}
+            // onPress={() => PushRoute(componentId, "Otp")}
+            onPress={() => storage.set("token", "fandy")}
           >
             <View
               style={tw`w-full bg-mgray h-10 sm:h-12 rounded-full flex items-center justify-center`}
@@ -224,9 +226,9 @@ Login.options = {
     push: {
       waitForRender: true,
       content: {
-        translationX: {
-          from: require("react-native").Dimensions.get("window").width,
-          to: 0,
+        alpha: {
+          from: 0,
+          to: 1,
           duration: 200,
         },
       },
@@ -234,9 +236,9 @@ Login.options = {
     pop: {
       waitForRender: true,
       content: {
-        translationX: {
-          from: 0,
-          to: require("react-native").Dimensions.get("window").width,
+        alpha: {
+          from: 1,
+          to: 0,
           duration: 200,
         },
       },
