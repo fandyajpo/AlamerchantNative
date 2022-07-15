@@ -13,8 +13,29 @@ export const BackHandlerPromoAlacarte = React.memo(({ componentId }) => {
           <Back />
         </Pressable>
         <View style={tw`w-2/6 h-8`}>
-          <Text style={tw`text-gray-800 text-lg font-bold`}>
+          <Text style={tw`text-gray-800 text-sm sm:text-lg font-bold`}>
             Promo Alacarte
+          </Text>
+          <View style={tw`h-0.5 w-full rounded-full bg-myellow`} />
+        </View>
+        <View style={tw`w-2/6 `} />
+      </View>
+    </View>
+  );
+});
+
+export const BackHandlerPromoAlamerchant = React.memo(({ componentId }) => {
+  return (
+    <View
+      style={tw`absolute bg-white bottom-0 w-full h-44 p-4 z-50 border-t-2 border-l border-r border-gray-300 rounded-xl`}
+    >
+      <View style={tw`flex-row items-center justify-between w-full`}>
+        <Pressable style={tw`w-2/6`} onPress={() => BackRoute(componentId)}>
+          <Back />
+        </Pressable>
+        <View style={tw`w-auto h-8`}>
+          <Text style={tw`text-gray-800 text-sm sm:text-lg font-bold`}>
+            Promo Alamerchant
           </Text>
           <View style={tw`h-0.5 w-full rounded-full bg-myellow`} />
         </View>
@@ -34,7 +55,9 @@ export const BackHandlerPilihMenu = React.memo(({ componentId }) => {
           <Back />
         </Pressable>
         <View style={tw`w-2/6 h-8`}>
-          <Text style={tw`text-gray-800 text-lg font-bold text-center`}>
+          <Text
+            style={tw`text-gray-800 text-sm sm:text-lg font-bold text-center`}
+          >
             Pilih Menu
           </Text>
           <View style={tw`h-0.5 w-full rounded-full bg-myellow`} />
@@ -49,7 +72,7 @@ export const BackHandlerPilihMenu = React.memo(({ componentId }) => {
         onPress={() => PushRoute(componentId, "DiskonMenu")}
       >
         <View
-          style={tw`w-full bg-myellow h-13 rounded-full flex items-center justify-center`}
+          style={tw`w-full bg-myellow h-10 sm:h-12 rounded-full flex items-center justify-center`}
         >
           <Text style={tw`text-sm font-bold text-white`}>Simpan</Text>
         </View>
@@ -97,7 +120,9 @@ export const BackHandlerDiskonMenu = React.memo(({ componentId }) => {
           <Back />
         </Pressable>
         <View style={tw`w-2/6 h-8`}>
-          <Text style={tw`text-gray-800 text-lg font-bold text-center`}>
+          <Text
+            style={tw`text-gray-800 text-sm sm:text-lg font-bold text-center`}
+          >
             Diskon Menu
           </Text>
           <View style={tw`h-0.5 w-full rounded-full bg-myellow`} />
@@ -110,7 +135,7 @@ export const BackHandlerDiskonMenu = React.memo(({ componentId }) => {
         onPress={() => PushRoute(componentId, "DiskonMenu")}
       >
         <View
-          style={tw`w-full bg-myellow h-13 rounded-full flex items-center justify-center`}
+          style={tw`w-full bg-myellow h-10 sm:h-12 rounded-full flex items-center justify-center`}
         >
           <Text style={tw`text-sm font-bold text-white`}>
             Simpan & buat Promo

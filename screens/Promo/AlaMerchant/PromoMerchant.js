@@ -1,80 +1,83 @@
 import React from "react";
-import { View, Text, ScrollView, Pressable } from "react-native";
-import tw from "../../../lib/tailwind";
+import { View, ScrollView, Image } from "react-native";
+
+import { BackHandlerPromoAlamerchant } from "../../../component/promo/BackHandler";
 import {
-  RightDropdown,
-  AlacartePromo,
-  AlamerchantPromo,
-  DataAnalisa,
-} from "../../../lib/listSvg";
-const PromoMerchant = ({ componentId }) => {
-  return (
-    <View style={tw`w-full h-full bg-white pt-13`}>
-      <ScrollView style={tw`mb-32`}>
-        <View style={tw`bg-white p-2`}>
-          <Text style={tw`text-xl text-blue-500`}>Promo Alamerchant</Text>
-        </View>
-        <View style={tw`p-2`}>
-          <View style={tw`flex-col py-2 border-mgray`}>
-            <Pressable
-              style={tw`flex-row items-center justify-between border border-gray-300 p-3 bg-white rounded-md mb-2 shadow-sm`}
-            >
-              <View style={tw`flex-row items-center`}>
-                <AlamerchantPromo />
-                <View>
-                  <Text style={tw`text-gray-800 font-bold ml-2`}>
-                    Promo Alamerchant
-                  </Text>
-                  <Text style={tw`text-gray-800 ml-2 text-sm w-52 font-light`}>
-                    Kelola promo offline untuk outlet Anda sendiri disini.
-                  </Text>
-                </View>
-              </View>
-              <RightDropdown />
-            </Pressable>
-            <Pressable
-              style={tw`flex-row items-center justify-between border border-gray-300 p-3 bg-white rounded-md mb-2 shadow-sm`}
-            >
-              <View style={tw`flex-row items-center`}>
-                <AlacartePromo />
-                <View>
-                  <Text style={tw`text-gray-800 font-bold ml-2`}>
-                    Promo Ala carte
-                  </Text>
-                  <Text style={tw`text-gray-800 ml-2 text-sm w-52 font-light`}>
-                    Kelola promo online pada aplikasi Ala Carte disini
-                  </Text>
-                </View>
-              </View>
-              <RightDropdown />
-            </Pressable>
-            <Pressable
-              style={tw`flex-row items-center justify-between border border-gray-300 p-3 bg-white rounded-md mb-2 shadow-sm`}
-            >
-              <View style={tw`flex-row items-center`}>
-                <DataAnalisa />
-                <View>
-                  <Text style={tw`text-gray-800 font-bold ml-2`}>
-                    Data Analisa
-                  </Text>
-                  <Text style={tw`text-gray-800 ml-2 text-sm w-52 font-light`}>
-                    Lihat data analisa promo Anda disini
-                  </Text>
-                </View>
-              </View>
-              <RightDropdown />
-            </Pressable>
-          </View>
-        </View>
-      </ScrollView>
+  DiskonMinimumTransaksi,
+  GratisMenuTertentu,
+} from "../../../component/promo/BottomSheet";
+
+import tw from "../../../lib/tailwind";
+import PromoCarte from "../../../component/promo/Alacarte/PromoAlacarte";
+import { Navigation } from "react-native-navigation";
+
+const PromoAlacarte = ({ componentId }) => {
+  const [appIsReady, setAppIsReady] = React.useState(false);
+
+  React.useEffect(() => {
+    async function prepare() {
+      try {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+      } catch (e) {
+        console.warn(e);
+      } finally {
+        setAppIsReady(true);
+      }
+    }
+    prepare();
+  }, []);
+
+  React.useEffect(() => {
+    const unsubscribe = Navigation.events().registerComponentListener(
+      {
+        componentWillAppear: () => {
+          setAppIsReady(true);
+          console.log("berada dihalaman menunggu render");
+        },
+        componentDidAppear: () => {
+          console.log(`componentDidAppear ${componentId}`);
+        },
+        componentDidDisappear: () => {
+          setAppIsReady(false);
+          console.log(`componentDidDisappear ${componentId}`);
+        },
+      },
+      componentId
+    );
+    return () => unsubscribe.remove();
+  }, [componentId]);
+
+  if (!appIsReady) {
+    return (
       <View
-        style={tw`border-b-2 border-r border-l rounded-full border-gray-300 z-10 w-full absolute bottom-0 w-full h-4 pb-2`}
-      ></View>
+        style={tw`w-full bg-white h-full flex-row items-center justify-center`}
+      >
+        <Image
+          source={require("../../../assets/gif/alamerch.gif")}
+          style={{ width: 200, height: 200 }}
+        />
+      </View>
+    );
+  }
+
+  return (
+    <View style={tw`mt-13 w-full h-full pb-20 bg-white`}>
+      <ScrollView
+        contentContainerStyle={tw`pb-28 bg-white px-2`}
+        horizontal={false}
+        showsVerticalScrollIndicator={false}
+        scrollEnabled={true}
+      >
+        <PromoCarte componentId={componentId} />
+      </ScrollView>
+      <DiskonMinimumTransaksi componentId={componentId} />
+      <GratisMenuTertentu componentId={componentId} />
+      <BackHandlerPromoAlamerchant componentId={componentId} />
     </View>
   );
 };
 
-PromoMerchant.options = {
+PromoAlacarte.options = {
   bottomTabs: {
     visible: false,
     drawBehind: false,
@@ -126,4 +129,5 @@ PromoMerchant.options = {
     },
   },
 };
-export default React.memo(PromoMerchant);
+
+export default PromoAlacarte;
