@@ -1,87 +1,69 @@
-// import React from "react";
-// import { Animated, Pressable, StyleSheet } from "react-native";
-import tw from "../../lib/tailwind";
-// import { Plus } from "../../lib/listSvg";
-
-// const FlyAction = () => {
-//   const open = React.useRef(new Animated.Value(0)).current;
-
-//   React.useEffect(() => {
-//     const control = () => {
-//       Animated.timing(open, {
-//         toValue: 500,
-//         duration: 10000,
-//         useNativeDriver: true,
-//       }).start();
-//     };
-//   }, [open]);
-//   return (
-//     <Animated.View
-//       style={[
-//         tw` absolute h-15 w-15 z-10 bottom-4 right-4 bg-black/20 rounded-full items-center justify-center`,
-//       ]}
-//     >
-//       <Pressable onPress={() => control}>
-//         <Plus col={"w-10 h-10 text-gray-800"} />
-//       </Pressable>
-//     </Animated.View>
-//   );
-// };
-
-// export default React.memo(FlyAction);
-
 import React from "react";
-import { Animated, Pressable, Text, View } from "react-native";
+import { View } from "react-native";
+import { FAB } from "react-native-paper";
+import { Plus, X, Feed, Event, Story } from "../../lib/listSvg";
+import tw from "../../lib/tailwind";
+const MyComponent = () => {
+  const [state, setState] = React.useState({ open: false });
 
-export default function Ikan() {
-  const fadeAnim = React.useRef(new Animated.Value(0)).current;
+  const onStateChange = ({ open }) => setState({ open });
 
-  const on = () => {
-    Animated.timing(fadeAnim, {
-      toValue: 1,
-      useNativeDriver: true,
-      duration: 100,
-    }).start();
-  };
-
-  const off = () => {
-    Animated.timing(fadeAnim, {
-      toValue: 0,
-      useNativeDriver: true,
-      duration: 100,
-    }).start();
-  };
-
-  React.useEffect(() => {
-    off, on;
-  });
+  const { open } = state;
 
   return (
-    <View
-      style={[
-        { flex: 1, alignItems: "center", justifyContent: "center" },
-        tw`absolute z-10 bottom-4 right-4`,
+    <FAB.Group
+      style={tw`absolute z-50`}
+      open={open}
+      color={"gray"}
+      fabStyle={tw`bg-white/95`}
+      icon={() =>
+        open ? (
+          <View style={tw`items-center justify-center w-full h-full`}>
+            <X />
+          </View>
+        ) : (
+          <View style={tw`items-center justify-center w-full h-full`}>
+            <Plus col={"w-10 h-10 text-gray-700"} />
+          </View>
+        )
+      }
+      actions={[
+        {
+          icon: () => (
+            <View style={tw`items-center justify-center w-full h-full`}>
+              <Story />
+            </View>
+          ),
+          label: "Story",
+          onPress: () => console.log("Pressed star"),
+        },
+        {
+          icon: () => (
+            <View style={tw`items-center justify-center w-full h-full`}>
+              <Event />
+            </View>
+          ),
+          label: "Event",
+          onPress: () => console.log("Pressed email"),
+        },
+        {
+          icon: () => (
+            <View style={tw`items-center justify-center w-full h-full`}>
+              <Feed />
+            </View>
+          ),
+          label: "Feed",
+          onPress: () => console.log("Pressed notifications"),
+        },
       ]}
-    >
-      <Pressable onPress={off} style={tw`bg-black p-1`}>
-        <Text>Off</Text>
-      </Pressable>
-      <Pressable onPress={on} style={tw`bg-white p-1`}>
-        <Text>On</Text>
-      </Pressable>
-
-      <Animated.View
-        style={{
-          width: 250,
-          height: 50,
-          backgroundColor: "black",
-          opacity: fadeAnim,
-        }}
-      >
-        <Text style={{ fontSize: 28, textAlign: "center", margin: 10 }}>
-          Fading in
-        </Text>
-      </Animated.View>
-    </View>
+      onStateChange={onStateChange}
+      onPress={() => {
+        if (open) {
+          // do something if the speed dial is open
+        }
+      }}
+    />
   );
-}
+};
+
+export default MyComponent;

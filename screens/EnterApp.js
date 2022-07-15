@@ -42,7 +42,7 @@ const Enter = ({ componentId }) => {
           <Text style={tw`font-bold `}>Login</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => PushRoute(componentId, "Register")}
+          onPress={() => PushRoute(componentId, "DaftarOutlet")}
           style={tw`bg-mgray w-full h-12 rounded-full my-2 flex items-center justify-center`}
         >
           <Text style={tw`font-bold text-myellow`}>Daftar</Text>

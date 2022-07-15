@@ -7,7 +7,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 // import { MMKV } from 'react-native-mmkv'
 // const storage = new MMKV()
 import { storage } from "./lib/strg";
-import { GlobalProvider } from "./lib/ctx";
+import { GlobalProvider, GlobalContext } from "./lib/ctx";
 
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
@@ -15,7 +15,7 @@ import { SheetProvider } from "react-native-actions-sheet";
 
 //MAIN SCREEN
 import EnterScreen from "./screens/EnterApp";
-import LoginScreen from "./screens/Login";
+import LoginScreen from "./screens/Auth/Login";
 import HomeScreen from "./screens/Order";
 import HistoryScreen from "./screens/History";
 import ProfileScreen from "./screens/Profile/Profile";
@@ -72,6 +72,50 @@ import AddCategoryScreen from "./screens/MenuDanStock/KategoriDanMenu.js/AddCate
 //PRIVILAGE GROUP SCREEN
 import PrivilageScreen from "./screens/Privilage/Privilage";
 import PilihCabangScreen from "./screens/Privilage/PilihCabang";
+
+//AUTH GROUP SCREEN
+import OtpScreen from "./screens/Auth/Otp";
+import ConfirmPinScreen from "./screens/Auth/ConfirmPin";
+import DaftarOutletScreen from "./screens/Auth/Daftar";
+
+Navigation.registerComponent(
+  "DaftarOutlet",
+  () => (props) =>
+    (
+      <SheetProvider>
+        <GlobalProvider>
+          <DaftarOutletScreen {...props} />
+        </GlobalProvider>
+      </SheetProvider>
+    ),
+  () => DaftarOutletScreen
+);
+
+Navigation.registerComponent(
+  "ConfirmPin",
+  () => (props) =>
+    (
+      <SheetProvider>
+        <GlobalProvider>
+          <ConfirmPinScreen {...props} />
+        </GlobalProvider>
+      </SheetProvider>
+    ),
+  () => ConfirmPinScreen
+);
+
+Navigation.registerComponent(
+  "Otp",
+  () => (props) =>
+    (
+      <SheetProvider>
+        <GlobalProvider>
+          <OtpScreen {...props} />
+        </GlobalProvider>
+      </SheetProvider>
+    ),
+  () => OtpScreen
+);
 
 Navigation.registerComponent(
   "AddCategory",
@@ -577,17 +621,6 @@ Navigation.setDefaultOptions({
         },
       },
     },
-    //   setRoot: {
-    //     enter: {
-    //       waitForRender: true,
-    //       enabled: false,
-    //       // translationY: {
-    //       //   from: 0,
-    //       //   to: 1,
-    //       //   duration: 3,
-    //       // },
-    //     },
-    //   },
   },
 });
 
@@ -815,20 +848,20 @@ const mainRoot = {
   },
 };
 
-const loginRoot = {
-  root: {
-    component: {
-      name: "Login",
-      options: {
-        statusBar: {
-          drawBehind: true,
-          backgroundColor: "transparent",
-          animate: false,
-        },
-      },
-    },
-  },
-};
+// const loginRoot = {
+//   root: {
+//     component: {
+//       name: "Login",
+//       options: {
+//         statusBar: {
+//           drawBehind: true,
+//           backgroundColor: "transparent",
+//           animate: false,
+//         },
+//       },
+//     },
+//   },
+// };
 
 const enterApp = {
   root: {
@@ -892,5 +925,5 @@ function isLoggedIn(vals) {
 }
 
 Navigation.events().registerAppLaunchedListener(() => {
-  Navigation.setRoot(mainRoot);
+  Navigation.setRoot(enterApp);
 });
